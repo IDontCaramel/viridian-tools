@@ -10,9 +10,10 @@ export interface McEntry {
   id: string
   name: string
   icon?: Icon
+  requiresParams?: boolean
 }
 
-export type McList = 'items' | 'blocks' | 'effects' | 'sounds'
+export type McList = 'items' | 'blocks' | 'effects' | 'sounds' | 'entities' | 'particles' | 'keys'
 export type McRegistry = Record<McList, McEntry[]>
 
 const BASE = `${import.meta.env.BASE_URL}mc-assets/`

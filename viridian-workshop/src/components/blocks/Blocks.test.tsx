@@ -167,6 +167,24 @@ describe('blocks view', () => {
     expect((await currentJson(user)).condition).toEqual({ type: 'apoli:sneaking' })
   })
 
+  it('picks entities, particles and readable ability keys using their json ids', async () => {
+    const user = userEvent.setup()
+    const { open } = renderPower({
+      type: 'apoli:action_on_key_press', key: 'key.origins.primary_active',
+      entity_action: { type: 'apoli:fire_projectile', entity_type: 'minecraft:arrow',
+        projectile_action: { type: 'apoli:spawn_particles', particle: 'minecraft:flame' } },
+    })
+    await open()
+    expect(screen.getByText('Primary ability')).toBeInTheDocument()
+    await pick(user, screen.getByRole('button', { name: 'Key' }), 'secondary')
+    await pick(user, screen.getByRole('button', { name: 'Entity type' }), 'snowball')
+    await pick(user, screen.getByRole('button', { name: 'Particle' }), 'cloud')
+    const json = await currentJson(user)
+    expect(json.key).toBe('key.origins.secondary_active')
+    expect(json.entity_action.entity_type).toBe('minecraft:snowball')
+    expect(json.entity_action.projectile_action.particle).toBe('minecraft:cloud')
+  })
+
   it('edits inline values and keeps unknown types as raw json', async () => {
     const user = userEvent.setup()
     const { open } = renderPower({

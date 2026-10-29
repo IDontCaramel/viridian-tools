@@ -216,6 +216,7 @@ export function Block({ category, path, handle, menu = [], hat }: BlockProps) {
     if (used.has(f.name) || skip.has(f.name)) continue
     const where = placement(f, obj[f.name])
     if (where === 'inline' || where === 'drawer') continue
+    if (!f.required && obj[f.name] === undefined && !(hat && f.name === 'condition')) continue
     used.add(f.name)
     const kind = (where === 'stack_list' || where === 'condition_list' ? f.of!.kind : f.kind) as Category
     const row = <SlotRow key={f.name} spec={f} where={where} category={kind} path={[...path, f.name]} />
@@ -245,7 +246,6 @@ export function Block({ category, path, handle, menu = [], hat }: BlockProps) {
             not
           </button>
         )}
-        {hat && template && <span className="blk-kind">{info!.label}</span>}
         {head}
         {typeId.startsWith('viridian:') && <span className="badge mod-only">Viridian only</span>}
         {technical && <code className="blk-id">{typeId}</code>}
@@ -395,8 +395,8 @@ function InlineField({
         {typeof value === 'string' && !values.includes(value) && <option value={value}>{value}</option>}
       </select>
     )
-  } else if (mcListFor(k) && (value === undefined || typeof value === 'string')) {
-    input = <McIdPicker compact ariaLabel={label} list={mcListFor(k)!} value={value} onChange={(v) => set(path, v, false)} />
+  } else if (mcListFor(k, spec.registry) && (value === undefined || typeof value === 'string')) {
+    input = <McIdPicker parameterless={k === 'particle'} compact ariaLabel={label} list={mcListFor(k, spec.registry)!} value={value} onChange={(v) => set(path, v, false)} />
   } else {
     input = (
       <TextInput

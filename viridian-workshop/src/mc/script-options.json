@@ -1,0 +1,1184 @@
+{
+  "entities": [
+    {
+      "id": "minecraft:acacia_boat",
+      "name": "Acacia Boat"
+    },
+    {
+      "id": "minecraft:acacia_chest_boat",
+      "name": "Acacia Chest Boat"
+    },
+    {
+      "id": "minecraft:allay",
+      "name": "Allay"
+    },
+    {
+      "id": "minecraft:area_effect_cloud",
+      "name": "Area Effect Cloud"
+    },
+    {
+      "id": "minecraft:armadillo",
+      "name": "Armadillo"
+    },
+    {
+      "id": "minecraft:armor_stand",
+      "name": "Armor Stand"
+    },
+    {
+      "id": "minecraft:arrow",
+      "name": "Arrow"
+    },
+    {
+      "id": "minecraft:axolotl",
+      "name": "Axolotl"
+    },
+    {
+      "id": "minecraft:bamboo_chest_raft",
+      "name": "Bamboo Chest Raft"
+    },
+    {
+      "id": "minecraft:bamboo_raft",
+      "name": "Bamboo Raft"
+    },
+    {
+      "id": "minecraft:bat",
+      "name": "Bat"
+    },
+    {
+      "id": "minecraft:bee",
+      "name": "Bee"
+    },
+    {
+      "id": "minecraft:birch_boat",
+      "name": "Birch Boat"
+    },
+    {
+      "id": "minecraft:birch_chest_boat",
+      "name": "Birch Chest Boat"
+    },
+    {
+      "id": "minecraft:blaze",
+      "name": "Blaze"
+    },
+    {
+      "id": "minecraft:block_display",
+      "name": "Block Display"
+    },
+    {
+      "id": "minecraft:bogged",
+      "name": "Bogged"
+    },
+    {
+      "id": "minecraft:breeze",
+      "name": "Breeze"
+    },
+    {
+      "id": "minecraft:breeze_wind_charge",
+      "name": "Breeze Wind Charge"
+    },
+    {
+      "id": "minecraft:camel",
+      "name": "Camel"
+    },
+    {
+      "id": "minecraft:camel_husk",
+      "name": "Camel Husk"
+    },
+    {
+      "id": "minecraft:cat",
+      "name": "Cat"
+    },
+    {
+      "id": "minecraft:cave_spider",
+      "name": "Cave Spider"
+    },
+    {
+      "id": "minecraft:cherry_boat",
+      "name": "Cherry Boat"
+    },
+    {
+      "id": "minecraft:cherry_chest_boat",
+      "name": "Cherry Chest Boat"
+    },
+    {
+      "id": "minecraft:chest_minecart",
+      "name": "Chest Minecart"
+    },
+    {
+      "id": "minecraft:chicken",
+      "name": "Chicken"
+    },
+    {
+      "id": "minecraft:cod",
+      "name": "Cod"
+    },
+    {
+      "id": "minecraft:command_block_minecart",
+      "name": "Command Block Minecart"
+    },
+    {
+      "id": "minecraft:copper_golem",
+      "name": "Copper Golem"
+    },
+    {
+      "id": "minecraft:cow",
+      "name": "Cow"
+    },
+    {
+      "id": "minecraft:creaking",
+      "name": "Creaking"
+    },
+    {
+      "id": "minecraft:creeper",
+      "name": "Creeper"
+    },
+    {
+      "id": "minecraft:cushion",
+      "name": "Cushion"
+    },
+    {
+      "id": "minecraft:dark_oak_boat",
+      "name": "Dark Oak Boat"
+    },
+    {
+      "id": "minecraft:dark_oak_chest_boat",
+      "name": "Dark Oak Chest Boat"
+    },
+    {
+      "id": "minecraft:dolphin",
+      "name": "Dolphin"
+    },
+    {
+      "id": "minecraft:donkey",
+      "name": "Donkey"
+    },
+    {
+      "id": "minecraft:dragon_fireball",
+      "name": "Dragon Fireball"
+    },
+    {
+      "id": "minecraft:drowned",
+      "name": "Drowned"
+    },
+    {
+      "id": "minecraft:egg",
+      "name": "Egg"
+    },
+    {
+      "id": "minecraft:elder_guardian",
+      "name": "Elder Guardian"
+    },
+    {
+      "id": "minecraft:end_crystal",
+      "name": "End Crystal"
+    },
+    {
+      "id": "minecraft:ender_dragon",
+      "name": "Ender Dragon"
+    },
+    {
+      "id": "minecraft:ender_pearl",
+      "name": "Ender Pearl"
+    },
+    {
+      "id": "minecraft:enderman",
+      "name": "Enderman"
+    },
+    {
+      "id": "minecraft:endermite",
+      "name": "Endermite"
+    },
+    {
+      "id": "minecraft:evoker",
+      "name": "Evoker"
+    },
+    {
+      "id": "minecraft:evoker_fangs",
+      "name": "Evoker Fangs"
+    },
+    {
+      "id": "minecraft:experience_bottle",
+      "name": "Experience Bottle"
+    },
+    {
+      "id": "minecraft:experience_orb",
+      "name": "Experience Orb"
+    },
+    {
+      "id": "minecraft:eye_of_ender",
+      "name": "Eye Of Ender"
+    },
+    {
+      "id": "minecraft:falling_block",
+      "name": "Falling Block"
+    },
+    {
+      "id": "minecraft:fireball",
+      "name": "Fireball"
+    },
+    {
+      "id": "minecraft:firework_rocket",
+      "name": "Firework Rocket"
+    },
+    {
+      "id": "minecraft:fishing_bobber",
+      "name": "Fishing Bobber"
+    },
+    {
+      "id": "minecraft:fox",
+      "name": "Fox"
+    },
+    {
+      "id": "minecraft:frog",
+      "name": "Frog"
+    },
+    {
+      "id": "minecraft:furnace_minecart",
+      "name": "Furnace Minecart"
+    },
+    {
+      "id": "minecraft:ghast",
+      "name": "Ghast"
+    },
+    {
+      "id": "minecraft:giant",
+      "name": "Giant"
+    },
+    {
+      "id": "minecraft:glow_item_frame",
+      "name": "Glow Item Frame"
+    },
+    {
+      "id": "minecraft:glow_squid",
+      "name": "Glow Squid"
+    },
+    {
+      "id": "minecraft:goat",
+      "name": "Goat"
+    },
+    {
+      "id": "minecraft:guardian",
+      "name": "Guardian"
+    },
+    {
+      "id": "minecraft:happy_ghast",
+      "name": "Happy Ghast"
+    },
+    {
+      "id": "minecraft:hoglin",
+      "name": "Hoglin"
+    },
+    {
+      "id": "minecraft:hopper_minecart",
+      "name": "Hopper Minecart"
+    },
+    {
+      "id": "minecraft:horse",
+      "name": "Horse"
+    },
+    {
+      "id": "minecraft:husk",
+      "name": "Husk"
+    },
+    {
+      "id": "minecraft:illusioner",
+      "name": "Illusioner"
+    },
+    {
+      "id": "minecraft:interaction",
+      "name": "Interaction"
+    },
+    {
+      "id": "minecraft:iron_golem",
+      "name": "Iron Golem"
+    },
+    {
+      "id": "minecraft:item",
+      "name": "Item"
+    },
+    {
+      "id": "minecraft:item_display",
+      "name": "Item Display"
+    },
+    {
+      "id": "minecraft:item_frame",
+      "name": "Item Frame"
+    },
+    {
+      "id": "minecraft:jungle_boat",
+      "name": "Jungle Boat"
+    },
+    {
+      "id": "minecraft:jungle_chest_boat",
+      "name": "Jungle Chest Boat"
+    },
+    {
+      "id": "minecraft:leash_knot",
+      "name": "Leash Knot"
+    },
+    {
+      "id": "minecraft:lightning_bolt",
+      "name": "Lightning Bolt"
+    },
+    {
+      "id": "minecraft:lingering_potion",
+      "name": "Lingering Potion"
+    },
+    {
+      "id": "minecraft:llama",
+      "name": "Llama"
+    },
+    {
+      "id": "minecraft:llama_spit",
+      "name": "Llama Spit"
+    },
+    {
+      "id": "minecraft:magma_cube",
+      "name": "Magma Cube"
+    },
+    {
+      "id": "minecraft:mangrove_boat",
+      "name": "Mangrove Boat"
+    },
+    {
+      "id": "minecraft:mangrove_chest_boat",
+      "name": "Mangrove Chest Boat"
+    },
+    {
+      "id": "minecraft:mannequin",
+      "name": "Mannequin"
+    },
+    {
+      "id": "minecraft:marker",
+      "name": "Marker"
+    },
+    {
+      "id": "minecraft:minecart",
+      "name": "Minecart"
+    },
+    {
+      "id": "minecraft:mooshroom",
+      "name": "Mooshroom"
+    },
+    {
+      "id": "minecraft:mule",
+      "name": "Mule"
+    },
+    {
+      "id": "minecraft:nautilus",
+      "name": "Nautilus"
+    },
+    {
+      "id": "minecraft:oak_boat",
+      "name": "Oak Boat"
+    },
+    {
+      "id": "minecraft:oak_chest_boat",
+      "name": "Oak Chest Boat"
+    },
+    {
+      "id": "minecraft:ocelot",
+      "name": "Ocelot"
+    },
+    {
+      "id": "minecraft:ominous_item_spawner",
+      "name": "Ominous Item Spawner"
+    },
+    {
+      "id": "minecraft:painting",
+      "name": "Painting"
+    },
+    {
+      "id": "minecraft:pale_oak_boat",
+      "name": "Pale Oak Boat"
+    },
+    {
+      "id": "minecraft:pale_oak_chest_boat",
+      "name": "Pale Oak Chest Boat"
+    },
+    {
+      "id": "minecraft:panda",
+      "name": "Panda"
+    },
+    {
+      "id": "minecraft:parched",
+      "name": "Parched"
+    },
+    {
+      "id": "minecraft:parrot",
+      "name": "Parrot"
+    },
+    {
+      "id": "minecraft:phantom",
+      "name": "Phantom"
+    },
+    {
+      "id": "minecraft:pig",
+      "name": "Pig"
+    },
+    {
+      "id": "minecraft:piglin",
+      "name": "Piglin"
+    },
+    {
+      "id": "minecraft:piglin_brute",
+      "name": "Piglin Brute"
+    },
+    {
+      "id": "minecraft:pillager",
+      "name": "Pillager"
+    },
+    {
+      "id": "minecraft:player",
+      "name": "Player"
+    },
+    {
+      "id": "minecraft:polar_bear",
+      "name": "Polar Bear"
+    },
+    {
+      "id": "minecraft:poplar_boat",
+      "name": "Poplar Boat"
+    },
+    {
+      "id": "minecraft:poplar_chest_boat",
+      "name": "Poplar Chest Boat"
+    },
+    {
+      "id": "minecraft:pufferfish",
+      "name": "Pufferfish"
+    },
+    {
+      "id": "minecraft:rabbit",
+      "name": "Rabbit"
+    },
+    {
+      "id": "minecraft:ravager",
+      "name": "Ravager"
+    },
+    {
+      "id": "minecraft:salmon",
+      "name": "Salmon"
+    },
+    {
+      "id": "minecraft:sheep",
+      "name": "Sheep"
+    },
+    {
+      "id": "minecraft:shulker",
+      "name": "Shulker"
+    },
+    {
+      "id": "minecraft:shulker_bullet",
+      "name": "Shulker Bullet"
+    },
+    {
+      "id": "minecraft:silverfish",
+      "name": "Silverfish"
+    },
+    {
+      "id": "minecraft:skeleton",
+      "name": "Skeleton"
+    },
+    {
+      "id": "minecraft:skeleton_horse",
+      "name": "Skeleton Horse"
+    },
+    {
+      "id": "minecraft:slime",
+      "name": "Slime"
+    },
+    {
+      "id": "minecraft:small_fireball",
+      "name": "Small Fireball"
+    },
+    {
+      "id": "minecraft:sniffer",
+      "name": "Sniffer"
+    },
+    {
+      "id": "minecraft:snow_golem",
+      "name": "Snow Golem"
+    },
+    {
+      "id": "minecraft:snowball",
+      "name": "Snowball"
+    },
+    {
+      "id": "minecraft:spawner_minecart",
+      "name": "Spawner Minecart"
+    },
+    {
+      "id": "minecraft:spectral_arrow",
+      "name": "Spectral Arrow"
+    },
+    {
+      "id": "minecraft:spider",
+      "name": "Spider"
+    },
+    {
+      "id": "minecraft:splash_potion",
+      "name": "Splash Potion"
+    },
+    {
+      "id": "minecraft:spruce_boat",
+      "name": "Spruce Boat"
+    },
+    {
+      "id": "minecraft:spruce_chest_boat",
+      "name": "Spruce Chest Boat"
+    },
+    {
+      "id": "minecraft:squid",
+      "name": "Squid"
+    },
+    {
+      "id": "minecraft:stray",
+      "name": "Stray"
+    },
+    {
+      "id": "minecraft:strider",
+      "name": "Strider"
+    },
+    {
+      "id": "minecraft:sulfur_cube",
+      "name": "Sulfur Cube"
+    },
+    {
+      "id": "minecraft:tadpole",
+      "name": "Tadpole"
+    },
+    {
+      "id": "minecraft:text_display",
+      "name": "Text Display"
+    },
+    {
+      "id": "minecraft:tnt",
+      "name": "Tnt"
+    },
+    {
+      "id": "minecraft:tnt_minecart",
+      "name": "Tnt Minecart"
+    },
+    {
+      "id": "minecraft:trader_llama",
+      "name": "Trader Llama"
+    },
+    {
+      "id": "minecraft:trident",
+      "name": "Trident"
+    },
+    {
+      "id": "minecraft:tropical_fish",
+      "name": "Tropical Fish"
+    },
+    {
+      "id": "minecraft:turtle",
+      "name": "Turtle"
+    },
+    {
+      "id": "minecraft:vex",
+      "name": "Vex"
+    },
+    {
+      "id": "minecraft:villager",
+      "name": "Villager"
+    },
+    {
+      "id": "minecraft:vindicator",
+      "name": "Vindicator"
+    },
+    {
+      "id": "minecraft:wandering_trader",
+      "name": "Wandering Trader"
+    },
+    {
+      "id": "minecraft:warden",
+      "name": "Warden"
+    },
+    {
+      "id": "minecraft:wind_charge",
+      "name": "Wind Charge"
+    },
+    {
+      "id": "minecraft:witch",
+      "name": "Witch"
+    },
+    {
+      "id": "minecraft:wither",
+      "name": "Wither"
+    },
+    {
+      "id": "minecraft:wither_skeleton",
+      "name": "Wither Skeleton"
+    },
+    {
+      "id": "minecraft:wither_skull",
+      "name": "Wither Skull"
+    },
+    {
+      "id": "minecraft:wolf",
+      "name": "Wolf"
+    },
+    {
+      "id": "minecraft:zoglin",
+      "name": "Zoglin"
+    },
+    {
+      "id": "minecraft:zombie",
+      "name": "Zombie"
+    },
+    {
+      "id": "minecraft:zombie_horse",
+      "name": "Zombie Horse"
+    },
+    {
+      "id": "minecraft:zombie_nautilus",
+      "name": "Zombie Nautilus"
+    },
+    {
+      "id": "minecraft:zombie_villager",
+      "name": "Zombie Villager"
+    },
+    {
+      "id": "minecraft:zombified_piglin",
+      "name": "Zombified Piglin"
+    }
+  ],
+  "particles": [
+    {
+      "id": "minecraft:angry_villager",
+      "name": "Angry Villager"
+    },
+    {
+      "id": "minecraft:ash",
+      "name": "Ash"
+    },
+    {
+      "id": "minecraft:block",
+      "requiresParams": true,
+      "name": "Block"
+    },
+    {
+      "id": "minecraft:block_crumble",
+      "requiresParams": true,
+      "name": "Block Crumble"
+    },
+    {
+      "id": "minecraft:block_marker",
+      "requiresParams": true,
+      "name": "Block Marker"
+    },
+    {
+      "id": "minecraft:bubble",
+      "name": "Bubble"
+    },
+    {
+      "id": "minecraft:bubble_column_up",
+      "name": "Bubble Column Up"
+    },
+    {
+      "id": "minecraft:bubble_pop",
+      "name": "Bubble Pop"
+    },
+    {
+      "id": "minecraft:campfire_cosy_smoke",
+      "name": "Campfire Cosy Smoke"
+    },
+    {
+      "id": "minecraft:campfire_signal_smoke",
+      "name": "Campfire Signal Smoke"
+    },
+    {
+      "id": "minecraft:cherry_leaves",
+      "name": "Cherry Leaves"
+    },
+    {
+      "id": "minecraft:cloud",
+      "name": "Cloud"
+    },
+    {
+      "id": "minecraft:composter",
+      "name": "Composter"
+    },
+    {
+      "id": "minecraft:copper_fire_flame",
+      "name": "Copper Fire Flame"
+    },
+    {
+      "id": "minecraft:crimson_spore",
+      "name": "Crimson Spore"
+    },
+    {
+      "id": "minecraft:crit",
+      "name": "Crit"
+    },
+    {
+      "id": "minecraft:current_down",
+      "name": "Current Down"
+    },
+    {
+      "id": "minecraft:damage_indicator",
+      "name": "Damage Indicator"
+    },
+    {
+      "id": "minecraft:dolphin",
+      "name": "Dolphin"
+    },
+    {
+      "id": "minecraft:dragon_breath",
+      "requiresParams": true,
+      "name": "Dragon Breath"
+    },
+    {
+      "id": "minecraft:dripping_dripstone_lava",
+      "name": "Dripping Dripstone Lava"
+    },
+    {
+      "id": "minecraft:dripping_dripstone_water",
+      "name": "Dripping Dripstone Water"
+    },
+    {
+      "id": "minecraft:dripping_honey",
+      "name": "Dripping Honey"
+    },
+    {
+      "id": "minecraft:dripping_lava",
+      "name": "Dripping Lava"
+    },
+    {
+      "id": "minecraft:dripping_obsidian_tear",
+      "name": "Dripping Obsidian Tear"
+    },
+    {
+      "id": "minecraft:dripping_water",
+      "name": "Dripping Water"
+    },
+    {
+      "id": "minecraft:dust",
+      "requiresParams": true,
+      "name": "Dust"
+    },
+    {
+      "id": "minecraft:dust_color_transition",
+      "requiresParams": true,
+      "name": "Dust Color Transition"
+    },
+    {
+      "id": "minecraft:dust_pillar",
+      "requiresParams": true,
+      "name": "Dust Pillar"
+    },
+    {
+      "id": "minecraft:dust_plume",
+      "name": "Dust Plume"
+    },
+    {
+      "id": "minecraft:effect",
+      "requiresParams": true,
+      "name": "Effect"
+    },
+    {
+      "id": "minecraft:egg_crack",
+      "name": "Egg Crack"
+    },
+    {
+      "id": "minecraft:elder_guardian",
+      "name": "Elder Guardian"
+    },
+    {
+      "id": "minecraft:electric_spark",
+      "name": "Electric Spark"
+    },
+    {
+      "id": "minecraft:enchant",
+      "name": "Enchant"
+    },
+    {
+      "id": "minecraft:enchanted_hit",
+      "name": "Enchanted Hit"
+    },
+    {
+      "id": "minecraft:end_rod",
+      "name": "End Rod"
+    },
+    {
+      "id": "minecraft:entity_effect",
+      "requiresParams": true,
+      "name": "Entity Effect"
+    },
+    {
+      "id": "minecraft:explosion",
+      "name": "Explosion"
+    },
+    {
+      "id": "minecraft:explosion_emitter",
+      "name": "Explosion Emitter"
+    },
+    {
+      "id": "minecraft:falling_dripstone_lava",
+      "name": "Falling Dripstone Lava"
+    },
+    {
+      "id": "minecraft:falling_dripstone_water",
+      "name": "Falling Dripstone Water"
+    },
+    {
+      "id": "minecraft:falling_dust",
+      "requiresParams": true,
+      "name": "Falling Dust"
+    },
+    {
+      "id": "minecraft:falling_honey",
+      "name": "Falling Honey"
+    },
+    {
+      "id": "minecraft:falling_lava",
+      "name": "Falling Lava"
+    },
+    {
+      "id": "minecraft:falling_nectar",
+      "name": "Falling Nectar"
+    },
+    {
+      "id": "minecraft:falling_obsidian_tear",
+      "name": "Falling Obsidian Tear"
+    },
+    {
+      "id": "minecraft:falling_spore_blossom",
+      "name": "Falling Spore Blossom"
+    },
+    {
+      "id": "minecraft:falling_water",
+      "name": "Falling Water"
+    },
+    {
+      "id": "minecraft:firefly",
+      "name": "Firefly"
+    },
+    {
+      "id": "minecraft:firework",
+      "name": "Firework"
+    },
+    {
+      "id": "minecraft:fishing",
+      "name": "Fishing"
+    },
+    {
+      "id": "minecraft:flame",
+      "name": "Flame"
+    },
+    {
+      "id": "minecraft:flash",
+      "requiresParams": true,
+      "name": "Flash"
+    },
+    {
+      "id": "minecraft:geyser",
+      "requiresParams": true,
+      "name": "Geyser"
+    },
+    {
+      "id": "minecraft:geyser_base",
+      "requiresParams": true,
+      "name": "Geyser Base"
+    },
+    {
+      "id": "minecraft:geyser_plume",
+      "requiresParams": true,
+      "name": "Geyser Plume"
+    },
+    {
+      "id": "minecraft:geyser_poof",
+      "requiresParams": true,
+      "name": "Geyser Poof"
+    },
+    {
+      "id": "minecraft:glow",
+      "name": "Glow"
+    },
+    {
+      "id": "minecraft:glow_squid_ink",
+      "name": "Glow Squid Ink"
+    },
+    {
+      "id": "minecraft:gust",
+      "name": "Gust"
+    },
+    {
+      "id": "minecraft:gust_emitter_large",
+      "name": "Gust Emitter Large"
+    },
+    {
+      "id": "minecraft:gust_emitter_small",
+      "name": "Gust Emitter Small"
+    },
+    {
+      "id": "minecraft:happy_villager",
+      "name": "Happy Villager"
+    },
+    {
+      "id": "minecraft:heart",
+      "name": "Heart"
+    },
+    {
+      "id": "minecraft:infested",
+      "name": "Infested"
+    },
+    {
+      "id": "minecraft:instant_effect",
+      "requiresParams": true,
+      "name": "Instant Effect"
+    },
+    {
+      "id": "minecraft:item",
+      "requiresParams": true,
+      "name": "Item"
+    },
+    {
+      "id": "minecraft:item_cobweb",
+      "name": "Item Cobweb"
+    },
+    {
+      "id": "minecraft:item_slime",
+      "name": "Item Slime"
+    },
+    {
+      "id": "minecraft:item_snowball",
+      "name": "Item Snowball"
+    },
+    {
+      "id": "minecraft:landing_honey",
+      "name": "Landing Honey"
+    },
+    {
+      "id": "minecraft:landing_lava",
+      "name": "Landing Lava"
+    },
+    {
+      "id": "minecraft:landing_obsidian_tear",
+      "name": "Landing Obsidian Tear"
+    },
+    {
+      "id": "minecraft:large_smoke",
+      "name": "Large Smoke"
+    },
+    {
+      "id": "minecraft:lava",
+      "name": "Lava"
+    },
+    {
+      "id": "minecraft:mycelium",
+      "name": "Mycelium"
+    },
+    {
+      "id": "minecraft:nautilus",
+      "name": "Nautilus"
+    },
+    {
+      "id": "minecraft:note",
+      "name": "Note"
+    },
+    {
+      "id": "minecraft:noxious_gas",
+      "name": "Noxious Gas"
+    },
+    {
+      "id": "minecraft:noxious_gas_cloud",
+      "name": "Noxious Gas Cloud"
+    },
+    {
+      "id": "minecraft:ominous_spawning",
+      "name": "Ominous Spawning"
+    },
+    {
+      "id": "minecraft:orange_poplar_leaves",
+      "name": "Orange Poplar Leaves"
+    },
+    {
+      "id": "minecraft:pale_oak_leaves",
+      "name": "Pale Oak Leaves"
+    },
+    {
+      "id": "minecraft:pause_mob_growth",
+      "name": "Pause Mob Growth"
+    },
+    {
+      "id": "minecraft:poof",
+      "name": "Poof"
+    },
+    {
+      "id": "minecraft:portal",
+      "name": "Portal"
+    },
+    {
+      "id": "minecraft:raid_omen",
+      "name": "Raid Omen"
+    },
+    {
+      "id": "minecraft:rain",
+      "name": "Rain"
+    },
+    {
+      "id": "minecraft:red_poplar_leaves",
+      "name": "Red Poplar Leaves"
+    },
+    {
+      "id": "minecraft:reset_mob_growth",
+      "name": "Reset Mob Growth"
+    },
+    {
+      "id": "minecraft:reverse_portal",
+      "name": "Reverse Portal"
+    },
+    {
+      "id": "minecraft:scrape",
+      "name": "Scrape"
+    },
+    {
+      "id": "minecraft:sculk_charge",
+      "requiresParams": true,
+      "name": "Sculk Charge"
+    },
+    {
+      "id": "minecraft:sculk_charge_pop",
+      "name": "Sculk Charge Pop"
+    },
+    {
+      "id": "minecraft:sculk_soul",
+      "name": "Sculk Soul"
+    },
+    {
+      "id": "minecraft:shriek",
+      "requiresParams": true,
+      "name": "Shriek"
+    },
+    {
+      "id": "minecraft:small_flame",
+      "name": "Small Flame"
+    },
+    {
+      "id": "minecraft:small_gust",
+      "name": "Small Gust"
+    },
+    {
+      "id": "minecraft:smoke",
+      "name": "Smoke"
+    },
+    {
+      "id": "minecraft:sneeze",
+      "name": "Sneeze"
+    },
+    {
+      "id": "minecraft:snowflake",
+      "name": "Snowflake"
+    },
+    {
+      "id": "minecraft:sonic_boom",
+      "name": "Sonic Boom"
+    },
+    {
+      "id": "minecraft:soul",
+      "name": "Soul"
+    },
+    {
+      "id": "minecraft:soul_fire_flame",
+      "name": "Soul Fire Flame"
+    },
+    {
+      "id": "minecraft:spit",
+      "name": "Spit"
+    },
+    {
+      "id": "minecraft:splash",
+      "name": "Splash"
+    },
+    {
+      "id": "minecraft:spore_blossom_air",
+      "name": "Spore Blossom Air"
+    },
+    {
+      "id": "minecraft:squid_ink",
+      "name": "Squid Ink"
+    },
+    {
+      "id": "minecraft:sulfur_bubbles",
+      "name": "Sulfur Bubbles"
+    },
+    {
+      "id": "minecraft:sulfur_cube_goo",
+      "name": "Sulfur Cube Goo"
+    },
+    {
+      "id": "minecraft:sweep_attack",
+      "name": "Sweep Attack"
+    },
+    {
+      "id": "minecraft:tinted_leaves",
+      "requiresParams": true,
+      "name": "Tinted Leaves"
+    },
+    {
+      "id": "minecraft:totem_of_undying",
+      "name": "Totem Of Undying"
+    },
+    {
+      "id": "minecraft:trail",
+      "requiresParams": true,
+      "name": "Trail"
+    },
+    {
+      "id": "minecraft:trial_omen",
+      "name": "Trial Omen"
+    },
+    {
+      "id": "minecraft:trial_spawner_detection",
+      "name": "Trial Spawner Detection"
+    },
+    {
+      "id": "minecraft:trial_spawner_detection_ominous",
+      "name": "Trial Spawner Detection Ominous"
+    },
+    {
+      "id": "minecraft:underwater",
+      "name": "Underwater"
+    },
+    {
+      "id": "minecraft:vault_connection",
+      "name": "Vault Connection"
+    },
+    {
+      "id": "minecraft:vibration",
+      "requiresParams": true,
+      "name": "Vibration"
+    },
+    {
+      "id": "minecraft:warped_spore",
+      "name": "Warped Spore"
+    },
+    {
+      "id": "minecraft:wax_off",
+      "name": "Wax Off"
+    },
+    {
+      "id": "minecraft:wax_on",
+      "name": "Wax On"
+    },
+    {
+      "id": "minecraft:white_ash",
+      "name": "White Ash"
+    },
+    {
+      "id": "minecraft:white_smoke",
+      "name": "White Smoke"
+    },
+    {
+      "id": "minecraft:witch",
+      "name": "Witch"
+    },
+    {
+      "id": "minecraft:yellow_poplar_leaves",
+      "name": "Yellow Poplar Leaves"
+    }
+  ]
+}

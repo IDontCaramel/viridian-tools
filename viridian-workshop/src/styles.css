@@ -1596,13 +1596,13 @@ textarea.json-input {
   text-shadow: 0 1px 0 #0003;
 }
 .fam-event {
-  --fam: #c9971c;
+  --fam: #95741d;
 }
 .fam-control {
   --fam: #e08a2c;
 }
 .fam-entity {
-  --fam: #4c86e8;
+  --fam: #3c65a3;
 }
 .fam-bientity {
   --fam: #8b62e6;
@@ -2485,3 +2485,10 @@ textarea.input.origin-description {
     scroll-behavior: auto !important;
   }
 }
+
+/* keep nested scripts readable without using so much horizontal space */
+.blk-row.has-mouth { margin-left: 4px; }
+.blk-mouth { margin-left: 0; border-left: 2px solid #ffffff30; }
+.blk-field .mc-pick.compact { max-width: 220px; min-height: 32px; }
+.blk-drawer-toggle { background: transparent; opacity: .85; }
+.blk-row-label { font-size: 12px; }

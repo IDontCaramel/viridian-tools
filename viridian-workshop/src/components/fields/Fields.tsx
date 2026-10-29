@@ -264,8 +264,8 @@ export function FieldEditor({ spec, path, name, label = fieldLabel(name), onRemo
     case 'shape':
       if (value !== undefined && typeof value !== 'string')
         return row(<JsonInput id={id} value={value} onChange={(v) => set(path, v)} />, true)
-      if (mcListFor(k))
-        return row(<McIdPicker id={id} list={mcListFor(k)!} value={value} onChange={(v) => set(path, v, false)} />)
+      if (mcListFor(k, spec.registry))
+        return row(<McIdPicker id={id} list={mcListFor(k, spec.registry)!} value={value} onChange={(v) => set(path, v, false)} />)
       return row(
         <TextInput
           id={id}
@@ -312,14 +312,7 @@ export function FieldEditor({ spec, path, name, label = fieldLabel(name), onRemo
       if (typeof value === 'string' || value === undefined)
         return row(
           <div className="inline-row">
-            <TextInput
-              id={id}
-              value={value ?? ''}
-              mono
-              suggestions={KEYS}
-              placeholder="key.origins.primary_active"
-              onChange={(v) => set(path, v)}
-            />
+            <McIdPicker id={id} list="keys" value={value} onChange={(v) => set(path, v, false)} />
             <button
               type="button"
               className="link-btn"
@@ -341,7 +334,7 @@ export function FieldEditor({ spec, path, name, label = fieldLabel(name), onRemo
     case 'particle':
       if (typeof value === 'string' || value === undefined)
         return row(
-          <TextInput id={id} value={value ?? ''} mono placeholder="minecraft:flame" onChange={(v) => set(path, v)} />,
+          <McIdPicker parameterless id={id} list="particles" value={value} onChange={(v) => set(path, v, false)} />,
         )
       return (
         <GroupField label={label} path={path} name={name} fields={dataType('particle')!.fields} onRemove={onRemove} />

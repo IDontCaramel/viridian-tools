@@ -5,29 +5,55 @@ import { faceTint, findEntry, textureUrl, useMcRegistry, type Face, type Icon, t
 import { SoundIcon } from '../ui/icons'
 import { TextInput } from './fields/inputs'
 import { Modal } from './Modal'
+import scriptOptions from '../mc/script-options.json'
 
 const TITLES: Record<McList, string> = {
   items: 'Choose an item',
   blocks: 'Choose a block',
   effects: 'Choose an effect',
   sounds: 'Choose a sound',
+  entities: 'Choose an entity',
+  particles: 'Choose a particle',
+  keys: 'Choose an ability key',
 }
 const PLACEHOLDERS: Record<McList, string> = {
   items: 'minecraft:stone',
   blocks: 'minecraft:stone',
   effects: 'minecraft:speed',
   sounds: 'minecraft:entity.player.levelup',
+  entities: 'minecraft:arrow',
+  particles: 'minecraft:flame',
+  keys: 'Primary ability',
 }
 const LIST_FOR_KIND: Record<string, McList> = {
   item: 'items',
   block: 'blocks',
   status_effect: 'effects',
   sound_event: 'sounds',
+  particle: 'particles',
+  particle_type: 'particles',
+  key: 'keys',
 }
 
 // catalog field kinds that get a picker
-export function mcListFor(kind: string): McList | undefined {
+export function mcListFor(kind: string, registry?: string): McList | undefined {
+  if (kind === 'registry' && registry === 'entity_type') return 'entities'
   return LIST_FOR_KIND[kind]
+}
+
+const KEY_ENTRIES: McEntry[] = [
+  { id: 'key.origins.primary_active', name: 'Primary ability' },
+  { id: 'key.origins.secondary_active', name: 'Secondary ability' },
+  { id: 'key.use', name: 'Use item' },
+  { id: 'key.attack', name: 'Attack' },
+  { id: 'key.sneak', name: 'Sneak' },
+  { id: 'key.jump', name: 'Jump' },
+  { id: 'key.saveToolbarActivator', name: 'Save toolbar' },
+  { id: 'key.loadToolbarActivator', name: 'Load toolbar' },
+]
+const KEY_ALIASES: Record<string, string> = {
+  primary: 'key.origins.primary_active', none: 'key.origins.primary_active',
+  secondary: 'key.origins.secondary_active',
 }
 
 // rendering every sound or item row at once makes typing laggy
@@ -88,17 +114,20 @@ interface PickerProps {
   compact?: boolean
   // just a big icon, for the origin icon
   tile?: boolean
+  parameterless?: boolean
 }
 
 // falls back to a plain id input when the assets were not extracted
-export function McIdPicker({ list, value, onChange, id, ariaLabel, compact, tile }: PickerProps) {
+export function McIdPicker({ list, value, onChange, id, ariaLabel, compact, tile, parameterless }: PickerProps) {
   const registry = useMcRegistry()
   const [open, setOpen] = useState(false)
-  if (registry === null)
+  const entries: McEntry[] | undefined = list === 'keys' ? KEY_ENTRIES
+    : list === 'entities' || list === 'particles' ? scriptOptions[list] : registry?.[list]
+  if (registry === null && !entries)
     return (
       <TextInput id={id} ariaLabel={ariaLabel} value={value ?? ''} mono placeholder={PLACEHOLDERS[list]} onChange={onChange} />
     )
-  const entry = value ? findEntry(registry?.[list], value) : undefined
+  const entry = value ? (list === 'keys' ? entries?.find((e) => e.id === (KEY_ALIASES[value] ?? value)) : findEntry(entries, value)) : undefined
   return (
     <>
       <button
@@ -106,22 +135,24 @@ export function McIdPicker({ list, value, onChange, id, ariaLabel, compact, tile
         id={id}
         aria-label={ariaLabel}
         className={'mc-pick' + (compact ? ' compact' : '') + (tile ? ' tile' : '')}
-        disabled={registry === undefined}
+        disabled={!entries}
         onClick={() => setOpen(true)}
         title={entry ? `${entry.name} (${entry.id})` : value}
       >
-        <McIcon icon={entry?.icon} list={list} size={tile ? 40 : compact ? 18 : 24} />
+        {!['entities', 'particles', 'keys'].includes(list) && <McIcon icon={entry?.icon} list={list} size={tile ? 40 : compact ? 18 : 24} />}
         {!tile && (
           <span className="mc-pick-text">
             <span className="mc-pick-name">{entry?.name ?? (value || 'Choose…')}</span>
             {!compact && value && <code>{value}</code>}
           </span>
         )}
+        {!tile && <span aria-hidden="true">▾</span>}
       </button>
-      {open && registry && (
+      {open && entries && (
         <McPickerDialog
           list={list}
-          entries={registry[list]}
+          parameterless={parameterless}
+          entries={entries}
           onClose={() => setOpen(false)}
           onPick={(picked) => {
             setOpen(false)
@@ -136,22 +167,24 @@ export function McIdPicker({ list, value, onChange, id, ariaLabel, compact, tile
 function McPickerDialog({
   list,
   entries,
+  parameterless,
   onPick,
   onClose,
 }: {
   list: McList
   entries: McEntry[]
+  parameterless?: boolean
   onPick: (id: string) => void
   onClose: () => void
 }) {
   const [query, setQuery] = useState('')
   const [index, setIndex] = useState(0)
   const listRef = useRef<HTMLUListElement>(null)
-  const results = useMemo(() => search(entries, query), [entries, query])
+  const results = useMemo(() => search(entries.filter((e) => !parameterless || !e.requiresParams), query), [entries, query, parameterless])
   const shown = results.slice(0, SHOWN)
   // modded or datapack ids aren't in the vanilla lists, let them be typed in
-  const custom = query.trim().toLowerCase()
-  const offerCustom = ID_PATTERN.test(custom) && !results.some((e) => e.id === custom)
+  const custom = list === 'keys' ? query.trim() : query.trim().toLowerCase()
+  const offerCustom = (list === 'keys' ? /^key\.[a-zA-Z0-9_.]+$/.test(custom) : ID_PATTERN.test(custom)) && !entries.some((e) => e.id === (custom.includes(':') || list === 'keys' ? custom : `minecraft:${custom}`))
   const options = offerCustom ? [...shown, { id: custom, name: `Use "${custom}"` }] : shown
 
   useEffect(() => setIndex(0), [query])
@@ -187,6 +220,7 @@ function McPickerDialog({
         aria-controls="mc-picker-list"
         aria-activedescendant={options[index] ? `mc-picker-${index}` : undefined}
       />
+      {parameterless && <p className="field-note">Particles that need extra data, such as dust or block particles, can be configured in the advanced JSON panel using the object form.</p>}
       <ul className="picker-list mc-list" id="mc-picker-list" role="listbox" ref={listRef}>
         {options.length === 0 && <li className="picker-empty">Nothing matches "{query}".</li>}
         {options.map((e, i) => (
@@ -201,7 +235,7 @@ function McPickerDialog({
               onMouseEnter={() => setIndex(i)}
               onClick={() => onPick(e.id)}
             >
-              <McIcon icon={'icon' in e ? e.icon : undefined} list={list} />
+              {!['entities', 'particles', 'keys'].includes(list) && <McIcon icon={'icon' in e ? e.icon : undefined} list={list} />}
               <span className="mc-option-name">{e.name}</span>
               <code>{e.id}</code>
             </button>
