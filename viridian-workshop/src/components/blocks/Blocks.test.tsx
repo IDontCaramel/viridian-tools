@@ -43,8 +43,10 @@ function renderPower(json: Json) {
 const currentJson = async (user: ReturnType<typeof userEvent.setup>) => {
   const body = within(document.querySelector<HTMLElement>('.power-body')!)
   if (!body.queryByRole('textbox', { name: 'File JSON' }))
-    await user.click(body.getByRole('button', { name: 'Show JSON' }))
-  return JSON.parse((body.getByRole('textbox', { name: 'File JSON' }) as HTMLTextAreaElement).value)
+    await user.click(body.getByRole('button', { name: 'JSON' }))
+  const json = JSON.parse((body.getByRole('textbox', { name: 'File JSON' }) as HTMLTextAreaElement).value)
+  await user.click(body.getByRole('button', { name: 'Blocks' }))
+  return json
 }
 
 async function pick(user: ReturnType<typeof userEvent.setup>, button: HTMLElement, search: string) {
@@ -53,6 +55,47 @@ async function pick(user: ReturnType<typeof userEvent.setup>, button: HTMLElemen
   await user.type(within(dialog).getByRole('combobox', { name: 'Search' }), search)
   await user.click(within(dialog).getAllByRole('option')[0])
 }
+
+it('replaces forms with a JSON view that updates the blocks', async () => {
+  const user = userEvent.setup()
+  const { open } = renderPower({ type: 'apoli:action_on_key_press', entity_action: { type: 'apoli:nothing' } })
+  await open()
+  const body = within(document.querySelector<HTMLElement>('.power-body')!)
+  expect(body.queryByRole('button', { name: 'Forms' })).not.toBeInTheDocument()
+  await user.click(body.getByRole('button', { name: 'JSON' }))
+  expect(body.queryByRole('heading', { name: 'Script' })).not.toBeInTheDocument()
+  const editor = body.getByRole('textbox', { name: 'File JSON' })
+  await user.click(editor)
+  await user.clear(editor)
+  await user.paste(JSON.stringify({ type: 'apoli:action_on_key_press', name: 'Changed', entity_action: { type: 'apoli:nothing' } }))
+  await user.click(body.getByRole('button', { name: 'Blocks' }))
+  expect(body.getByRole('heading', { name: 'Script' })).toBeInTheDocument()
+  expect(body.getByRole('textbox', { name: 'Name' })).toHaveValue('Changed')
+})
+
+it('shows optional fields after opening advanced sections once', async () => {
+  const user = userEvent.setup()
+  const { open } = renderPower({ type: 'apoli:action_on_key_press', entity_action: { type: 'apoli:nothing' } })
+  await open()
+
+  const advanced = screen.getAllByText('Advanced options')
+  expect(advanced).toHaveLength(2)
+  for (const summary of advanced) {
+    await user.click(summary)
+    const section = summary.parentElement!
+    expect(section.querySelector('details')).toBeNull()
+    expect(within(section).getAllByRole('button').length).toBeGreaterThan(0)
+  }
+
+  const drawers = document.querySelectorAll<HTMLElement>('.blk-drawer')
+  expect(drawers.length).toBeGreaterThan(0)
+  for (const drawer of drawers) {
+    const toggle = within(drawer).getByRole('button', { expanded: false })
+    await user.click(toggle)
+    expect(drawer.querySelector('details.more-options')).toBeNull()
+    expect(drawer.querySelector('.option-chips button')).not.toBeNull()
+  }
+})
 
 describe('block definitions', () => {
   it('only puts real catalog fields in block sentences', () => {

@@ -258,7 +258,7 @@ export function Block({ category, path, handle, menu = [], hat }: BlockProps) {
           count={drawerShown.length + unknown.length}
           extra={drawerOptional.length}
         >
-          <ObjectFields fields={fields} path={path} skip={drawerSkip} ignoreUnknown={hat?.ignore} />
+          <ObjectFields fields={fields} path={path} skip={drawerSkip} ignoreUnknown={hat?.ignore} collapseOptional={false} />
         </Drawer>
       )}
       {picker.element}

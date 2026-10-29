@@ -28,7 +28,7 @@ export function JsonPanel() {
   return (
     <div className="json-panel">
       <p className="field-note">
-        Changes to valid JSON appear in the forms. Invalid text stays here until you fix it. Export uses the last valid
+        Changes to valid JSON appear in the visual editor. Invalid text stays here until you fix it. Export uses the last valid
         version.
       </p>
       <textarea

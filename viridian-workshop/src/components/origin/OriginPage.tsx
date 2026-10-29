@@ -146,6 +146,7 @@ export function OriginPage() {
             <summary>Advanced options</summary>
             <ObjectFields
               fields={dataType('origin')!.fields}
+              collapseOptional={false}
               path={[]}
               skip={['name', 'description', 'icon', 'impact', 'powers']}
             />

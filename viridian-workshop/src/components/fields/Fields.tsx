@@ -460,9 +460,10 @@ interface ObjectFieldsProps {
   skip?: string[]
   // keys that are not fields but should not be shown as unknown (multiple sub-powers)
   ignoreUnknown?: (key: string, value: Json) => boolean
+  collapseOptional?: boolean
 }
 
-export function ObjectFields({ fields, path, skip = [], ignoreUnknown }: ObjectFieldsProps) {
+export function ObjectFields({ fields, path, skip = [], ignoreUnknown, collapseOptional = true }: ObjectFieldsProps) {
   const { get, set } = useDoc()
   const { technical } = useWs()
   const obj = get(path)
@@ -471,6 +472,22 @@ export function ObjectFields({ fields, path, skip = [], ignoreUnknown }: ObjectF
   const optional = fields.filter((f) => !skip.includes(f.name) && !f.required && !(f.name in value))
   const known = new Set([...fields.map((f) => f.name), ...skip, 'type'])
   const unknown = Object.keys(value).filter((key) => !known.has(key) && !ignoreUnknown?.(key, value[key]))
+
+  const optionalFields = (
+    <div className="option-chips">
+      {optional.map((f) => (
+        <button
+          key={f.name}
+          type="button"
+          className="chip"
+          title={technical ? f.name : `Add ${fieldLabel(f.name)}`}
+          onClick={() => set([...path, f.name], starterValue(f) as Json, false)}
+        >
+          + {fieldLabel(f.name)}
+        </button>
+      ))}
+    </div>
+  )
 
   return (
     <div className="object-fields">
@@ -494,26 +511,14 @@ export function ObjectFields({ fields, path, skip = [], ignoreUnknown }: ObjectF
           <JsonInput value={value[key]} onChange={(v) => set([...path, key], v)} />
         </FieldRow>
       ))}
-      {optional.length > 0 && (
+      {optional.length > 0 && (collapseOptional ? (
         <details className="more-options">
           <summary>
             More options <span className="count">{optional.length}</span>
           </summary>
-          <div className="option-chips">
-            {optional.map((f) => (
-              <button
-                key={f.name}
-                type="button"
-                className="chip"
-                title={technical ? f.name : `Add ${fieldLabel(f.name)}`}
-                onClick={() => set([...path, f.name], starterValue(f) as Json, false)}
-              >
-                + {fieldLabel(f.name)}
-              </button>
-            ))}
-          </div>
+          {optionalFields}
         </details>
-      )}
+      ) : optionalFields)}
     </div>
   )
 }

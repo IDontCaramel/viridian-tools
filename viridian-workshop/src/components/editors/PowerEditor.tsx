@@ -5,7 +5,7 @@ import { isObject, type Json } from '../../model/json'
 import { POWER_COMMON } from '../../model/validate'
 import { useDoc } from '../../state/doc'
 import { useWs } from '../../state/context'
-import { FieldEditor, ObjectFields, TypedCard, useTypePicker } from '../fields/Fields'
+import { FieldEditor, ObjectFields, useTypePicker } from '../fields/Fields'
 import { Block } from '../blocks/Blocks'
 import { Variables } from '../blocks/Variables'
 import { JsonPanel } from '../JsonPanel'
@@ -13,14 +13,14 @@ import { JsonPanel } from '../JsonPanel'
 const VIEW_KEY = 'viridian-workshop.power-view'
 
 function usePowerView() {
-  const [view, setView] = useState<'blocks' | 'forms'>(() => {
+  const [view, setView] = useState<'blocks' | 'json'>(() => {
     try {
-      return localStorage.getItem(VIEW_KEY) === 'forms' ? 'forms' : 'blocks'
+      return ['json', 'forms'].includes(localStorage.getItem(VIEW_KEY) ?? '') ? 'json' : 'blocks'
     } catch {
       return 'blocks'
     }
   })
-  const change = (next: 'blocks' | 'forms') => {
+  const change = (next: 'blocks' | 'json') => {
     setView(next)
     try {
       localStorage.setItem(VIEW_KEY, next)
@@ -51,7 +51,6 @@ export function PowerEditor() {
   })
   const common = dataType('power')?.fields ?? []
   const [view, setView] = usePowerView()
-  const [showJson, setShowJson] = useState(false)
   const subPowers = multiple ? Object.keys(obj).filter((key) => !POWER_COMMON.includes(key) && isObject(obj[key])) : []
   const isSubPower = (key: string, value: Json) => multiple && !POWER_COMMON.includes(key) && isObject(value)
   const display = (
@@ -83,108 +82,67 @@ export function PowerEditor() {
             <button aria-pressed={view === 'blocks'} onClick={() => setView('blocks')}>
               Blocks
             </button>
-            <button aria-pressed={view === 'forms'} onClick={() => setView('forms')}>
-              Forms
+            <button aria-pressed={view === 'json'} onClick={() => setView('json')}>
+              JSON
             </button>
           </div>
-          <button className="ghost" aria-pressed={showJson} onClick={() => setShowJson(!showJson)}>
-            {showJson ? 'Hide JSON' : 'Show JSON'}
-          </button>
         </div>
       </div>
-      {showJson && <JsonPanel />}
-      {view === 'blocks' ? (
-        <section className="editor-section">
-          <div className="section-head">
-            <h2>Script</h2>
-            <span className="muted">Tap + to add a block</span>
-          </div>
-          <div className="script-area">
-            <Block
-              category="power_type"
+      {view === 'json' ? <JsonPanel /> : (
+        <>
+          <section className="editor-section">
+            <div className="section-head">
+              <h2>Script</h2>
+              <span className="muted">Tap + to add a block</span>
+            </div>
+            <div className="script-area">
+              <Block
+                category="power_type"
+                path={[]}
+                hat={{ common, skip: ['name', 'description', 'hidden', 'badges', 'loading_priority'], ignore: isSubPower }}
+              />
+              {subPowers.map((key) => (
+                <div className="sub-power script-sub" key={key}>
+                  <SubPowerKey
+                    value={key}
+                    onRename={(next) => {
+                      if (!/^[a-z0-9_./-]+$/.test(next) || (next !== key && next in obj) || POWER_COMMON.includes(next))
+                        return false
+                      if (next !== key) set([], renameKey(obj, key, next), false)
+                      return true
+                    }}
+                  />
+                  <Block
+                    category="power_type"
+                    path={[key]}
+                    hat={{ common }}
+                    menu={[{ label: 'Remove sub-power', onClick: () => set([key], undefined, false), danger: true }]}
+                  />
+                </div>
+              ))}
+              {multiple && (
+                <button className="blk-add empty" onClick={subPicker.open}>
+                  + Add sub-power
+                </button>
+              )}
+            </div>
+            <Variables />
+          </section>
+          {display}
+          <details className="editor-section">
+            <summary>Advanced options</summary>
+            <ObjectFields
+              fields={common}
+              collapseOptional={false}
               path={[]}
-              hat={{ common, skip: ['name', 'description', 'hidden', 'badges', 'loading_priority'], ignore: isSubPower }}
+              skip={[
+                ...Object.keys(obj).filter((k) => !['badges', 'loading_priority'].includes(k)),
+                ...common.filter((f) => !['badges', 'loading_priority'].includes(f.name)).map((f) => f.name),
+              ]}
             />
-            {subPowers.map((key) => (
-              <div className="sub-power script-sub" key={key}>
-                <SubPowerKey
-                  value={key}
-                  onRename={(next) => {
-                    if (!/^[a-z0-9_./-]+$/.test(next) || (next !== key && next in obj) || POWER_COMMON.includes(next))
-                      return false
-                    if (next !== key) set([], renameKey(obj, key, next), false)
-                    return true
-                  }}
-                />
-                <Block
-                  category="power_type"
-                  path={[key]}
-                  hat={{ common }}
-                  menu={[{ label: 'Remove sub-power', onClick: () => set([key], undefined, false), danger: true }]}
-                />
-              </div>
-            ))}
-            {multiple && (
-              <button className="blk-add empty" onClick={subPicker.open}>
-                + Add sub-power
-              </button>
-            )}
-          </div>
-          <Variables />
-        </section>
-      ) : (
-        display
+          </details>
+        </>
       )}
-      {view === 'blocks' ? (
-        display
-      ) : (
-        <section className="editor-section">
-          <h2>Behavior</h2>
-          {!spec && (
-            <p className="notice warning">This type is not in Viridian's catalog. Its fields are preserved below.</p>
-          )}
-          <ObjectFields
-            fields={[...(spec?.fields ?? []), ...common]}
-            path={[]}
-            skip={['type', 'name', 'description', 'hidden', 'badges', 'loading_priority']}
-            ignoreUnknown={(key, value) => multiple && !POWER_COMMON.includes(key) && isObject(value)}
-          />
-          {multiple && (
-            <>
-              {Object.entries(obj)
-                .filter(([key, value]) => !POWER_COMMON.includes(key) && isObject(value))
-                .map(([key]) => (
-                  <div className="sub-power" key={key}>
-                    <SubPowerKey
-                      value={key}
-                      onRename={(next) => {
-                        if (!/^[a-z0-9_./-]+$/.test(next) || (next !== key && next in obj) || POWER_COMMON.includes(next))
-                          return false
-                        if (next !== key) set([], renameKey(obj, key, next), false)
-                        return true
-                      }}
-                    />
-                    <TypedCard category="power_type" path={[key]} onRemove={() => set([key], undefined, false)} />
-                  </div>
-                ))}
-              <button className="add-slot" onClick={subPicker.open}>
-                + Add sub-power
-              </button>
-            </>
-          )}
-        </section>
-      )}
-      <details className="editor-section">
-        <summary>Advanced options</summary>
-        <ObjectFields
-          fields={common}
-          path={[]}
-          skip={[
-            ...Object.keys(obj).filter((k) => !['badges', 'loading_priority'].includes(k)),
-            ...common.filter((f) => !['badges', 'loading_priority'].includes(f.name)).map((f) => f.name),
-          ]}
-        />
-      </details>
       {picker.element}
       {subPicker.element}
     </>
