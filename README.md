@@ -44,10 +44,3 @@ In VS Code settings, search for `Viridian`:
 | `viridian.validation.enable` | `true` | Turns diagnostics on or off. |
 | `viridian.validation.unknownFields` | `warning` | Sets how fields ignored by the mod are reported. Options are `warning`, `information`, and `off`. |
 | `viridian.validation.missingReferences` | `warning` | Sets how unresolved power, origin, layer, and badge references are reported. Options are `warning`, `information`, and `off`. |
-
-The extension may report references to packs outside the workspace as missing. Add those packs to the workspace or change the missing references setting.
-
-## Work on the extension
-
-In `vscode-viridian/`, run `npm run dev` to rebuild the extension as you edit it. Reload the second VS Code window to pick up changes. Run `npm run build` for a production build or `npm test` for type checks, unit tests, and VS Code integration tests.
-
