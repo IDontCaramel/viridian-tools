@@ -6,6 +6,9 @@ import { isObject, type Json } from '../../model/json'
 import { FileCtx, useWs } from '../../state/context'
 import { ChevronDownIcon, ChevronRightIcon, GripIcon } from '../../ui/icons'
 import { powerDisplay } from '../../ui/text'
+import { pathFor } from '../../model/project'
+import { KIND_LABEL } from '../blocks/Variables'
+import { variableKind } from './powers'
 import { PowerEditor } from '../editors/PowerEditor'
 import { JsonPanel } from '../JsonPanel'
 
@@ -16,10 +19,12 @@ interface Props {
   open: boolean
   onToggle: () => void
   handle?: { attributes: object; listeners: object | undefined }
+  // hidden cooldowns and resource bars that belong to this power, shown with it
+  helpers?: string[]
   actions: (name: string) => ReactNode
 }
 
-export function PowerRow({ powerRef, namespace, open, onToggle, handle, actions }: Props) {
+export function PowerRow({ powerRef, namespace, open, onToggle, handle, helpers = [], actions }: Props) {
   const { ws, issues, technical } = useWs()
   const bodyId = useId()
   const project = ws.state.project
@@ -48,6 +53,14 @@ export function PowerRow({ powerRef, namespace, open, onToggle, handle, actions 
           {display.source === 'builtin' && <span className="badge">Built-in</span>}
           {display.id.startsWith('viridian:') && <span className="badge mod-only">Viridian only</span>}
           {technical && <code>{String(powerRef)}</code>}
+          {helpers.map((h) => {
+            const kind = variableKind(project.files[pathFor(project, 'power', h)]?.json)
+            return (
+              <span key={h} className={`variable-tag kind-${kind}`} title={technical ? h : undefined}>
+                {kind ? KIND_LABEL[kind] : 'Uses'}: {powerDisplay(project, h, namespace).name}
+              </span>
+            )
+          })}
         </button>
         {problems.length > 0 && (
           <span

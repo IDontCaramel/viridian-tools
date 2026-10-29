@@ -511,6 +511,13 @@ export function humanize(path: string) {
 export function describe(category: Category, id: string): TypeInfo {
   const path = id.includes(':') ? id.slice(id.indexOf(':') + 1) : id
   if (category === 'power_type') {
+    // origins: has its own callback power with an extra "chosen" action, keep the two apart in the picker
+    if (id === 'origins:action_on_callback')
+      return {
+        group: 'Triggers',
+        label: 'On choosing this origin',
+        description: 'Like "On gain, loss or respawn", plus an action that runs when the player picks this origin.',
+      }
     const e = POWER_TYPES[path]
     if (e) return { group: e[0], label: e[1], description: e[2] }
     return { group: 'Other', label: humanize(path), description: '' }

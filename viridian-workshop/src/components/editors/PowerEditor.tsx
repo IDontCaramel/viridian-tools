@@ -5,7 +5,7 @@ import { isObject, type Json } from '../../model/json'
 import { POWER_COMMON } from '../../model/validate'
 import { useDoc } from '../../state/doc'
 import { useWs } from '../../state/context'
-import { FieldEditor, ObjectFields, useTypePicker } from '../fields/Fields'
+import { ObjectFields, TextField, useTypePicker } from '../fields/Fields'
 import { Block } from '../blocks/Blocks'
 import { Variables } from '../blocks/Variables'
 import { JsonPanel } from '../JsonPanel'
@@ -53,17 +53,30 @@ export function PowerEditor() {
   const [view, setView] = usePowerView()
   const subPowers = multiple ? Object.keys(obj).filter((key) => !POWER_COMMON.includes(key) && isObject(obj[key])) : []
   const isSubPower = (key: string, value: Json) => multiple && !POWER_COMMON.includes(key) && isObject(value)
+  // what the selection screen shows, first because it is what people name and describe first
   const display = (
-    <section className="editor-section">
-      <h2>Display</h2>
-      {['name', 'description', 'hidden'].map((name) => (
-        <FieldEditor
-          key={name}
-          path={[name]}
-          name={name}
-          spec={common.find((f) => f.name === name) ?? { kind: name === 'hidden' ? 'boolean' : 'text' }}
+    <section className="power-identity" data-path="name">
+      <TextField path={['name']} component ariaLabel="Name" placeholder="Power name" className="power-name-input" />
+      <div data-path="description">
+        <TextField
+          path={['description']}
+          component
+          multiline
+          ariaLabel="Description"
+          placeholder="Describe what this power does. This shows on the selection screen."
         />
-      ))}
+      </div>
+      <label className="toggle" data-path="hidden">
+        <input
+          type="checkbox"
+          checked={obj.hidden === true}
+          onChange={(e) => set(['hidden'], e.target.checked ? true : undefined, false)}
+        />
+        <span className="toggle-track" aria-hidden="true">
+          <span className="toggle-thumb" />
+        </span>
+        Hide from the selection screen
+      </label>
     </section>
   )
   return (
@@ -90,6 +103,7 @@ export function PowerEditor() {
       </div>
       {view === 'json' ? <JsonPanel /> : (
         <>
+          {display}
           <section className="editor-section">
             <div className="section-head">
               <h2>Script</h2>
@@ -128,7 +142,6 @@ export function PowerEditor() {
             </div>
             <Variables />
           </section>
-          {display}
           <details className="editor-section">
             <summary>Advanced options</summary>
             <ObjectFields

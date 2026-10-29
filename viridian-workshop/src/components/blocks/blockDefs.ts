@@ -4,6 +4,7 @@ import { isCategory, resolveType, type Category, type FieldKind } from '../../ca
 import { isObject, type Json } from '../../model/json'
 import { entriesOf, type Project } from '../../model/project'
 import type { PickerOption } from '../TypePicker'
+import { powerDisplay } from '../../ui/text'
 
 export type Family =
   | 'event'
@@ -296,6 +297,11 @@ export function variablePowers(project: Project) {
     .map((e) => e.info.id!)
 }
 
+function isCooldown(project: Project, id: string) {
+  const e = entriesOf(project, 'power').find((p) => p.info.id === id)
+  return isObject(e?.file.json) && resolveType('power_type', e.file.json.type)?.id === 'apoli:cooldown'
+}
+
 export function presetOptions(category: Category, project: Project): PickerOption[] {
   const out: PickerOption[] = PRESETS.filter((p) => p.category === category).map((p) => ({
     category,
@@ -306,13 +312,36 @@ export function presetOptions(category: Category, project: Project): PickerOptio
     json: p.json,
   }))
   for (const id of variablePowers(project)) {
-    const name = id.split(':')[1]
+    const name = powerDisplay(project, id, id.split(':')[0]).name
+    // a cooldown's value is the ticks left, so ready means zero
+    if (isCooldown(project, id)) {
+      if (category === 'entity_action') {
+        out.push({
+          category,
+          id: `var:start:${id}`,
+          label: `Start ${name}`,
+          description: `Starts "${name}" from the beginning.`,
+          group: 'Variables',
+          json: { type: 'apoli:trigger_cooldown', power: id },
+        })
+      }
+      if (category === 'entity_condition')
+        out.push({
+          category,
+          id: `var:ready:${id}`,
+          label: `${name} is ready`,
+          description: `True when "${name}" has run out.`,
+          group: 'Variables',
+          json: { type: 'apoli:resource', resource: id, comparison: '<=', compare_to: 0 },
+        })
+      continue
+    }
     if (category === 'entity_action') {
       out.push({
         category,
         id: `var:change:${id}`,
         label: `Change ${name}`,
-        description: `Adds to the ${name} resource or cooldown.`,
+        description: `Adds to "${name}".`,
         group: 'Variables',
         json: { type: 'apoli:change_resource', resource: id, change: 1 },
       })
@@ -320,7 +349,7 @@ export function presetOptions(category: Category, project: Project): PickerOptio
         category,
         id: `var:set:${id}`,
         label: `Set ${name}`,
-        description: `Sets the ${name} resource to a value.`,
+        description: `Sets "${name}" to a value.`,
         group: 'Variables',
         json: { type: 'apoli:set_resource', resource: id, value: 0 },
       })
@@ -330,7 +359,7 @@ export function presetOptions(category: Category, project: Project): PickerOptio
         category,
         id: `var:check:${id}`,
         label: `${name} value`,
-        description: `Compares the value of ${name}.`,
+        description: `Compares the value of "${name}".`,
         group: 'Variables',
         json: { type: 'apoli:resource', resource: id, comparison: '>=', compare_to: 1 },
       })

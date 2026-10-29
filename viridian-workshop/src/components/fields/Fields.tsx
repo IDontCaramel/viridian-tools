@@ -412,12 +412,17 @@ interface TextFieldProps {
   ariaLabel?: string
   placeholder?: string
   className?: string
+  // new values are written as {"text": ...}, power names need that since a plain string is a translation key
+  component?: boolean
 }
 
-export function TextField({ path, id, multiline, ariaLabel, placeholder, className = '' }: TextFieldProps) {
+export function TextField({ path, id, multiline, ariaLabel, placeholder, className = '', component }: TextFieldProps) {
   const { get, set } = useDoc()
   const value = get(path)
-  if (value !== undefined && typeof value !== 'string') {
+  // a text component that is only {"text": "..."} edits like plain text and keeps its shape
+  const plainComponent =
+    isObject(value) && Object.keys(value).length === 1 && typeof value.text === 'string'
+  if (value !== undefined && typeof value !== 'string' && !plainComponent) {
     return (
       <div>
         <JsonInput id={id} value={value} onChange={(v) => set(path, v)} />
@@ -430,8 +435,12 @@ export function TextField({ path, id, multiline, ariaLabel, placeholder, classNa
     'aria-label': ariaLabel,
     placeholder,
     className: `input ${className}`,
-    value: value ?? '',
-    onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => set(path, e.target.value),
+    value: plainComponent ? (value.text as string) : typeof value === 'string' ? value : '',
+    onChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      const text = e.target.value
+      if (plainComponent || (value === undefined && component)) set([...path, 'text'], text)
+      else set(path, text)
+    },
   }
   return multiline ? <textarea rows={3} {...props} /> : <input {...props} />
 }

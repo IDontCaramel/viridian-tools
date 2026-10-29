@@ -17,7 +17,8 @@ import { McIdPicker } from '../McPicker'
 import { OriginPreview } from '../OriginPreview'
 import { TypePicker, typeOptions, type PickerOption } from '../TypePicker'
 import { PowerRow } from './PowerRow'
-import { unusedPowers } from './powers'
+import { grantedPowers, helperOwners, removalBatch, unusedPowers } from './powers'
+import { resolveRef } from '../../model/validate'
 
 function powerOptions(project: Project): PickerOption[] {
   const inPack = entriesOf(project, 'power').map((e) => e.info.id!)
@@ -85,7 +86,23 @@ export function OriginPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focus?.nonce])
 
-  const move = (from: number, to: number) => set(['powers'], moveItem(powers, from, to), false)
+  // hidden cooldowns and resource bars show inside the power that uses them, not as their own row
+  const owners = helperOwners(project, ns, powers)
+  const refId = (ref: Json) => (typeof ref === 'string' ? resolveRef(ref, ns) : '')
+  const rows = powers.map((_, i) => i).filter((i) => !owners.has(refId(powers[i])))
+  const helpersOf = (id: string) => [...owners].filter(([, owner]) => owner === id).map(([h]) => h)
+  const granted = grantedPowers(project)
+  const elsewhere = (id: string) => [...granted].some(([path, ids]) => path !== file && ids.has(id))
+  const [notice, setNotice] = useState('')
+
+  // moves are in visible rows, the helpers keep their place relative to the rest
+  const move = (from: number, to: number) => set(['powers'], moveItem(powers, rows[from], rows[to]), false)
+  const remove = (i: number) => {
+    const { files, deleted } = removalBatch(project, file, ns, powers, i)
+    ws.batch(files)
+    const name = powerDisplay(project, String(powers[i]), ns).name
+    setNotice(deleted.length ? `Deleted ${name}. Undo brings it back.` : `Removed ${name} from this origin.`)
+  }
   const add = (t: Template) => {
     if (t.category === 'existing_power') {
       set(['powers'], [...powers, t.id], false)
@@ -166,16 +183,24 @@ export function OriginPage() {
           <PlusIcon size={15} /> Add power
         </button>
         {!powers.length && <p className="powers-empty">No powers yet. Add one to give this origin its first ability.</p>}
-        <SortableList listId={listId} count={powers.length}>
-          {powers.map((ref, i) => {
+        {notice && (
+          <p className="field-note" role="status">
+            {notice}
+          </p>
+        )}
+        <SortableList listId={listId} count={rows.length}>
+          {rows.map((i, row) => {
+            const ref = powers[i]
             const id = typeof ref === 'string' ? powerDisplay(project, ref, ns).id : ''
+            const kept = elsewhere(id)
             return (
-              <SortableItem key={`${i}:${String(ref)}`} listId={listId} index={i} move={move}>
+              <SortableItem key={`${i}:${String(ref)}`} listId={listId} index={row} move={move}>
                 {(handle) => (
                   <div data-path={`powers/${i}`}>
                     <PowerRow
                       powerRef={ref}
                       namespace={ns}
+                      helpers={helpersOf(id)}
                       open={expanded.has(id)}
                       onToggle={() => toggle(id)}
                       handle={handle}
@@ -184,29 +209,23 @@ export function OriginPage() {
                           <button
                             aria-label={`Move ${name} up`}
                             title="Move up"
-                            disabled={i === 0}
-                            onClick={() => move(i, i - 1)}
+                            disabled={row === 0}
+                            onClick={() => move(row, row - 1)}
                           >
                             <ArrowUpIcon size={14} />
                           </button>
                           <button
                             aria-label={`Move ${name} down`}
                             title="Move down"
-                            disabled={i === powers.length - 1}
-                            onClick={() => move(i, i + 1)}
+                            disabled={row === rows.length - 1}
+                            onClick={() => move(row, row + 1)}
                           >
                             <ArrowDownIcon size={14} />
                           </button>
                           <button
-                            aria-label={`Remove ${name}`}
-                            title="Remove from origin"
-                            onClick={() =>
-                              set(
-                                ['powers'],
-                                powers.filter((_, n) => n !== i),
-                                false,
-                              )
-                            }
+                            aria-label={kept ? `Remove ${name} from this origin` : `Delete ${name}`}
+                            title={kept ? 'Remove from this origin (another origin still has it)' : 'Delete power'}
+                            onClick={() => remove(i)}
                           >
                             <CloseIcon size={14} />
                           </button>
@@ -266,9 +285,12 @@ export function UnusedPowers({
   return (
     <details className="unused-powers" open={open} onToggle={(e) => setOpen(e.currentTarget.open)}>
       <summary>
-        Unused powers <span className="count">{unused.length}</span>
+        Not in any origin <span className="count">{unused.length}</span>
       </summary>
-      <p className="field-note">These powers are in the pack but no origin grants them.</p>
+      <p className="field-note">
+        These powers are in the pack, but no origin gives them to players, so they do nothing in game. Add them to this
+        origin or delete them.
+      </p>
       {unused.map((e) => (
         <PowerRow
           key={e.path}

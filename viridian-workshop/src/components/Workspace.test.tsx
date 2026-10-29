@@ -145,4 +145,59 @@ describe('workshop', () => {
       expect(saved.files['data/test/origins/test.json'].json).toMatchObject({ powers: [] })
     })
   })
+
+  it('grants a new cooldown to the origin and shows it inside the power that made it', async () => {
+    const user = userEvent.setup()
+    render(<Workspace project={createOriginProject('Test', 'test')} onClose={() => {}} />)
+    await addPower(user, 'use a key', 'Use a key')
+    await user.click(screen.getByRole('button', { name: '+ New cooldown' }))
+    expect(screen.queryByText(/Not in any origin/)).not.toBeInTheDocument()
+    expect(document.querySelectorAll('.power-card')).toHaveLength(1)
+    expect(document.querySelector('.variable-tag')).toHaveTextContent('Cooldown: Use a key cooldown')
+    await waitFor(() => {
+      const saved = vi.mocked(saveDraft).mock.calls.at(-1)![0]
+      const origin = saved.files['data/test/origins/test.json'].json as { powers: string[] }
+      expect(origin.powers).toEqual(['test:use_a_key', 'test:use_a_key_cooldown'])
+      expect(saved.files['data/test/powers/use_a_key_cooldown.json'].json).toMatchObject({
+        type: 'apoli:cooldown',
+        hidden: true,
+      })
+      // and it already does something: started by the key, checked before running
+      expect(saved.files['data/test/powers/use_a_key.json'].json).toMatchObject({
+        entity_action: { type: 'apoli:trigger_cooldown', power: 'test:use_a_key_cooldown' },
+        condition: { type: 'apoli:resource', resource: 'test:use_a_key_cooldown', comparison: '<=', compare_to: 0 },
+      })
+    })
+    // deleting the power takes its cooldown along, in one undo step
+    await user.click(screen.getByRole('button', { name: 'Delete Use a key' }))
+    expect(document.querySelectorAll('.power-card')).toHaveLength(0)
+    await waitFor(() => {
+      const saved = vi.mocked(saveDraft).mock.calls.at(-1)![0]
+      expect(Object.keys(saved.files).filter((path) => path.includes('/powers/'))).toHaveLength(0)
+    })
+    await user.click(screen.getByRole('button', { name: 'Undo' }))
+    expect(document.querySelectorAll('.power-card')).toHaveLength(1)
+    expect(document.querySelector('.variable-tag')).toBeInTheDocument()
+  })
+
+  it('offers to grant a cooldown a power uses but the origin is missing', async () => {
+    const user = userEvent.setup()
+    const enc = (v: unknown) => new TextEncoder().encode(JSON.stringify(v))
+    const project = projectFromFiles('Missing', [
+      { path: 'data/test/origins/test.json', bytes: enc({ name: 'Test', powers: ['test:dash'] }) },
+      {
+        path: 'data/test/powers/dash.json',
+        bytes: enc({ type: 'apoli:active_self', entity_action: { type: 'apoli:trigger_cooldown', power: 'test:timer' } }),
+      },
+      { path: 'data/test/powers/timer.json', bytes: enc({ type: 'apoli:cooldown', cooldown: 40, hidden: true }) },
+    ])
+    render(<Workspace project={project} onClose={() => {}} />)
+    await user.click(document.querySelector<HTMLElement>('.power-toggle')!)
+    await user.click(screen.getByRole('button', { name: 'Add it to the origin' }))
+    await waitFor(() => {
+      const saved = vi.mocked(saveDraft).mock.calls.at(-1)![0]
+      expect(saved.files['data/test/origins/test.json'].json).toMatchObject({ powers: ['test:dash', 'test:timer'] })
+    })
+    expect(screen.queryByText(/Not in any origin/)).not.toBeInTheDocument()
+  })
 })

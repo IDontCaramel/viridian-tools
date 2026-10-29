@@ -1986,8 +1986,9 @@ textarea.json-input {
   color: var(--danger);
 }
 
-/* variables */
+/* variables: cooldowns and resource bars, in the scratch variable orange */
 .variables {
+  --var: #e08a2c;
   margin-top: 18px;
   padding: 16px;
   border: 1px solid var(--border);
@@ -1997,30 +1998,72 @@ textarea.json-input {
 .variables h3 {
   margin: 0;
 }
-.variable-list {
+.variables .inline-row {
+  margin-top: 12px;
+}
+.variable-cards {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.variable-card {
+  border: 1px solid color-mix(in srgb, var(--var) 35%, transparent);
+  border-left: 3px solid var(--var);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--var) 6%, var(--surface));
+  padding: 10px 14px 4px;
+}
+.variable-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.variable-kind {
+  color: var(--var);
+  font-size: 12px;
+  font-weight: 600;
+}
+.variable-settings {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 12px 0 4px;
+  gap: 0 16px;
 }
-.variable-chip {
-  background: color-mix(in srgb, #e08a2c 16%, transparent);
-  border: 1px solid color-mix(in srgb, #e08a2c 40%, transparent);
-  color: var(--text);
-  font-weight: 500;
+.variable-settings > .field {
+  flex: 1 1 140px;
+  max-width: 220px;
+}
+.variable-missing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 4px 0 10px;
+}
+.variable-tag {
+  color: #f0a95a;
+  background: color-mix(in srgb, #e08a2c 14%, transparent);
   border-radius: 999px;
-  padding: 3px 11px;
+  padding: 1px 9px;
   font-size: 12px;
+  font-weight: 500;
 }
-.variable-chip::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #e08a2c;
+
+/* power name and description, the first thing in an open power */
+.power-identity {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 22px;
 }
-.variable-chip:hover:not(:disabled) {
-  background: color-mix(in srgb, #e08a2c 26%, transparent);
+.input.power-name-input {
+  font-size: 16px;
+  font-weight: 600;
+}
+.power-identity textarea.input {
+  min-height: 64px;
+  resize: vertical;
 }
 
 /* ---------- origin page ---------- */

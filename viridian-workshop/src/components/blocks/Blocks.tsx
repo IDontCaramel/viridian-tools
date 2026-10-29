@@ -14,14 +14,17 @@ import {
 import { humanize } from '../../catalog/descriptions'
 import { insertItem, moveItem, pathKey, type Path } from '../../model/edit'
 import { isObject, type Json } from '../../model/json'
-import { useWs, type Template } from '../../state/context'
+import { useFile, useWs, type Template } from '../../state/context'
 import { useDoc, useFieldIssues, useNestedIssueCount } from '../../state/doc'
 import { SortableItem, SortableList } from '../../ui/dnd'
 import { fieldLabel, ObjectFields, templateJson, useSuggestions } from '../fields/Fields'
 import { JsonInput, NumberInput, TextInput } from '../fields/inputs'
 import { McIdPicker, mcListFor } from '../McPicker'
 import { TypePicker, typeOptions, type PickerOption } from '../TypePicker'
-import { familyOf, parseTemplate, placement, presetOptions, rowLabel, templateFor, type Piece } from './blockDefs'
+import { familyOf, parseTemplate, placement, presetOptions, rowLabel, templateFor, variablePowers, type Piece } from './blockDefs'
+import { classify, entriesOf } from '../../model/project'
+import { resolveRef } from '../../model/validate'
+import { powerDisplay } from '../../ui/text'
 
 type Handle = { attributes: object; listeners: object | undefined }
 
@@ -194,7 +197,9 @@ export function Block({ category, path, handle, menu = [], hat }: BlockProps) {
   // other simple settings that are set or required go after the sentence
   for (const f of fields) {
     if (used.has(f.name) || skip.has(f.name)) continue
-    if (placement(f, obj[f.name]) !== 'inline' || !(f.required || f.name in obj)) continue
+    // a trigger's own cooldown is what most people look for, so it is always on the block
+    const always = hat && f.name === 'cooldown'
+    if (placement(f, obj[f.name]) !== 'inline' || !(f.required || f.name in obj || always)) continue
     used.add(f.name)
     head.push(
       <span key={f.name} className="blk-labeled">
@@ -203,7 +208,7 @@ export function Block({ category, path, handle, menu = [], hat }: BlockProps) {
           spec={f}
           name={f.name}
           path={[...path, f.name]}
-          onRemove={f.required ? undefined : () => set([...path, f.name], undefined, false)}
+          onRemove={f.required || !(f.name in obj) ? undefined : () => set([...path, f.name], undefined, false)}
         />
       </span>,
     )
@@ -395,6 +400,8 @@ function InlineField({
         {typeof value === 'string' && !values.includes(value) && <option value={value}>{value}</option>}
       </select>
     )
+  } else if (k === 'identifier' && /^(power|resource)$/.test(name) && (value === undefined || typeof value === 'string')) {
+    input = <PowerRefInput label={label} value={value} onChange={(v) => set(path, v, false)} />
   } else if (mcListFor(k, spec.registry) && (value === undefined || typeof value === 'string')) {
     input = <McIdPicker parameterless={k === 'particle'} compact ariaLabel={label} list={mcListFor(k, spec.registry)!} value={value} onChange={(v) => set(path, v, false)} />
   } else {
@@ -421,6 +428,62 @@ function InlineField({
   )
 }
 
+// powers of this pack by name, ids only show when typing one by hand (built-in powers, other packs)
+function PowerRefInput({
+  label,
+  value,
+  onChange,
+}: {
+  label: string
+  value: string | undefined
+  onChange: (v: string | undefined) => void
+}) {
+  const { ws } = useWs()
+  const file = useFile()
+  const project = ws.state.project
+  const ns = classify(file, project.root).namespace ?? project.namespace
+  const powers = entriesOf(project, 'power').filter((e) => e.path !== file)
+  const variables = new Set(variablePowers(project))
+  const resolved = value === undefined ? undefined : resolveRef(value, ns)
+  const known = resolved === undefined || powers.some((e) => e.info.id === resolved)
+  const [typing, setTyping] = useState(!known)
+  if (typing || !known)
+    return (
+      <TextInput
+        ariaLabel={label}
+        value={value ?? ''}
+        mono
+        placeholder="namespace:power"
+        suggestions={powers.map((e) => e.info.id!)}
+        onChange={(v) => onChange(v || undefined)}
+      />
+    )
+  const option = (id: string) => (
+    <option key={id} value={id}>
+      {powerDisplay(project, id, ns).name}
+    </option>
+  )
+  const ids = powers.map((e) => e.info.id!)
+  return (
+    <select
+      className="input"
+      aria-label={label}
+      value={resolved ?? ''}
+      onChange={(e) => (e.target.value === '\0' ? setTyping(true) : onChange(e.target.value || undefined))}
+    >
+      {resolved === undefined && <option value="">Choose…</option>}
+      {[true, false].map((isVar) => {
+        const group = ids.filter((id) => variables.has(id) === isVar)
+        return group.length ? (
+          <optgroup key={String(isVar)} label={isVar ? 'Cooldowns and resource bars' : 'Other powers'}>
+            {group.map(option)}
+          </optgroup>
+        ) : null
+      })}
+      <option value={'\0'}>Type an id…</option>
+    </select>
+  )
+}
 
 interface StackModel {
   paths: Path[]
