@@ -8,9 +8,8 @@ build/
 *.tsbuildinfo
 
 # tests
-*.test.ts
-*.test.tsx
-/viridian-workshop/src/test/
+/vscode-viridian/**/*.test.ts
+/vscode-viridian/**/*.test.tsx
 /vscode-viridian/test/
 coverage/
 .vscode-test/
