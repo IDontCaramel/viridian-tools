@@ -1646,7 +1646,7 @@ textarea.json-input {
   min-width: 260px;
 }
 .blk-cond {
-  border-radius: 999px;
+  border-radius: 0;
   border: 0;
   clip-path: polygon(
     14px 0,
