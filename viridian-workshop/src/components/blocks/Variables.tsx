@@ -11,6 +11,7 @@ import { FileCtx, useWs } from '../../state/context'
 import { useDoc } from '../../state/doc'
 import { originDisplay, powerDisplay } from '../../ui/text'
 import { FieldEditor } from '../fields/Fields'
+import { deleteVariableBatch } from '../origin/deleteVariable'
 import { grantedPowers, variableKind, variablesUsedBy, type VariableKind } from '../origin/powers'
 
 const SETTINGS: Record<VariableKind, string[]> = {
@@ -97,6 +98,12 @@ export function Variables() {
                 <div className="variable-card-head">
                   <span className="variable-kind">{KIND_LABEL[kind]}</span>
                   <strong title={id}>{powerDisplay(project, id, ns).name}</strong>
+                  <button className="secondary small" title="Delete this variable and its blocks from every power and origin. Undo brings them back." onClick={() => {
+                    ws.batch(deleteVariableBatch(project, id))
+                    setMade((ids) => ids.filter((v) => v !== id))
+                  }}>
+                    Delete everywhere
+                  </button>
                 </div>
                 <FileCtx.Provider value={path}>
                   <VariableSettings kind={kind} />

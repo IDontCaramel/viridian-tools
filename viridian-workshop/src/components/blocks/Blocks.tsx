@@ -192,7 +192,8 @@ export function Block({ category, path, handle, menu = [], hat }: BlockProps) {
     const where = placement(f, obj[f.name])
     if (where !== 'inline' && where !== 'condition') return
     used.add(f.name)
-    head.push(<InlineField key={i} spec={f} name={f.name} path={[...path, f.name]} />)
+    head.push(<InlineField key={i} spec={f} name={f.name} path={[...path, f.name]}
+      onRemove={f.required || !(f.name in obj) ? undefined : () => set([...path, f.name], undefined, false)} />)
   })
   // other simple settings that are set or required go after the sentence
   for (const f of fields) {

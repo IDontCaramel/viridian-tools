@@ -180,6 +180,25 @@ describe('workshop', () => {
     expect(document.querySelector('.variable-tag')).toBeInTheDocument()
   })
 
+  it('deletes a cooldown everywhere and restores it with undo', async () => {
+    const user = userEvent.setup()
+    render(<Workspace project={createOriginProject('Test', 'test')} onClose={() => {}} />)
+    await addPower(user, 'use a key', 'Use a key')
+    await user.click(screen.getByRole('button', { name: '+ New cooldown' }))
+    await user.click(screen.getByRole('button', { name: 'Delete everywhere' }))
+    expect(document.querySelector('.variable-tag')).not.toBeInTheDocument()
+    await waitFor(() => {
+      const saved = vi.mocked(saveDraft).mock.calls.at(-1)![0]
+      expect(saved.files['data/test/powers/use_a_key_cooldown.json']).toBeUndefined()
+      expect(saved.files['data/test/origins/test.json'].json).toMatchObject({ powers: ['test:use_a_key'] })
+      expect(saved.files['data/test/powers/use_a_key.json'].json).toMatchObject({ entity_action: { type: 'apoli:nothing' } })
+      expect(validateProject(saved).filter((i) => i.severity === 'error')).toEqual([])
+    })
+    await user.click(screen.getByRole('button', { name: 'Undo' }))
+    expect(document.querySelector('.variable-tag')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Delete everywhere' })).toBeInTheDocument()
+  })
+
   it('offers to grant a cooldown a power uses but the origin is missing', async () => {
     const user = userEvent.setup()
     const enc = (v: unknown) => new TextEncoder().encode(JSON.stringify(v))
