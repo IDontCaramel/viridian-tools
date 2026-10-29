@@ -98,11 +98,11 @@ export function Variables() {
                 <div className="variable-card-head">
                   <span className="variable-kind">{KIND_LABEL[kind]}</span>
                   <strong title={id}>{powerDisplay(project, id, ns).name}</strong>
-                  <button className="secondary small" title="Delete this variable and its blocks from every power and origin. Undo brings them back." onClick={() => {
+                  <button type="button" className="icon-btn small variable-delete" aria-label="Delete everywhere" title="Delete this variable and its blocks from every power and origin. Undo brings them back." onClick={() => {
                     ws.batch(deleteVariableBatch(project, id))
                     setMade((ids) => ids.filter((v) => v !== id))
                   }}>
-                    Delete everywhere
+                    ✕
                   </button>
                 </div>
                 <FileCtx.Provider value={path}>

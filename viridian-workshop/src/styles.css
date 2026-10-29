@@ -2021,6 +2021,9 @@ textarea.json-input {
   align-items: baseline;
   gap: 10px;
 }
+.variable-delete {
+  margin-left: auto;
+}
 .variable-kind {
   color: var(--var);
   font-size: 12px;
