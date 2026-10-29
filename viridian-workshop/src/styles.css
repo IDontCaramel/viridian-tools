@@ -1,34 +1,34 @@
 /* ---------- tokens ---------- */
-/* everything below reads from these, the workshop is dark only */
+/* slate surfaces keep the editor distinct from the in-game preview */
 :root {
   color-scheme: dark;
-  --bg: #0e0f10;
-  --bg-subtle: #121315;
-  --surface: #17181b;
-  --surface-2: #1d1f22;
-  --hover: #ffffff0d;
-  --hover-strong: #ffffff17;
-  --border: #ffffff12;
-  --border-strong: #ffffff21;
-  --text: #ececee;
-  --text-2: #a3a7ae;
-  --text-3: #6e737b;
-  --accent: #3fcf96;
-  --accent-hover: #5fdcab;
+  --bg: #292f35;
+  --bg-subtle: #22292e;
+  --surface: #333c43;
+  --surface-2: #3c464e;
+  --hover: #ffffff0f;
+  --hover-strong: #ffffff1a;
+  --border: #ffffff1f;
+  --border-strong: #ffffff38;
+  --text: #f1f5f4;
+  --text-2: #c0ccce;
+  --text-3: #a4b3b8;
+  --accent: #73d9b0;
+  --accent-hover: #94e6c5;
   --accent-fg: #04140d;
-  --accent-text: #5ad7a5;
-  --accent-soft: #3fcf961a;
-  --accent-ring: #3fcf9659;
+  --accent-text: #94e6c5;
+  --accent-soft: #73d9b01a;
+  --accent-ring: #94e6c5;
   --danger: #f27a6e;
   --danger-soft: #f27a6e1a;
   --warn: #e8b64c;
   --warn-soft: #e8b64c1a;
   --purple: #c3a8ff;
   --purple-soft: #a37bff24;
-  --input-bg: #0b0c0d;
-  --script-bg: #0b0c0d;
-  --script-dot: #ffffff10;
-  --shadow: 0 1px 2px #0006, 0 12px 32px #0007;
+  --input-bg: #252c32;
+  --script-bg: #222b31;
+  --script-dot: #ffffff17;
+  --shadow: 0 2px 4px #0003, 0 16px 40px #0004;
   --radius: 8px;
   --radius-sm: 6px;
   --radius-lg: 12px;
@@ -121,7 +121,7 @@ small {
   border: 0;
 }
 ::selection {
-  background: var(--accent-ring);
+  background: var(--accent-soft);
 }
 
 /* ---------- buttons ---------- */
@@ -465,7 +465,7 @@ input[type='checkbox'] {
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 22px;
-  background: var(--bg-subtle);
+  background: var(--surface);
   text-align: left;
   color: var(--text);
   font-weight: 400;
@@ -761,7 +761,8 @@ button.start-card:hover:not(:disabled) {
 }
 .file-link.active,
 .file-link.active:hover {
-  background: var(--hover-strong);
+  background: var(--accent-soft);
+  box-shadow: inset 3px 0 0 var(--accent);
   color: var(--text);
   font-weight: 500;
 }
@@ -2175,7 +2176,7 @@ textarea.input.origin-description {
   font-size: 13px;
 }
 .power-card.open {
-  background: var(--bg);
+  background: var(--surface);
   border-color: var(--border-strong);
 }
 .power-toggle {
