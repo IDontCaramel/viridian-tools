@@ -9,6 +9,8 @@ import { scaffolds } from "./features/scaffolds.ts";
 import { registerCommands } from "./features/commands.ts";
 import { ZIP_SCHEME, ZipFileSystem } from "./features/zip.ts";
 
+import { registerOriginPreview } from "./features/preview.ts";
+
 const FILES = "**/data/*/{powers,origins,origin_layers,badges,global_powers}/**/*.{json,jsonc,json5}";
 const decoder = new TextDecoder();
 export function activate(context: vscode.ExtensionContext): void {
@@ -34,7 +36,9 @@ export function activate(context: vscode.ExtensionContext): void {
     return new vscode.Range(position(offset), position(offset + length));
   }
   const location = (item: IndexedLocation) => new vscode.Location(vscode.Uri.parse(item.uri), range(item.uri, item.offset, item.length));
+  let refreshPreview = () => {};
   function publish(): void {
+    refreshPreview();
     diagnostics.clear();
     for (const [uri, file] of index.files) {
       const settings = vscode.workspace.getConfiguration("viridian.validation", vscode.Uri.parse(uri));
@@ -153,5 +157,6 @@ export function activate(context: vscode.ExtensionContext): void {
     if (uri.path.endsWith(".zip") || uri.path.endsWith("/pack.mcmeta")) void enqueue(scan);
     else if (classifyPath(uri.path)) void enqueue(async () => { await update(uri); publish(); });
   }));
+  refreshPreview = registerOriginPreview(context, index, prepare);
   registerCommands(context);
 }

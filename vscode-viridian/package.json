@@ -50,6 +50,12 @@
         "command": "viridian.openZip",
         "title": "Open Zipped Datapack",
         "category": "Viridian"
+      },
+      {
+        "command": "viridian.previewOrigin",
+        "title": "Open Origin Preview to the Side",
+        "category": "Viridian",
+        "icon": "$(open-preview)"
       }
     ],
     "menus": {
@@ -58,6 +64,13 @@
           "command": "viridian.newFile",
           "when": "explorerResourceIsFolder",
           "group": "navigation@9"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "viridian.previewOrigin",
+          "when": "resourcePath =~ /\\/data\\/[^/]+\\/origins\\/.+\\.json(c|5)?$/",
+          "group": "navigation"
         }
       ]
     },
