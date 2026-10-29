@@ -1,0 +1,53 @@
+name: Deploy Viridian Workshop
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'viridian-workshop/**'
+      - '.github/workflows/workshop-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: workshop-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: viridian-workshop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: viridian-workshop/package-lock.json
+      - run: npm ci
+      - run: npm test
+      # item, block, effect and sound pickers need icons from the minecraft client, fetched from mojang at build time
+      - run: npm run assets
+      - run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: viridian-workshop/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
