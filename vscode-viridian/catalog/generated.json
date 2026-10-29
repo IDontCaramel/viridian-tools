@@ -1,0 +1,6831 @@
+{
+  "registries": {
+    "entity_condition": {
+      "apoli:ability": {
+        "fields": {
+          "ability": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/condition/PlayerEntityConditions.java:31"
+      },
+      "apoli:advancement": {
+        "fields": {
+          "advancement": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/condition/PlayerEntityConditions.java:37"
+      },
+      "apoli:air": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "apoli:and": {
+        "fields": {
+          "conditions": {
+            "type": "list<entity_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:108"
+      },
+      "apoli:attribute": {
+        "fields": {
+          "attribute": {
+            "type": "identifier",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "double",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:89"
+      },
+      "apoli:biome": {
+        "fields": {
+          "biome": {
+            "type": "identifier"
+          },
+          "biomes": {
+            "type": "list<identifier>"
+          },
+          "condition": {
+            "type": "biome_condition"
+          }
+        },
+        "source": "power/condition/WorldEntityConditions.java:164"
+      },
+      "apoli:block_collision": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "offset_x": {
+            "type": "float",
+            "default": 0
+          },
+          "offset_y": {
+            "type": "float",
+            "default": 0
+          },
+          "offset_z": {
+            "type": "float",
+            "default": 0
+          }
+        },
+        "source": "power/condition/WorldEntityConditions.java:123"
+      },
+      "apoli:block_in_radius": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition",
+            "required": true
+          },
+          "radius": {
+            "type": "int",
+            "required": true
+          },
+          "shape": {
+            "type": "shape",
+            "default": "cube"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 1
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than_or_equal"
+          }
+        },
+        "source": "power/condition/WorldEntityConditions.java:64"
+      },
+      "apoli:brightness": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/EnvironmentEntityConditions.java:85"
+      },
+      "apoli:chance": {
+        "fields": {
+          "chance": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:118"
+      },
+      "apoli:climbing": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:38"
+      },
+      "apoli:collided_horizontally": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:36"
+      },
+      "apoli:command": {
+        "fields": {
+          "command": {
+            "type": "string",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/DataEntityConditions.java:51"
+      },
+      "apoli:constant": {
+        "fields": {
+          "value": {
+            "type": "boolean",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:104"
+      },
+      "apoli:creative_flying": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:39"
+      },
+      "apoli:daytime": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:41"
+      },
+      "apoli:dimension": {
+        "fields": {
+          "dimension": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:59"
+      },
+      "apoli:distance_from_coordinates": {
+        "fields": {
+          "reference": {
+            "type": "string",
+            "defaultText": "alias.equals(\"distance_from_coordinates\")?\"world_origin\":\"world_spawn\""
+          },
+          "offset": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "coordinates": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "ignore_x": {
+            "type": "boolean",
+            "default": false
+          },
+          "ignore_y": {
+            "type": "boolean",
+            "default": false
+          },
+          "ignore_z": {
+            "type": "boolean",
+            "default": false
+          },
+          "shape": {
+            "type": "shape",
+            "default": "cube"
+          },
+          "scale_reference_to_dimension": {
+            "type": "boolean",
+            "default": true
+          },
+          "scale_distance_to_dimension": {
+            "type": "boolean",
+            "default": false
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "double",
+            "required": true
+          },
+          "result_on_wrong_dimension": {
+            "type": "boolean"
+          },
+          "round_to_digit": {
+            "type": "int"
+          }
+        },
+        "source": "power/condition/DistanceFromCoordinatesCondition.java:42"
+      },
+      "apoli:distance_from_spawn": {
+        "fields": {
+          "reference": {
+            "type": "string",
+            "defaultText": "alias.equals(\"distance_from_coordinates\")?\"world_origin\":\"world_spawn\""
+          },
+          "offset": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "coordinates": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "ignore_x": {
+            "type": "boolean",
+            "default": false
+          },
+          "ignore_y": {
+            "type": "boolean",
+            "default": false
+          },
+          "ignore_z": {
+            "type": "boolean",
+            "default": false
+          },
+          "shape": {
+            "type": "shape",
+            "default": "cube"
+          },
+          "scale_reference_to_dimension": {
+            "type": "boolean",
+            "default": true
+          },
+          "scale_distance_to_dimension": {
+            "type": "boolean",
+            "default": false
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "double",
+            "required": true
+          },
+          "result_on_wrong_dimension": {
+            "type": "boolean"
+          },
+          "round_to_digit": {
+            "type": "int"
+          }
+        },
+        "source": "power/condition/DistanceFromCoordinatesCondition.java:42"
+      },
+      "apoli:elytra_flight_possible": {
+        "fields": {
+          "check_state": {
+            "type": "boolean",
+            "default": false
+          },
+          "check_ability": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "source": "power/condition/MovementEntityConditions.java:38"
+      },
+      "apoli:enchantment": {
+        "fields": {
+          "enchantment": {
+            "type": "enchantment",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          },
+          "calculation": {
+            "type": "string",
+            "default": "sum"
+          },
+          "use_modifications": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "source": "power/condition/EnvironmentEntityConditions.java:34"
+      },
+      "apoli:entity_group": {
+        "fields": {
+          "group": {
+            "type": "group",
+            "required": true
+          }
+        },
+        "source": "power/condition/EnvironmentEntityConditions.java:68"
+      },
+      "apoli:entity_type": {
+        "fields": {
+          "entity_type": {
+            "type": "entity_type",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:63"
+      },
+      "apoli:equipped_item": {
+        "fields": {
+          "equipment_slot": {
+            "type": "equipment_slot",
+            "required": true
+          },
+          "item_condition": {
+            "type": "item_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/WorldEntityConditions.java:145"
+      },
+      "apoli:exists": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:29"
+      },
+      "apoli:exposed_to_sky": {
+        "fields": {},
+        "source": "power/condition/EnvironmentEntityConditions.java:79"
+      },
+      "apoli:exposed_to_sun": {
+        "fields": {},
+        "source": "power/condition/EnvironmentEntityConditions.java:73"
+      },
+      "apoli:fall_distance": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "apoli:fall_flying": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:37"
+      },
+      "apoli:fluid_height": {
+        "fields": {
+          "fluid": {
+            "type": "fluid_tag",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "double",
+            "required": true
+          }
+        },
+        "source": "power/condition/EnvironmentEntityConditions.java:62"
+      },
+      "apoli:food_level": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "apoli:gamemode": {
+        "fields": {
+          "gamemode": {
+            "type": "game_mode",
+            "required": true
+          }
+        },
+        "source": "power/condition/PlayerEntityConditions.java:47"
+      },
+      "apoli:glowing": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:43"
+      },
+      "apoli:health": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "apoli:in_block": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/WorldEntityConditions.java:58"
+      },
+      "apoli:in_block_anywhere": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than_or_equal"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 1
+          }
+        },
+        "source": "power/condition/WorldEntityConditions.java:92"
+      },
+      "apoli:in_rain": {
+        "fields": {},
+        "source": "power/condition/EnvironmentEntityConditions.java:72"
+      },
+      "apoli:in_snow": {
+        "fields": {},
+        "source": "power/condition/EnvironmentEntityConditions.java:96"
+      },
+      "apoli:in_tag": {
+        "fields": {
+          "tag": {
+            "type": "entity_type_tag",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:68"
+      },
+      "apoli:in_thunderstorm": {
+        "fields": {},
+        "source": "power/condition/EnvironmentEntityConditions.java:96"
+      },
+      "apoli:inventory": {
+        "fields": {
+          "slot": {
+            "type": "string"
+          },
+          "slots": {
+            "type": "list<string>"
+          },
+          "power": {
+            "type": "identifier"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "inventory_types": {
+            "type": "list<inventory_type>",
+            "default": [
+              "inventory"
+            ]
+          },
+          "process_mode": {
+            "type": "process_mode",
+            "default": "items"
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 0
+          }
+        },
+        "source": "power/action/InventoryActions.java:176"
+      },
+      "apoli:invisible": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:34"
+      },
+      "apoli:living": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:33"
+      },
+      "apoli:moving": {
+        "fields": {
+          "horizontally": {
+            "type": "boolean",
+            "default": true
+          },
+          "vertically": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "source": "power/condition/MovementEntityConditions.java:29"
+      },
+      "apoli:nbt": {
+        "fields": {
+          "nbt": {
+            "type": "nbt",
+            "required": true
+          }
+        },
+        "source": "power/condition/DataEntityConditions.java:82"
+      },
+      "apoli:on_block": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          }
+        },
+        "source": "power/condition/WorldEntityConditions.java:50"
+      },
+      "apoli:on_fire": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:32"
+      },
+      "apoli:or": {
+        "fields": {
+          "conditions": {
+            "type": "list<entity_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:113"
+      },
+      "apoli:passenger": {
+        "fields": {
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than_or_equal"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 1
+          }
+        },
+        "source": "power/condition/MovementEntityConditions.java:58"
+      },
+      "apoli:passenger_recursive": {
+        "fields": {
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than_or_equal"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 1
+          }
+        },
+        "source": "power/condition/MovementEntityConditions.java:58"
+      },
+      "apoli:power": {
+        "fields": {
+          "power": {
+            "type": "identifier",
+            "required": true
+          },
+          "source": {
+            "type": "identifier"
+          }
+        },
+        "source": "power/condition/PowerConditions.java:19"
+      },
+      "apoli:power_active": {
+        "fields": {
+          "power": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/condition/PowerConditions.java:26"
+      },
+      "apoli:power_type": {
+        "fields": {
+          "power_type": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/condition/PowerConditions.java:31"
+      },
+      "apoli:predicate": {
+        "fields": {
+          "predicate": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/condition/DataEntityConditions.java:68"
+      },
+      "apoli:raycast": {
+        "fields": {
+          "distance": {
+            "type": "double"
+          },
+          "block_distance": {
+            "type": "double"
+          },
+          "entity_distance": {
+            "type": "double"
+          },
+          "direction": {
+            "type": "vector"
+          },
+          "space": {
+            "type": "space",
+            "default": "world"
+          },
+          "block": {
+            "type": "boolean",
+            "default": true
+          },
+          "entity": {
+            "type": "boolean",
+            "default": true
+          },
+          "shape_type": {
+            "type": "shape_type",
+            "default": "outline"
+          },
+          "fluid_handling": {
+            "type": "fluid_handling",
+            "default": "any"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "match_bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "hit_bientity_condition": {
+            "type": "bientity_condition"
+          }
+        },
+        "source": "power/action/RaycastActions.java:20"
+      },
+      "apoli:relative_health": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "apoli:resource": {
+        "fields": {
+          "resource": {
+            "type": "identifier",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/PowerConditions.java:36"
+      },
+      "apoli:riding": {
+        "fields": {
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than_or_equal"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 1
+          }
+        },
+        "source": "power/condition/MovementEntityConditions.java:58"
+      },
+      "apoli:riding_recursive": {
+        "fields": {
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than_or_equal"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 1
+          }
+        },
+        "source": "power/condition/MovementEntityConditions.java:58"
+      },
+      "apoli:riding_root": {
+        "fields": {
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than_or_equal"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 1
+          }
+        },
+        "source": "power/condition/MovementEntityConditions.java:58"
+      },
+      "apoli:saturation_level": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "apoli:scoreboard": {
+        "fields": {
+          "name": {
+            "type": "string"
+          },
+          "objective": {
+            "type": "string",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/DataEntityConditions.java:34"
+      },
+      "apoli:set_size": {
+        "fields": {
+          "set": {
+            "type": "identifier",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/EntitySets.java:81"
+      },
+      "apoli:sneaking": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:30"
+      },
+      "apoli:sprinting": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:31"
+      },
+      "apoli:status_effect": {
+        "fields": {
+          "effect": {
+            "type": "status_effect",
+            "required": true
+          },
+          "min_amplifier": {
+            "type": "int",
+            "default": 0
+          },
+          "max_amplifier": {
+            "type": "int",
+            "default": 2147483647
+          },
+          "min_duration": {
+            "type": "int",
+            "default": -1
+          },
+          "max_duration": {
+            "type": "int",
+            "default": 2147483647
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:73"
+      },
+      "apoli:submerged_in": {
+        "fields": {
+          "fluid": {
+            "type": "fluid_tag",
+            "required": true
+          }
+        },
+        "source": "power/condition/EnvironmentEntityConditions.java:58"
+      },
+      "apoli:swimming": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:35"
+      },
+      "apoli:tamed": {
+        "fields": {},
+        "source": "power/condition/BasicEntityConditions.java:40"
+      },
+      "apoli:time_of_day": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "apoli:using_effective_tool": {
+        "fields": {},
+        "source": "power/condition/WorldEntityConditions.java:187"
+      },
+      "apoli:using_item": {
+        "fields": {
+          "item_condition": {
+            "type": "item_condition"
+          }
+        },
+        "source": "power/condition/WorldEntityConditions.java:153"
+      },
+      "apoli:xp_levels": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "apoli:xp_points": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/BasicEntityConditions.java:128"
+      },
+      "origins:origin": {
+        "fields": {
+          "origin": {
+            "type": "identifier",
+            "required": true
+          },
+          "layer": {
+            "type": "identifier"
+          }
+        },
+        "source": "origin/power/OriginsPowerTypes.java:37"
+      }
+    },
+    "damage_condition": {
+      "apoli:amount": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/DamageConditions.java:23"
+      },
+      "apoli:and": {
+        "fields": {
+          "conditions": {
+            "type": "list<damage_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:108"
+      },
+      "apoli:attacker": {
+        "fields": {
+          "entity_condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/condition/DamageConditions.java:49"
+      },
+      "apoli:bypasses_armor": {
+        "fields": {},
+        "source": "power/condition/DamageConditions.java:72"
+      },
+      "apoli:chance": {
+        "fields": {
+          "chance": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:118"
+      },
+      "apoli:constant": {
+        "fields": {
+          "value": {
+            "type": "boolean",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:104"
+      },
+      "apoli:explosive": {
+        "fields": {},
+        "source": "power/condition/DamageConditions.java:72"
+      },
+      "apoli:fire": {
+        "fields": {},
+        "source": "power/condition/DamageConditions.java:72"
+      },
+      "apoli:from_falling": {
+        "fields": {},
+        "source": "power/condition/DamageConditions.java:72"
+      },
+      "apoli:in_tag": {
+        "fields": {
+          "tag": {
+            "type": "damage_type_tag",
+            "required": true
+          }
+        },
+        "source": "power/condition/DamageConditions.java:39"
+      },
+      "apoli:name": {
+        "fields": {
+          "name": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "source": "power/condition/DamageConditions.java:35"
+      },
+      "apoli:or": {
+        "fields": {
+          "conditions": {
+            "type": "list<damage_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:113"
+      },
+      "apoli:out_of_world": {
+        "fields": {},
+        "source": "power/condition/DamageConditions.java:72"
+      },
+      "apoli:projectile": {
+        "fields": {
+          "projectile": {
+            "type": "entity_type"
+          },
+          "projectile_condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/condition/DamageConditions.java:55"
+      },
+      "apoli:type": {
+        "fields": {
+          "damage_type": {
+            "type": "damage_type",
+            "required": true
+          }
+        },
+        "source": "power/condition/DamageConditions.java:44"
+      },
+      "apoli:unblockable": {
+        "fields": {},
+        "source": "power/condition/DamageConditions.java:72"
+      }
+    },
+    "bientity_condition": {
+      "apoli:actor_condition": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:33"
+      },
+      "apoli:and": {
+        "fields": {
+          "conditions": {
+            "type": "list<bientity_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:108"
+      },
+      "apoli:attack_target": {
+        "fields": {},
+        "source": "power/condition/BiEntityConditions.java:148"
+      },
+      "apoli:attacker": {
+        "fields": {},
+        "source": "power/condition/BiEntityConditions.java:148"
+      },
+      "apoli:both": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:33"
+      },
+      "apoli:can_see": {
+        "fields": {
+          "shape_type": {
+            "type": "shape_type",
+            "default": "visual"
+          },
+          "fluid_handling": {
+            "type": "fluid_handling",
+            "default": "none"
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:101"
+      },
+      "apoli:chance": {
+        "fields": {
+          "chance": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:118"
+      },
+      "apoli:constant": {
+        "fields": {
+          "value": {
+            "type": "boolean",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:104"
+      },
+      "apoli:distance": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "double",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:74"
+      },
+      "apoli:either": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:33"
+      },
+      "apoli:equal": {
+        "fields": {},
+        "source": "power/condition/BiEntityConditions.java:148"
+      },
+      "apoli:in_set": {
+        "fields": {
+          "set": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/EntitySets.java:74"
+      },
+      "apoli:invert": {
+        "fields": {
+          "condition": {
+            "type": "bientity_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:50"
+      },
+      "apoli:or": {
+        "fields": {
+          "conditions": {
+            "type": "list<bientity_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:113"
+      },
+      "apoli:owner": {
+        "fields": {},
+        "source": "power/condition/BiEntityConditions.java:148"
+      },
+      "apoli:relative_rotation": {
+        "fields": {
+          "axes": {
+            "type": "list<axis>",
+            "default": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "actor_rotation": {
+            "type": "rotation",
+            "default": "head"
+          },
+          "target_rotation": {
+            "type": "rotation",
+            "default": "body"
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "double",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:81"
+      },
+      "apoli:riding": {
+        "fields": {},
+        "source": "power/condition/BiEntityConditions.java:148"
+      },
+      "apoli:riding_recursive": {
+        "fields": {},
+        "source": "power/condition/BiEntityConditions.java:148"
+      },
+      "apoli:riding_root": {
+        "fields": {},
+        "source": "power/condition/BiEntityConditions.java:148"
+      },
+      "apoli:target_condition": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:33"
+      },
+      "apoli:undirected": {
+        "fields": {
+          "condition": {
+            "type": "bientity_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiEntityConditions.java:50"
+      }
+    },
+    "fluid_condition": {
+      "apoli:and": {
+        "fields": {
+          "conditions": {
+            "type": "list<fluid_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:108"
+      },
+      "apoli:chance": {
+        "fields": {
+          "chance": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:118"
+      },
+      "apoli:constant": {
+        "fields": {
+          "value": {
+            "type": "boolean",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:104"
+      },
+      "apoli:empty": {
+        "fields": {},
+        "source": "power/condition/FluidConditions.java:19"
+      },
+      "apoli:fluid": {
+        "fields": {
+          "fluid": {
+            "type": "fluid",
+            "required": true
+          }
+        },
+        "source": "power/condition/FluidConditions.java:25"
+      },
+      "apoli:in_tag": {
+        "fields": {
+          "tag": {
+            "type": "fluid_tag",
+            "required": true
+          }
+        },
+        "source": "power/condition/FluidConditions.java:21"
+      },
+      "apoli:or": {
+        "fields": {
+          "conditions": {
+            "type": "list<fluid_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:113"
+      },
+      "apoli:still": {
+        "fields": {},
+        "source": "power/condition/FluidConditions.java:20"
+      }
+    },
+    "block_condition": {
+      "apoli:adjacent": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          },
+          "adjacent_condition": {
+            "type": "block_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:73"
+      },
+      "apoli:and": {
+        "fields": {
+          "conditions": {
+            "type": "list<block_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:108"
+      },
+      "apoli:attachable": {
+        "fields": {},
+        "source": "power/condition/BlockConditions.java:92"
+      },
+      "apoli:blast_resistance": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:188"
+      },
+      "apoli:block": {
+        "fields": {
+          "block": {
+            "type": "block",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:63"
+      },
+      "apoli:block_entity": {
+        "fields": {},
+        "source": "power/condition/BlockConditions.java:166"
+      },
+      "apoli:block_state": {
+        "fields": {
+          "property": {
+            "type": "string",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison"
+          },
+          "compare_to": {
+            "type": "int"
+          },
+          "value": {
+            "type": "boolean"
+          },
+          "enum": {
+            "type": "string"
+          }
+        },
+        "source": "power/condition/BlockConditions.java:136"
+      },
+      "apoli:chance": {
+        "fields": {
+          "chance": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:118"
+      },
+      "apoli:command": {
+        "fields": {
+          "command": {
+            "type": "string",
+            "required": true
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than_or_equal"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 1
+          }
+        },
+        "source": "power/condition/BlockConditions.java:218"
+      },
+      "apoli:constant": {
+        "fields": {
+          "value": {
+            "type": "boolean",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:104"
+      },
+      "apoli:distance_from_coordinates": {
+        "fields": {
+          "reference": {
+            "type": "string",
+            "defaultText": "alias.equals(\"distance_from_coordinates\")?\"world_origin\":\"world_spawn\""
+          },
+          "offset": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "coordinates": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "ignore_x": {
+            "type": "boolean",
+            "default": false
+          },
+          "ignore_y": {
+            "type": "boolean",
+            "default": false
+          },
+          "ignore_z": {
+            "type": "boolean",
+            "default": false
+          },
+          "shape": {
+            "type": "shape",
+            "default": "cube"
+          },
+          "scale_reference_to_dimension": {
+            "type": "boolean",
+            "default": true
+          },
+          "scale_distance_to_dimension": {
+            "type": "boolean",
+            "default": false
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "double",
+            "required": true
+          },
+          "result_on_wrong_dimension": {
+            "type": "boolean"
+          },
+          "round_to_digit": {
+            "type": "int"
+          }
+        },
+        "source": "power/condition/DistanceFromCoordinatesCondition.java:42"
+      },
+      "apoli:distance_from_spawn": {
+        "fields": {
+          "reference": {
+            "type": "string",
+            "defaultText": "alias.equals(\"distance_from_coordinates\")?\"world_origin\":\"world_spawn\""
+          },
+          "offset": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "coordinates": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "ignore_x": {
+            "type": "boolean",
+            "default": false
+          },
+          "ignore_y": {
+            "type": "boolean",
+            "default": false
+          },
+          "ignore_z": {
+            "type": "boolean",
+            "default": false
+          },
+          "shape": {
+            "type": "shape",
+            "default": "cube"
+          },
+          "scale_reference_to_dimension": {
+            "type": "boolean",
+            "default": true
+          },
+          "scale_distance_to_dimension": {
+            "type": "boolean",
+            "default": false
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "double",
+            "required": true
+          },
+          "result_on_wrong_dimension": {
+            "type": "boolean"
+          },
+          "round_to_digit": {
+            "type": "int"
+          }
+        },
+        "source": "power/condition/DistanceFromCoordinatesCondition.java:42"
+      },
+      "apoli:exposed_to_sky": {
+        "fields": {},
+        "source": "power/condition/BlockConditions.java:120"
+      },
+      "apoli:fluid": {
+        "fields": {
+          "fluid_condition": {
+            "type": "fluid_condition",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:103"
+      },
+      "apoli:hardness": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:194"
+      },
+      "apoli:height": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:53"
+      },
+      "apoli:in_tag": {
+        "fields": {
+          "tag": {
+            "type": "block_tag",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:68"
+      },
+      "apoli:light_blocking": {
+        "fields": {},
+        "source": "power/condition/BlockConditions.java:116"
+      },
+      "apoli:light_level": {
+        "fields": {
+          "light_type": {
+            "type": "light_type"
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:122"
+      },
+      "apoli:material": {
+        "fields": {
+          "material": {
+            "type": "string"
+          },
+          "materials": {
+            "type": "list<string>"
+          }
+        },
+        "source": "power/condition/BlockConditions.java:202"
+      },
+      "apoli:movement_blocking": {
+        "fields": {},
+        "source": "power/condition/BlockConditions.java:109"
+      },
+      "apoli:nbt": {
+        "fields": {
+          "nbt": {
+            "type": "nbt",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:168"
+      },
+      "apoli:offset": {
+        "fields": {
+          "condition": {
+            "type": "block_condition",
+            "required": true
+          },
+          "x": {
+            "type": "int",
+            "default": 0
+          },
+          "y": {
+            "type": "int",
+            "default": 0
+          },
+          "z": {
+            "type": "int",
+            "default": 0
+          }
+        },
+        "source": "power/condition/BlockConditions.java:44"
+      },
+      "apoli:or": {
+        "fields": {
+          "conditions": {
+            "type": "list<block_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:113"
+      },
+      "apoli:replacable": {
+        "fields": {},
+        "source": "power/condition/BlockConditions.java:90"
+      },
+      "apoli:slipperiness": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/BlockConditions.java:182"
+      },
+      "apoli:water_loggable": {
+        "fields": {},
+        "source": "power/condition/BlockConditions.java:118"
+      }
+    },
+    "item_condition": {
+      "apoli:amount": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:221"
+      },
+      "apoli:and": {
+        "fields": {
+          "conditions": {
+            "type": "list<item_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:108"
+      },
+      "apoli:armor_value": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:86"
+      },
+      "apoli:chance": {
+        "fields": {
+          "chance": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:118"
+      },
+      "apoli:constant": {
+        "fields": {
+          "value": {
+            "type": "boolean",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:104"
+      },
+      "apoli:damageable": {
+        "fields": {},
+        "source": "power/condition/ItemConditions.java:227"
+      },
+      "apoli:durability": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:229"
+      },
+      "apoli:empty": {
+        "fields": {},
+        "source": "power/condition/ItemConditions.java:219"
+      },
+      "apoli:enchantable": {
+        "fields": {},
+        "source": "power/condition/ItemConditions.java:182"
+      },
+      "apoli:enchantment": {
+        "fields": {
+          "enchantment": {
+            "type": "enchantment"
+          },
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 0
+          },
+          "use_modifications": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:131"
+      },
+      "apoli:equippable": {
+        "fields": {
+          "equipment_slot": {
+            "type": "equipment_slot"
+          }
+        },
+        "source": "power/condition/ItemConditions.java:247"
+      },
+      "apoli:fireproof": {
+        "fields": {},
+        "source": "power/condition/ItemConditions.java:177"
+      },
+      "apoli:food": {
+        "fields": {},
+        "source": "power/condition/ItemConditions.java:70"
+      },
+      "apoli:fuel": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "default": "greater_than"
+          },
+          "compare_to": {
+            "type": "int",
+            "default": 0
+          }
+        },
+        "source": "power/condition/ItemConditions.java:260"
+      },
+      "apoli:harvest_level": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:107"
+      },
+      "apoli:has_power": {
+        "fields": {
+          "slot": {
+            "type": "equipment_slot"
+          },
+          "power": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:201"
+      },
+      "apoli:ingredient": {
+        "fields": {
+          "ingredient": {
+            "type": "ingredient",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:81"
+      },
+      "apoli:meat": {
+        "fields": {},
+        "source": "power/condition/ItemConditions.java:152"
+      },
+      "apoli:nbt": {
+        "fields": {
+          "nbt": {
+            "type": "nbt",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:158"
+      },
+      "apoli:or": {
+        "fields": {
+          "conditions": {
+            "type": "list<item_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:113"
+      },
+      "apoli:power_count": {
+        "fields": {
+          "slot": {
+            "type": "equipment_slot"
+          },
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:184"
+      },
+      "apoli:relative_durability": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/ItemConditions.java:235"
+      },
+      "apoli:smeltable": {
+        "fields": {},
+        "source": "power/condition/ItemConditions.java:72"
+      }
+    },
+    "biome_condition": {
+      "apoli:and": {
+        "fields": {
+          "conditions": {
+            "type": "list<biome_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:108"
+      },
+      "apoli:category": {
+        "fields": {
+          "category": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiomeConditions.java:41"
+      },
+      "apoli:chance": {
+        "fields": {
+          "chance": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:118"
+      },
+      "apoli:constant": {
+        "fields": {
+          "value": {
+            "type": "boolean",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:104"
+      },
+      "apoli:high_humidity": {
+        "fields": {},
+        "source": "power/condition/BiomeConditions.java:31"
+      },
+      "apoli:in_tag": {
+        "fields": {
+          "tag": {
+            "type": "biome_tag",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiomeConditions.java:56"
+      },
+      "apoli:or": {
+        "fields": {
+          "conditions": {
+            "type": "list<biome_condition>",
+            "required": true
+          }
+        },
+        "source": "power/condition/ConditionCategory.java:113"
+      },
+      "apoli:precipitation": {
+        "fields": {
+          "precipitation": {
+            "type": "precipitation",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiomeConditions.java:48"
+      },
+      "apoli:temperature": {
+        "fields": {
+          "comparison": {
+            "type": "comparison",
+            "required": true
+          },
+          "compare_to": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/condition/BiomeConditions.java:33"
+      }
+    },
+    "entity_action": {
+      "apoli:action_on_set": {
+        "fields": {
+          "set": {
+            "type": "identifier",
+            "required": true
+          },
+          "bientity_action": {
+            "type": "bientity_action",
+            "required": true
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "limit": {
+            "type": "int",
+            "default": 0
+          },
+          "reverse": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/EntitySets.java:90"
+      },
+      "apoli:add_velocity": {
+        "fields": {
+          "x": {
+            "type": "float",
+            "default": 0
+          },
+          "y": {
+            "type": "float",
+            "default": 0
+          },
+          "z": {
+            "type": "float",
+            "default": 0
+          },
+          "space": {
+            "type": "space",
+            "default": "world"
+          },
+          "client": {
+            "type": "boolean",
+            "default": true
+          },
+          "server": {
+            "type": "boolean",
+            "default": true
+          },
+          "set": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/action/VelocityActions.java:27"
+      },
+      "apoli:add_xp": {
+        "fields": {
+          "points": {
+            "type": "int",
+            "default": 0
+          },
+          "levels": {
+            "type": "int",
+            "default": 0
+          }
+        },
+        "source": "power/action/EntityActions.java:178"
+      },
+      "apoli:and": {
+        "fields": {
+          "actions": {
+            "type": "list<entity_action>",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:42"
+      },
+      "apoli:apply_effect": {
+        "fields": {
+          "effect": {
+            "type": "status_effect_instance"
+          },
+          "effects": {
+            "type": "list<status_effect_instance>"
+          }
+        },
+        "source": "power/action/EntityActions.java:96"
+      },
+      "apoli:area_of_effect": {
+        "fields": {
+          "radius": {
+            "type": "double",
+            "default": 16
+          },
+          "shape": {
+            "type": "spatial_actions_shape",
+            "default": "cube"
+          },
+          "bientity_action": {
+            "type": "bientity_action",
+            "required": true
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "include_target": {
+            "type": "boolean",
+            "default": false
+          },
+          "include_actor": {
+            "type": "boolean",
+            "defaultText": "same as \"include_target\""
+          }
+        },
+        "source": "power/action/SpatialActions.java:29"
+      },
+      "apoli:block_action_at": {
+        "fields": {
+          "block_action": {
+            "type": "block_action",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityActions.java:142"
+      },
+      "apoli:chance": {
+        "fields": {
+          "action": {
+            "type": "entity_action",
+            "required": true
+          },
+          "chance": {
+            "type": "float",
+            "required": true
+          },
+          "fail_action": {
+            "type": "entity_action"
+          }
+        },
+        "source": "power/action/MetaActions.java:47"
+      },
+      "apoli:change_resource": {
+        "fields": {
+          "resource": {
+            "type": "identifier",
+            "required": true
+          },
+          "change": {
+            "type": "int",
+            "required": true
+          },
+          "operation": {
+            "type": "power_actions_operation",
+            "default": "add"
+          }
+        },
+        "source": "power/action/PowerActions.java:36"
+      },
+      "apoli:choice": {
+        "fields": {
+          "actions": {
+            "type": {
+              "kind": "weighted_list",
+              "of": "entity_action"
+            },
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:60"
+      },
+      "apoli:clear_effect": {
+        "fields": {
+          "effect": {
+            "type": "status_effect"
+          }
+        },
+        "source": "power/action/EntityActions.java:113"
+      },
+      "apoli:crafting_table": {
+        "fields": {},
+        "source": "power/action/EntityInteractionActions.java:105"
+      },
+      "apoli:damage": {
+        "fields": {
+          "amount": {
+            "type": "float"
+          },
+          "source": {
+            "type": "damage_source"
+          },
+          "damage_type": {
+            "type": "damage_type"
+          },
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          }
+        },
+        "source": "power/action/EntityActions.java:42"
+      },
+      "apoli:delay": {
+        "fields": {
+          "ticks": {
+            "type": "int",
+            "required": true
+          },
+          "action": {
+            "type": "entity_action",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:70"
+      },
+      "apoli:dismount": {
+        "fields": {},
+        "source": "power/action/EntityActions.java:196"
+      },
+      "apoli:drop_inventory": {
+        "fields": {
+          "slot": {
+            "type": "string"
+          },
+          "slots": {
+            "type": "list<string>"
+          },
+          "power": {
+            "type": "identifier"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "inventory_type": {
+            "type": "inventory_type",
+            "default": "inventory"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "amount": {
+            "type": "int",
+            "default": 0
+          },
+          "throw_randomly": {
+            "type": "boolean",
+            "default": false
+          },
+          "retain_ownership": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "source": "power/action/InventoryActions.java:152"
+      },
+      "apoli:emit_game_event": {
+        "fields": {
+          "event": {
+            "type": "game_event",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityInteractionActions.java:92"
+      },
+      "apoli:ender_chest": {
+        "fields": {},
+        "source": "power/action/EntityInteractionActions.java:113"
+      },
+      "apoli:equipped_item_action": {
+        "fields": {
+          "equipment_slot": {
+            "type": "equipment_slot",
+            "required": true
+          },
+          "action": {
+            "type": "item_action",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityInteractionActions.java:97"
+      },
+      "apoli:execute_command": {
+        "fields": {
+          "command": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityActions.java:149"
+      },
+      "apoli:exhaust": {
+        "fields": {
+          "amount": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityActions.java:87"
+      },
+      "apoli:explode": {
+        "fields": {
+          "power": {
+            "type": "float",
+            "required": true
+          },
+          "destruction_type": {
+            "type": "string",
+            "default": "break"
+          },
+          "indestructible": {
+            "type": "block_condition"
+          },
+          "destructible": {
+            "type": "block_condition"
+          },
+          "indestructible_resistance": {
+            "type": "float",
+            "default": 10
+          },
+          "create_fire": {
+            "type": "boolean",
+            "default": false
+          },
+          "damage_self": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "source": "power/action/ExplosionActions.java:96"
+      },
+      "apoli:extinguish": {
+        "fields": {},
+        "source": "power/action/EntityActions.java:147"
+      },
+      "apoli:feed": {
+        "fields": {
+          "food": {
+            "type": "int",
+            "required": true
+          },
+          "saturation": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityActions.java:168"
+      },
+      "apoli:fire_projectile": {
+        "fields": {
+          "entity_type": {
+            "type": "entity_type",
+            "required": true
+          },
+          "divergence": {
+            "type": "float",
+            "default": 1
+          },
+          "speed": {
+            "type": "float",
+            "default": 1.5
+          },
+          "count": {
+            "type": "int",
+            "default": 1
+          },
+          "tag": {
+            "type": "nbt",
+            "default": {}
+          },
+          "projectile_action": {
+            "type": "entity_action"
+          }
+        },
+        "source": "power/action/SpawnActions.java:26"
+      },
+      "apoli:gain_air": {
+        "fields": {
+          "value": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityActions.java:133"
+      },
+      "apoli:give": {
+        "fields": {
+          "stack": {
+            "type": "item_stack",
+            "required": true
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "preferred_slot": {
+            "type": "equipment_slot"
+          }
+        },
+        "source": "power/action/BuiltinWorldActions.java:37"
+      },
+      "apoli:grant_advancement": {
+        "fields": {
+          "advancement": {
+            "type": "identifier"
+          },
+          "criterion": {
+            "type": "string"
+          },
+          "criteria": {
+            "type": "list<string>"
+          },
+          "selection": {
+            "type": "selection",
+            "default": "only"
+          }
+        },
+        "source": "power/action/AdvancementActions.java:23"
+      },
+      "apoli:grant_power": {
+        "fields": {
+          "power": {
+            "type": "identifier",
+            "required": true
+          },
+          "source": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/action/PowerActions.java:70"
+      },
+      "apoli:heal": {
+        "fields": {
+          "amount": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityActions.java:78"
+      },
+      "apoli:if_else": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition",
+            "required": true
+          },
+          "if_action": {
+            "type": "entity_action",
+            "required": true
+          },
+          "else_action": {
+            "type": "entity_action"
+          }
+        },
+        "source": "power/action/MetaActions.java:100"
+      },
+      "apoli:if_else_list": {
+        "fields": {
+          "actions": {
+            "type": {
+              "kind": "list",
+              "of": {
+                "kind": "object",
+                "fields": {
+                  "action": {
+                    "type": "entity_action",
+                    "required": true
+                  },
+                  "condition": {
+                    "type": "entity_condition",
+                    "required": true
+                  }
+                }
+              }
+            },
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:125"
+      },
+      "apoli:modify_death_ticks": {
+        "fields": {
+          "modifier": {
+            "type": "modifier",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityInteractionActions.java:85"
+      },
+      "apoli:modify_inventory": {
+        "fields": {
+          "slot": {
+            "type": "string"
+          },
+          "slots": {
+            "type": "list<string>"
+          },
+          "power": {
+            "type": "identifier"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "inventory_type": {
+            "type": "inventory_type",
+            "default": "inventory"
+          },
+          "process_mode": {
+            "type": "process_mode",
+            "default": "stacks"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "item_action": {
+            "type": "item_action",
+            "required": true
+          },
+          "limit": {
+            "type": "int",
+            "default": 0
+          }
+        },
+        "source": "power/action/InventoryActions.java:101"
+      },
+      "apoli:modify_resource": {
+        "fields": {
+          "modifier": {
+            "type": "modifier",
+            "required": true
+          },
+          "resource": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/action/PowerActions.java:48"
+      },
+      "apoli:modify_stat": {
+        "fields": {
+          "stat": {
+            "type": "stat",
+            "required": true
+          },
+          "modifier": {
+            "type": "modifier",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityInteractionActions.java:44"
+      },
+      "apoli:nothing": {
+        "fields": {},
+        "source": "power/action/MetaActions.java:76"
+      },
+      "apoli:passenger_action": {
+        "fields": {
+          "action": {
+            "type": "entity_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "recursive": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/action/EntityInteractionActions.java:122"
+      },
+      "apoli:play_sound": {
+        "fields": {
+          "sound": {
+            "type": "sound_event",
+            "required": true
+          },
+          "category": {
+            "type": "sound_category"
+          },
+          "volume": {
+            "type": "float",
+            "default": 1
+          },
+          "pitch": {
+            "type": "float",
+            "default": 1
+          }
+        },
+        "source": "power/action/BuiltinWorldActions.java:28"
+      },
+      "apoli:random_teleport": {
+        "fields": {
+          "area_width": {
+            "type": "double",
+            "default": 8
+          },
+          "area_height": {
+            "type": "double",
+            "default": 8
+          },
+          "heightmap": {
+            "type": "heightmap"
+          },
+          "attempts": {
+            "type": "int",
+            "defaultText": "(int)(width+height)"
+          },
+          "landing_block_condition": {
+            "type": "block_condition"
+          },
+          "landing_condition": {
+            "type": "entity_condition"
+          },
+          "landing_offset": {
+            "type": "vector",
+            "default": {
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          },
+          "loaded_chunks_only": {
+            "type": "boolean",
+            "default": true
+          },
+          "success_action": {
+            "type": "entity_action"
+          },
+          "fail_action": {
+            "type": "entity_action"
+          }
+        },
+        "source": "power/action/RandomTeleportAction.java:38"
+      },
+      "apoli:raycast": {
+        "fields": {
+          "distance": {
+            "type": "double"
+          },
+          "block_distance": {
+            "type": "double"
+          },
+          "entity_distance": {
+            "type": "double"
+          },
+          "direction": {
+            "type": "vector"
+          },
+          "space": {
+            "type": "space",
+            "default": "world"
+          },
+          "block": {
+            "type": "boolean",
+            "default": true
+          },
+          "entity": {
+            "type": "boolean",
+            "default": true
+          },
+          "shape_type": {
+            "type": "shape_type",
+            "default": "outline"
+          },
+          "fluid_handling": {
+            "type": "fluid_handling",
+            "default": "any"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "match_bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "command_at_hit": {
+            "type": "string"
+          },
+          "command_hit_offset": {
+            "type": "double"
+          },
+          "command_along_ray": {
+            "type": "string"
+          },
+          "command_step": {
+            "type": "double",
+            "default": 1
+          },
+          "command_along_ray_only_on_hit": {
+            "type": "boolean",
+            "default": false
+          },
+          "before_action": {
+            "type": "entity_action"
+          },
+          "hit_action": {
+            "type": "entity_action"
+          },
+          "miss_action": {
+            "type": "entity_action"
+          }
+        },
+        "source": "power/action/RaycastActions.java:36"
+      },
+      "apoli:remove_power": {
+        "fields": {
+          "power": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/action/PowerActions.java:92"
+      },
+      "apoli:replace_inventory": {
+        "fields": {
+          "slot": {
+            "type": "string"
+          },
+          "slots": {
+            "type": "list<string>"
+          },
+          "power": {
+            "type": "identifier"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "inventory_type": {
+            "type": "inventory_type",
+            "default": "inventory"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "stack": {
+            "type": "item_stack",
+            "required": true
+          },
+          "merge_nbt": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/action/InventoryActions.java:126"
+      },
+      "apoli:revoke_advancement": {
+        "fields": {
+          "advancement": {
+            "type": "identifier"
+          },
+          "criterion": {
+            "type": "string"
+          },
+          "criteria": {
+            "type": "list<string>"
+          },
+          "selection": {
+            "type": "selection",
+            "default": "only"
+          }
+        },
+        "source": "power/action/AdvancementActions.java:23"
+      },
+      "apoli:revoke_all_powers": {
+        "fields": {
+          "source": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/action/PowerActions.java:104"
+      },
+      "apoli:revoke_power": {
+        "fields": {
+          "power": {
+            "type": "identifier",
+            "required": true
+          },
+          "source": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/action/PowerActions.java:82"
+      },
+      "apoli:riding_action": {
+        "fields": {
+          "action": {
+            "type": "entity_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "recursive": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/action/EntityInteractionActions.java:122"
+      },
+      "apoli:selector_action": {
+        "fields": {
+          "selector": {
+            "type": "string",
+            "required": true
+          },
+          "bientity_action": {
+            "type": "bientity_action",
+            "required": true
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          }
+        },
+        "source": "power/action/SpatialActions.java:62"
+      },
+      "apoli:set_fall_distance": {
+        "fields": {
+          "fall_distance": {
+            "type": "float",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityActions.java:191"
+      },
+      "apoli:set_on_fire": {
+        "fields": {
+          "duration": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/action/EntityActions.java:126"
+      },
+      "apoli:set_resource": {
+        "fields": {
+          "resource": {
+            "type": "identifier",
+            "required": true
+          },
+          "value": {
+            "type": "int",
+            "required": true
+          }
+        },
+        "source": "power/action/PowerActions.java:43"
+      },
+      "apoli:side": {
+        "fields": {
+          "side": {
+            "type": "side",
+            "required": true
+          },
+          "action": {
+            "type": "entity_action",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:79"
+      },
+      "apoli:spawn_effect_cloud": {
+        "fields": {
+          "radius": {
+            "type": "float",
+            "default": 3
+          },
+          "radius_on_use": {
+            "type": "float",
+            "default": -0.5
+          },
+          "wait_time": {
+            "type": "int",
+            "default": 10
+          },
+          "effect": {
+            "type": "status_effect_instance"
+          },
+          "effects": {
+            "type": "list<status_effect_instance>",
+            "default": []
+          }
+        },
+        "source": "power/action/EntityInteractionActions.java:55"
+      },
+      "apoli:spawn_entity": {
+        "fields": {
+          "entity_type": {
+            "type": "entity_type",
+            "required": true
+          },
+          "tag": {
+            "type": "nbt"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          }
+        },
+        "source": "power/action/SpawnActions.java:110"
+      },
+      "apoli:spawn_particles": {
+        "fields": {
+          "particle": {
+            "type": "particle_effect_or_type",
+            "required": true
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "count": {
+            "type": "int",
+            "default": 1
+          },
+          "speed": {
+            "type": "float",
+            "default": 0
+          },
+          "force": {
+            "type": "boolean",
+            "default": false
+          },
+          "spread": {
+            "type": "vector",
+            "default": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.5
+            }
+          },
+          "offset_x": {
+            "type": "double",
+            "default": 0
+          },
+          "offset_y": {
+            "type": "double",
+            "default": 0.5
+          },
+          "offset_z": {
+            "type": "double",
+            "default": 0
+          }
+        },
+        "source": "power/action/SpawnActions.java:75"
+      },
+      "apoli:swing_hand": {
+        "fields": {
+          "hand": {
+            "type": "hand",
+            "default": "main_hand"
+          }
+        },
+        "source": "power/action/EntityInteractionActions.java:77"
+      },
+      "apoli:toggle": {
+        "fields": {
+          "power": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/action/PowerActions.java:29"
+      },
+      "apoli:trigger_cooldown": {
+        "fields": {
+          "power": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/action/PowerActions.java:63"
+      }
+    },
+    "bientity_action": {
+      "apoli:actor_action": {
+        "fields": {
+          "action": {
+            "type": "entity_action",
+            "required": true
+          }
+        },
+        "source": "power/action/BiEntityActions.java:77"
+      },
+      "apoli:add_to_set": {
+        "fields": {
+          "set": {
+            "type": "identifier",
+            "required": true
+          },
+          "time_limit": {
+            "type": "positive_int"
+          }
+        },
+        "source": "power/EntitySets.java:58"
+      },
+      "apoli:add_velocity": {
+        "fields": {
+          "x": {
+            "type": "float",
+            "default": 0
+          },
+          "y": {
+            "type": "float",
+            "default": 0
+          },
+          "z": {
+            "type": "float",
+            "default": 0
+          },
+          "client": {
+            "type": "boolean",
+            "default": true
+          },
+          "server": {
+            "type": "boolean",
+            "default": true
+          },
+          "set": {
+            "type": "boolean",
+            "default": false
+          },
+          "reference": {
+            "type": "reference",
+            "default": "position"
+          }
+        },
+        "source": "power/action/VelocityActions.java:49"
+      },
+      "apoli:and": {
+        "fields": {
+          "actions": {
+            "type": "list<bientity_action>",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:42"
+      },
+      "apoli:chance": {
+        "fields": {
+          "action": {
+            "type": "bientity_action",
+            "required": true
+          },
+          "chance": {
+            "type": "float",
+            "required": true
+          },
+          "fail_action": {
+            "type": "bientity_action"
+          }
+        },
+        "source": "power/action/MetaActions.java:47"
+      },
+      "apoli:choice": {
+        "fields": {
+          "actions": {
+            "type": {
+              "kind": "weighted_list",
+              "of": "bientity_action"
+            },
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:60"
+      },
+      "apoli:damage": {
+        "fields": {
+          "amount": {
+            "type": "float"
+          },
+          "source": {
+            "type": "damage_source"
+          },
+          "damage_type": {
+            "type": "damage_type"
+          },
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          }
+        },
+        "source": "power/action/BiEntityActions.java:47"
+      },
+      "apoli:delay": {
+        "fields": {
+          "ticks": {
+            "type": "int",
+            "required": true
+          },
+          "action": {
+            "type": "bientity_action",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:70"
+      },
+      "apoli:if_else": {
+        "fields": {
+          "condition": {
+            "type": "bientity_condition",
+            "required": true
+          },
+          "if_action": {
+            "type": "bientity_action",
+            "required": true
+          },
+          "else_action": {
+            "type": "bientity_action"
+          }
+        },
+        "source": "power/action/MetaActions.java:100"
+      },
+      "apoli:if_else_list": {
+        "fields": {
+          "actions": {
+            "type": {
+              "kind": "list",
+              "of": {
+                "kind": "object",
+                "fields": {
+                  "action": {
+                    "type": "bientity_action",
+                    "required": true
+                  },
+                  "condition": {
+                    "type": "bientity_condition",
+                    "required": true
+                  }
+                }
+              }
+            },
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:125"
+      },
+      "apoli:invert": {
+        "fields": {
+          "action": {
+            "type": "bientity_action",
+            "required": true
+          }
+        },
+        "source": "power/action/BiEntityActions.java:86"
+      },
+      "apoli:mount": {
+        "fields": {},
+        "source": "power/action/BiEntityActions.java:30"
+      },
+      "apoli:nothing": {
+        "fields": {},
+        "source": "power/action/MetaActions.java:76"
+      },
+      "apoli:remove_from_set": {
+        "fields": {
+          "set": {
+            "type": "identifier",
+            "required": true
+          },
+          "time_limit": {
+            "type": "positive_int"
+          }
+        },
+        "source": "power/EntitySets.java:58"
+      },
+      "apoli:set_in_love": {
+        "fields": {},
+        "source": "power/action/BiEntityActions.java:43"
+      },
+      "apoli:side": {
+        "fields": {
+          "side": {
+            "type": "side",
+            "required": true
+          },
+          "action": {
+            "type": "bientity_action",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:79"
+      },
+      "apoli:tame": {
+        "fields": {},
+        "source": "power/action/BiEntityActions.java:38"
+      },
+      "apoli:target_action": {
+        "fields": {
+          "action": {
+            "type": "entity_action",
+            "required": true
+          }
+        },
+        "source": "power/action/BiEntityActions.java:77"
+      }
+    },
+    "block_action": {
+      "apoli:add_block": {
+        "fields": {
+          "block": {
+            "type": "block_state",
+            "required": true
+          }
+        },
+        "source": "power/action/BlockActions.java:41"
+      },
+      "apoli:and": {
+        "fields": {
+          "actions": {
+            "type": "list<block_action>",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:42"
+      },
+      "apoli:area_of_effect": {
+        "fields": {
+          "block_action": {
+            "type": "block_action",
+            "required": true
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "radius": {
+            "type": "int",
+            "default": 16
+          },
+          "shape": {
+            "type": "block_actions_shape",
+            "default": "cube"
+          }
+        },
+        "source": "power/action/BlockActions.java:77"
+      },
+      "apoli:bonemeal": {
+        "fields": {
+          "effects": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "source": "power/action/BlockActions.java:45"
+      },
+      "apoli:chance": {
+        "fields": {
+          "action": {
+            "type": "block_action",
+            "required": true
+          },
+          "chance": {
+            "type": "float",
+            "required": true
+          },
+          "fail_action": {
+            "type": "block_action"
+          }
+        },
+        "source": "power/action/MetaActions.java:47"
+      },
+      "apoli:choice": {
+        "fields": {
+          "actions": {
+            "type": {
+              "kind": "weighted_list",
+              "of": "block_action"
+            },
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:60"
+      },
+      "apoli:delay": {
+        "fields": {
+          "ticks": {
+            "type": "int",
+            "required": true
+          },
+          "action": {
+            "type": "block_action",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:70"
+      },
+      "apoli:execute_command": {
+        "fields": {
+          "command": {
+            "type": "string",
+            "required": true
+          }
+        },
+        "source": "power/action/BlockActions.java:104"
+      },
+      "apoli:explode": {
+        "fields": {
+          "power": {
+            "type": "float",
+            "required": true
+          },
+          "destruction_type": {
+            "type": "string",
+            "default": "break"
+          },
+          "indestructible": {
+            "type": "block_condition"
+          },
+          "destructible": {
+            "type": "block_condition"
+          },
+          "indestructible_resistance": {
+            "type": "float",
+            "default": 10
+          },
+          "create_fire": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/action/ExplosionActions.java:105"
+      },
+      "apoli:if_else": {
+        "fields": {
+          "condition": {
+            "type": "block_condition",
+            "required": true
+          },
+          "if_action": {
+            "type": "block_action",
+            "required": true
+          },
+          "else_action": {
+            "type": "block_action"
+          }
+        },
+        "source": "power/action/MetaActions.java:100"
+      },
+      "apoli:if_else_list": {
+        "fields": {
+          "actions": {
+            "type": {
+              "kind": "list",
+              "of": {
+                "kind": "object",
+                "fields": {
+                  "action": {
+                    "type": "block_action",
+                    "required": true
+                  },
+                  "condition": {
+                    "type": "block_condition",
+                    "required": true
+                  }
+                }
+              }
+            },
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:125"
+      },
+      "apoli:modify_block_state": {
+        "fields": {
+          "property": {
+            "type": "string",
+            "required": true
+          },
+          "operation": {
+            "type": "block_actions_operation",
+            "default": "add"
+          },
+          "change": {
+            "type": "int"
+          },
+          "value": {
+            "type": "boolean"
+          },
+          "enum": {
+            "type": "string"
+          },
+          "cycle": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/action/BlockActions.java:62"
+      },
+      "apoli:nothing": {
+        "fields": {},
+        "source": "power/action/MetaActions.java:76"
+      },
+      "apoli:offset": {
+        "fields": {
+          "action": {
+            "type": "block_action",
+            "required": true
+          },
+          "x": {
+            "type": "int",
+            "default": 0
+          },
+          "y": {
+            "type": "int",
+            "default": 0
+          },
+          "z": {
+            "type": "int",
+            "default": 0
+          }
+        },
+        "source": "power/action/BlockActions.java:33"
+      },
+      "apoli:set_block": {
+        "fields": {
+          "block": {
+            "type": "block_state",
+            "required": true
+          }
+        },
+        "source": "power/action/BuiltinWorldActions.java:24"
+      },
+      "apoli:side": {
+        "fields": {
+          "side": {
+            "type": "side",
+            "required": true
+          },
+          "action": {
+            "type": "block_action",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:79"
+      },
+      "apoli:spawn_entity": {
+        "fields": {
+          "entity_type": {
+            "type": "entity_type",
+            "required": true
+          },
+          "tag": {
+            "type": "nbt",
+            "default": {}
+          },
+          "entity_action": {
+            "type": "entity_action"
+          }
+        },
+        "source": "power/action/SpawnActions.java:97"
+      }
+    },
+    "item_action": {
+      "apoli:and": {
+        "fields": {
+          "actions": {
+            "type": "list<item_action>",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:42"
+      },
+      "apoli:chance": {
+        "fields": {
+          "action": {
+            "type": "item_action",
+            "required": true
+          },
+          "chance": {
+            "type": "float",
+            "required": true
+          },
+          "fail_action": {
+            "type": "item_action"
+          }
+        },
+        "source": "power/action/MetaActions.java:47"
+      },
+      "apoli:choice": {
+        "fields": {
+          "actions": {
+            "type": {
+              "kind": "weighted_list",
+              "of": "item_action"
+            },
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:60"
+      },
+      "apoli:consume": {
+        "fields": {
+          "amount": {
+            "type": "int",
+            "default": 1
+          }
+        },
+        "source": "power/action/ItemActions.java:73"
+      },
+      "apoli:damage": {
+        "fields": {
+          "amount": {
+            "type": "int",
+            "default": 1
+          },
+          "ignore_unbreaking": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/action/ItemActions.java:77"
+      },
+      "apoli:delay": {
+        "fields": {
+          "ticks": {
+            "type": "int",
+            "required": true
+          },
+          "action": {
+            "type": "item_action",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:70"
+      },
+      "apoli:holder_action": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "action": {
+            "type": "entity_action"
+          }
+        },
+        "source": "power/action/ItemActions.java:59"
+      },
+      "apoli:if_else": {
+        "fields": {
+          "condition": {
+            "type": "item_condition",
+            "required": true
+          },
+          "if_action": {
+            "type": "item_action",
+            "required": true
+          },
+          "else_action": {
+            "type": "item_action"
+          }
+        },
+        "source": "power/action/MetaActions.java:100"
+      },
+      "apoli:if_else_list": {
+        "fields": {
+          "actions": {
+            "type": {
+              "kind": "list",
+              "of": {
+                "kind": "object",
+                "fields": {
+                  "action": {
+                    "type": "item_action",
+                    "required": true
+                  },
+                  "condition": {
+                    "type": "item_condition",
+                    "required": true
+                  }
+                }
+              }
+            },
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:125"
+      },
+      "apoli:merge_nbt": {
+        "fields": {
+          "nbt": {
+            "type": "nbt",
+            "required": true
+          }
+        },
+        "source": "power/action/ItemActions.java:33"
+      },
+      "apoli:modify": {
+        "fields": {
+          "modifier": {
+            "type": "identifier",
+            "required": true
+          }
+        },
+        "source": "power/action/ItemActions.java:37"
+      },
+      "apoli:nothing": {
+        "fields": {},
+        "source": "power/action/MetaActions.java:76"
+      },
+      "apoli:remove_enchantment": {
+        "fields": {
+          "enchantments": {
+            "type": "list<enchantment>",
+            "default": []
+          },
+          "enchantment": {
+            "type": "enchantment"
+          },
+          "levels": {
+            "type": "int"
+          },
+          "reset_repair_cost": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/action/ItemActions.java:108"
+      },
+      "apoli:side": {
+        "fields": {
+          "side": {
+            "type": "side",
+            "required": true
+          },
+          "action": {
+            "type": "item_action",
+            "required": true
+          }
+        },
+        "source": "power/action/MetaActions.java:79"
+      }
+    },
+    "power_type": {
+      "apoli:action_on_being_used": {
+        "fields": {
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "hands": {
+            "type": "list<hand>",
+            "default": [
+              "main_hand",
+              "off_hand"
+            ]
+          },
+          "result_stack": {
+            "type": "item_stack"
+          },
+          "held_item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "action_result": {
+            "type": "string",
+            "default": "success"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActionOnBeingUsedPowerType.java:11"
+      },
+      "apoli:action_on_block_break": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "only_when_harvested": {
+            "type": "boolean",
+            "default": false
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActionOnBlockBreakPowerType.java:16"
+      },
+      "apoli:action_on_block_place": {
+        "fields": {
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "hands": {
+            "type": "list<hand>",
+            "default": [
+              "main_hand",
+              "off_hand"
+            ]
+          },
+          "result_stack": {
+            "type": "item_stack"
+          },
+          "held_item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "action_result": {
+            "type": "string",
+            "default": "success"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "place_to_action": {
+            "type": "block_action"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "place_on_action": {
+            "type": "block_action"
+          },
+          "place_to_condition": {
+            "type": "block_condition"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "place_on_condition": {
+            "type": "block_condition"
+          },
+          "directions": {
+            "type": "list<direction>",
+            "default": [
+              "down",
+              "up",
+              "north",
+              "south",
+              "west",
+              "east"
+            ]
+          }
+        },
+        "source": "power/type/ActionOnBlockPlacePowerType.java:11"
+      },
+      "apoli:action_on_block_use": {
+        "fields": {
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "hands": {
+            "type": "list<hand>",
+            "default": [
+              "main_hand",
+              "off_hand"
+            ]
+          },
+          "result_stack": {
+            "type": "item_stack"
+          },
+          "held_item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "action_result": {
+            "type": "string",
+            "default": "success"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "place_to_action": {
+            "type": "block_action"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "place_on_action": {
+            "type": "block_action"
+          },
+          "place_to_condition": {
+            "type": "block_condition"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "place_on_condition": {
+            "type": "block_condition"
+          },
+          "directions": {
+            "type": "list<direction>",
+            "default": [
+              "down",
+              "up",
+              "north",
+              "south",
+              "west",
+              "east"
+            ]
+          }
+        },
+        "source": "power/type/ActionOnBlockUsePowerType.java:11"
+      },
+      "apoli:action_on_callback": {
+        "fields": {
+          "entity_action_respawned": {
+            "type": "entity_action"
+          },
+          "entity_action_removed": {
+            "type": "entity_action"
+          },
+          "entity_action_gained": {
+            "type": "entity_action"
+          },
+          "entity_action_lost": {
+            "type": "entity_action"
+          },
+          "entity_action_added": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/CallbackPowerType.java:17"
+      },
+      "apoli:action_on_death": {
+        "fields": {
+          "bientity_action": {
+            "type": "bientity_action",
+            "required": true
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/DeathActionPowerType.java:23"
+      },
+      "apoli:action_on_entity_use": {
+        "fields": {
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "hands": {
+            "type": "list<hand>",
+            "default": [
+              "main_hand",
+              "off_hand"
+            ]
+          },
+          "result_stack": {
+            "type": "item_stack"
+          },
+          "held_item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "action_result": {
+            "type": "string",
+            "default": "success"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActionOnEntityUsePowerType.java:11"
+      },
+      "apoli:action_on_hit": {
+        "fields": {
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "bientity_action": {
+            "type": "bientity_action",
+            "required": true
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/BiEntityHitPowerType.java:45"
+      },
+      "apoli:action_on_item_pickup": {
+        "fields": {
+          "bientity_action_thrower": {
+            "type": "bientity_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_action_item": {
+            "type": "bientity_action"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActionOnItemPickupPowerType.java:11"
+      },
+      "apoli:action_on_item_use": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "trigger": {
+            "type": "trigger",
+            "default": "finish"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActionOnItemUsePowerType.java:29"
+      },
+      "apoli:action_on_key_press": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action",
+            "required": true
+          },
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "key": {
+            "type": "key",
+            "default": {
+              "key": "none",
+              "continuous": false
+            }
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActiveSelfPowerType.java:24"
+      },
+      "apoli:action_on_land": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActionOnLandPowerType.java:14"
+      },
+      "apoli:action_on_wake_up": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActionOnWakeUpPowerType.java:22"
+      },
+      "apoli:action_over_time": {
+        "fields": {
+          "interval": {
+            "type": "positive_int",
+            "default": 20
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "rising_action": {
+            "type": "entity_action"
+          },
+          "falling_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActionOverTimePowerType.java:20"
+      },
+      "apoli:action_when_damage_taken": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action",
+            "required": true
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "target_condition": {
+            "type": "entity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/HitActionPowerType.java:46"
+      },
+      "apoli:action_when_hit": {
+        "fields": {
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "bientity_action": {
+            "type": "bientity_action",
+            "required": true
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/BiEntityHitPowerType.java:45"
+      },
+      "apoli:attacker_action_when_hit": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action",
+            "required": true
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "target_condition": {
+            "type": "entity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/HitActionPowerType.java:46"
+      },
+      "apoli:attribute": {
+        "fields": {
+          "modifier": {
+            "type": "attributed_attribute_modifier"
+          },
+          "modifiers": {
+            "type": "list<attributed_attribute_modifier>"
+          },
+          "tick_rate": {
+            "type": "positive_int",
+            "default": 20
+          },
+          "update_health": {
+            "type": "boolean",
+            "default": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/AttributePowerType.java:18"
+      },
+      "apoli:attribute_modify_transfer": {
+        "fields": {
+          "class": {
+            "type": "string",
+            "required": true
+          },
+          "attribute": {
+            "type": "identifier",
+            "required": true
+          },
+          "multiplier": {
+            "type": "double",
+            "default": 1
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/AttributeModifyTransferPowerType.java:70"
+      },
+      "apoli:burn": {
+        "fields": {
+          "interval": {
+            "type": "positive_int",
+            "required": true
+          },
+          "burn_duration": {
+            "type": "positive_int",
+            "required": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PeriodicPowerType.java:17"
+      },
+      "apoli:climbing": {
+        "fields": {
+          "hold_condition": {
+            "type": "entity_condition"
+          },
+          "allow_holding": {
+            "type": "boolean",
+            "default": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ClimbingPowerType.java:15"
+      },
+      "apoli:conditioned_attribute": {
+        "fields": {
+          "modifier": {
+            "type": "attributed_attribute_modifier"
+          },
+          "modifiers": {
+            "type": "list<attributed_attribute_modifier>"
+          },
+          "tick_rate": {
+            "type": "positive_int",
+            "default": 20
+          },
+          "update_health": {
+            "type": "boolean",
+            "default": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/AttributePowerType.java:19"
+      },
+      "apoli:conditioned_restrict_armor": {
+        "fields": {
+          "tick_rate": {
+            "type": "positive_int",
+            "default": 80
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ConditionedRestrictArmorPowerType.java:17"
+      },
+      "apoli:cooldown": {
+        "fields": {
+          "cooldown": {
+            "type": "int",
+            "required": true
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/CooldownPowerType.java:20"
+      },
+      "apoli:creative_flight": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/CreativeFlightPowerType.java:18"
+      },
+      "apoli:damage_over_time": {
+        "fields": {
+          "interval": {
+            "type": "positive_int",
+            "default": 20
+          },
+          "onset_delay": {
+            "type": "int",
+            "defaultText": "same as \"interval\""
+          },
+          "damage": {
+            "type": "float",
+            "required": true
+          },
+          "damage_easy": {
+            "type": "float",
+            "defaultText": "same as \"damage\""
+          },
+          "damage_source": {
+            "type": "damage_source"
+          },
+          "damage_type": {
+            "type": "damage_type",
+            "defaultText": "ResourceKey.create(Registries.DAMAGE_TYPE,Identifier.fromNamespaceAndPath(\"apoli\",\"damage_over_time\"))"
+          },
+          "protection_enchantment": {
+            "type": "enchantment"
+          },
+          "protection_effectiveness": {
+            "type": "float",
+            "default": 1
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/DamageOverTimePowerType.java:29"
+      },
+      "apoli:disable_regen": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/DisableRegenPowerType.java:12"
+      },
+      "apoli:dummy": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PowerTypes.java:63"
+      },
+      "apoli:edible_item": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "food_component": {
+            "type": "food_component",
+            "required": true
+          },
+          "return_stack": {
+            "type": "item_stack"
+          },
+          "result_stack": {
+            "type": "item_stack",
+            "defaultText": "same as \"return_stack\""
+          },
+          "use_action": {
+            "type": "animation",
+            "default": "eat"
+          },
+          "consume_animation": {
+            "type": "animation",
+            "defaultText": "same as \"use_action\""
+          },
+          "sound": {
+            "type": "sound_event",
+            "defaultText": "SoundEvents.GENERIC_EAT.value()"
+          },
+          "consume_sound": {
+            "type": "sound_event",
+            "defaultText": "same as \"sound\""
+          },
+          "consuming_time_modifier": {
+            "type": "modifier"
+          },
+          "consuming_time_modifiers": {
+            "type": "list<modifier>"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/EdibleItemPowerType.java:31"
+      },
+      "apoli:effect_immunity": {
+        "fields": {
+          "effect": {
+            "type": "status_effect"
+          },
+          "effects": {
+            "type": "list<status_effect>"
+          },
+          "inverted": {
+            "type": "boolean",
+            "default": false
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/EffectImmunityPowerType.java:19"
+      },
+      "apoli:elytra_flight": {
+        "fields": {
+          "render_elytra": {
+            "type": "boolean",
+            "required": true
+          },
+          "texture_location": {
+            "type": "identifier"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ElytraFlightPowerType.java:16"
+      },
+      "apoli:entity_glow": {
+        "fields": {
+          "entity_condition": {
+            "type": "entity_condition"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "use_teams": {
+            "type": "boolean",
+            "default": true
+          },
+          "red": {
+            "type": "float",
+            "default": 1
+          },
+          "green": {
+            "type": "float",
+            "default": 1
+          },
+          "blue": {
+            "type": "float",
+            "default": 1
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/EntityGlowPowerType.java:19"
+      },
+      "apoli:entity_group": {
+        "fields": {
+          "group": {
+            "type": "group",
+            "required": true
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/EntityGroupPowerType.java:29"
+      },
+      "apoli:entity_set": {
+        "fields": {
+          "action_on_add": {
+            "type": "bientity_action"
+          },
+          "action_on_remove": {
+            "type": "bientity_action"
+          },
+          "tick_rate": {
+            "type": "positive_int",
+            "default": 1
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/EntitySetPowerType.java:18"
+      },
+      "apoli:exhaust": {
+        "fields": {
+          "interval": {
+            "type": "positive_int",
+            "default": 20
+          },
+          "exhaustion": {
+            "type": "float",
+            "required": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PeriodicPowerType.java:26"
+      },
+      "apoli:fire_immunity": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PowerTypes.java:79"
+      },
+      "apoli:fire_projectile": {
+        "fields": {
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "count": {
+            "type": "int",
+            "default": 1
+          },
+          "interval": {
+            "type": "int",
+            "default": 0
+          },
+          "start_delay": {
+            "type": "int",
+            "default": 0
+          },
+          "speed": {
+            "type": "float",
+            "default": 1.5
+          },
+          "divergence": {
+            "type": "float",
+            "default": 1
+          },
+          "sound": {
+            "type": "sound_event"
+          },
+          "entity_type": {
+            "type": "entity_type",
+            "required": true
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "tag": {
+            "type": "nbt",
+            "default": {}
+          },
+          "key": {
+            "type": "key",
+            "default": {
+              "key": "none",
+              "continuous": false
+            }
+          },
+          "projectile_action": {
+            "type": "entity_action"
+          },
+          "shooter_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/FireProjectilePowerType.java:37"
+      },
+      "apoli:freeze": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/FreezePowerType.java:12"
+      },
+      "apoli:game_event_listener": {
+        "fields": {
+          "event": {
+            "type": "game_event"
+          },
+          "events": {
+            "type": "list<game_event>"
+          },
+          "tag": {
+            "type": "identifier"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "range": {
+            "type": "int",
+            "default": 16
+          },
+          "event_tag": {
+            "type": "identifier",
+            "defaultText": "same as \"tag\""
+          },
+          "show_particle": {
+            "type": "boolean",
+            "default": true
+          },
+          "entity": {
+            "type": "boolean",
+            "default": true
+          },
+          "block": {
+            "type": "boolean",
+            "default": true
+          },
+          "trigger_order": {
+            "type": "game_event_delivery_mode",
+            "default": "unspecified"
+          },
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/GameEventListenerPowerType.java:26"
+      },
+      "apoli:grounded": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/GroundedPowerType.java:12"
+      },
+      "apoli:ignore_water": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/IgnoreWaterPowerType.java:12"
+      },
+      "apoli:inventory": {
+        "fields": {
+          "title": {
+            "type": "string",
+            "default": "container.inventory"
+          },
+          "container_type": {
+            "type": "container_type",
+            "default": "dropper"
+          },
+          "drop_on_death": {
+            "type": "boolean",
+            "default": false
+          },
+          "drop_on_death_filter": {
+            "type": "item_condition"
+          },
+          "key": {
+            "type": "key",
+            "default": {
+              "key": "none",
+              "continuous": false
+            }
+          },
+          "recoverable": {
+            "type": "boolean",
+            "default": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/InventoryPowerType.java:43"
+      },
+      "apoli:invisibility": {
+        "fields": {
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "render_armor": {
+            "type": "boolean",
+            "default": false
+          },
+          "render_outline": {
+            "type": "boolean",
+            "default": false
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/InvisibilityPowerType.java:19"
+      },
+      "apoli:invulnerability": {
+        "fields": {
+          "damage_condition": {
+            "type": "damage_condition",
+            "required": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/InvulnerabilityPowerType.java:18"
+      },
+      "apoli:item_on_item": {
+        "fields": {
+          "click_type": {
+            "type": "click",
+            "default": "right"
+          },
+          "using_item_condition": {
+            "type": "item_condition"
+          },
+          "on_item_condition": {
+            "type": "item_condition"
+          },
+          "result_from_on_stack": {
+            "type": "int",
+            "default": 0
+          },
+          "result": {
+            "type": "item_stack"
+          },
+          "using_item_action": {
+            "type": "item_action"
+          },
+          "on_item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ItemOnItemPowerType.java:25"
+      },
+      "apoli:keep_inventory": {
+        "fields": {
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "slots": {
+            "type": "list<int>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/KeepInventoryPowerType.java:18"
+      },
+      "apoli:launch": {
+        "fields": {
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "speed": {
+            "type": "float",
+            "required": true
+          },
+          "sound": {
+            "type": "sound_event"
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "key": {
+            "type": "key",
+            "default": {
+              "key": "none",
+              "continuous": false
+            }
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ActiveSelfPowerType.java:35"
+      },
+      "apoli:lava_vision": {
+        "fields": {
+          "s": {
+            "type": "float",
+            "required": true
+          },
+          "v": {
+            "type": "float",
+            "required": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/LavaVisionPowerType.java:15"
+      },
+      "apoli:model_color": {
+        "fields": {
+          "red": {
+            "type": "float",
+            "default": 1
+          },
+          "green": {
+            "type": "float",
+            "default": 1
+          },
+          "blue": {
+            "type": "float",
+            "default": 1
+          },
+          "alpha": {
+            "type": "float",
+            "default": 1
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModelColorPowerType.java:15"
+      },
+      "apoli:modify_air_speed": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyAirSpeedPowerType.java:16"
+      },
+      "apoli:modify_attribute": {
+        "fields": {
+          "attribute": {
+            "type": "identifier",
+            "required": true
+          },
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyAttributePowerType.java:19"
+      },
+      "apoli:modify_block_render": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "block": {
+            "type": "block_state",
+            "required": true
+          }
+        },
+        "source": "power/type/ModifyBlockRenderPowerType.java:16"
+      },
+      "apoli:modify_break_speed": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "delta_modifier": {
+            "type": "modifier",
+            "defaultText": "same as \"modifier\""
+          },
+          "delta_modifiers": {
+            "type": "list<modifier>",
+            "defaultText": "same as \"modifiers\""
+          },
+          "hardness_modifier": {
+            "type": "modifier"
+          },
+          "hardness_modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyBreakSpeedPowerType.java:20"
+      },
+      "apoli:modify_camera_submersion": {
+        "fields": {
+          "from": {
+            "type": "submersion"
+          },
+          "to": {
+            "type": "submersion",
+            "required": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyCameraSubmersionPowerType.java:16"
+      },
+      "apoli:modify_crafting": {
+        "fields": {
+          "recipe": {
+            "type": "identifier"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "result": {
+            "type": "item_stack"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "item_action_after_crafting": {
+            "type": "item_action"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyCraftingPowerType.java:18"
+      },
+      "apoli:modify_damage_dealt": {
+        "fields": {
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "target_condition": {
+            "type": "entity_condition"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "self_action": {
+            "type": "entity_action"
+          },
+          "target_action": {
+            "type": "entity_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyDamageDealtPowerType.java:25"
+      },
+      "apoli:modify_damage_taken": {
+        "fields": {
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "self_action": {
+            "type": "entity_action"
+          },
+          "attacker_action": {
+            "type": "entity_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "apply_armor_condition": {
+            "type": "entity_condition"
+          },
+          "damage_armor_condition": {
+            "type": "entity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyDamageTakenPowerType.java:24"
+      },
+      "apoli:modify_enchantment_level": {
+        "fields": {
+          "enchantment": {
+            "type": "enchantment",
+            "required": true
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyEnchantmentLevelPowerType.java:20"
+      },
+      "apoli:modify_exhaustion": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyExhaustionPowerType.java:16"
+      },
+      "apoli:modify_falling": {
+        "fields": {
+          "velocity": {
+            "type": "double"
+          },
+          "take_fall_damage": {
+            "type": "boolean",
+            "default": true
+          },
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyFallingPowerType.java:19"
+      },
+      "apoli:modify_fluid_render": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "fluid_condition": {
+            "type": "fluid_condition"
+          },
+          "fluid": {
+            "type": "fluid",
+            "required": true
+          }
+        },
+        "source": "power/type/ModifyFluidRenderPowerType.java:17"
+      },
+      "apoli:modify_food": {
+        "fields": {
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "replace_stack": {
+            "type": "item_stack"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "food_modifier": {
+            "type": "modifier"
+          },
+          "food_modifiers": {
+            "type": "list<modifier>"
+          },
+          "saturation_modifier": {
+            "type": "modifier"
+          },
+          "saturation_modifiers": {
+            "type": "list<modifier>"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "always_edible": {
+            "type": "boolean",
+            "default": false
+          },
+          "prevent_effects": {
+            "type": "boolean",
+            "default": false
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyFoodPowerType.java:18"
+      },
+      "apoli:modify_grindstone": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "top_condition": {
+            "type": "item_condition"
+          },
+          "bottom_condition": {
+            "type": "item_condition"
+          },
+          "output_condition": {
+            "type": "item_condition"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "item_action_after_grinding": {
+            "type": "item_action"
+          },
+          "result_stack": {
+            "type": "item_stack"
+          },
+          "result_type": {
+            "type": "result",
+            "default": "unchanged"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "xp_modifier": {
+            "type": "modifier"
+          }
+        },
+        "source": "power/type/ModifyGrindstonePowerType.java:21"
+      },
+      "apoli:modify_harvest": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "allow": {
+            "type": "boolean",
+            "required": true
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyHarvestPowerType.java:21"
+      },
+      "apoli:modify_healing": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyHealingPowerType.java:16"
+      },
+      "apoli:modify_insomnia_ticks": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyInsomniaTicksPowerType.java:16"
+      },
+      "apoli:modify_jump": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyJumpPowerType.java:19"
+      },
+      "apoli:modify_lava_speed": {
+        "fields": {
+          "modifier": {
+            "type": "attribute_modifier"
+          },
+          "modifiers": {
+            "type": "list<attribute_modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyLavaSpeedPowerType.java:15"
+      },
+      "apoli:modify_player_spawn": {
+        "fields": {
+          "dimension": {
+            "type": "identifier",
+            "required": true
+          },
+          "dimension_distance_multiplier": {
+            "type": "float",
+            "default": 0
+          },
+          "biome": {
+            "type": "identifier"
+          },
+          "spawn_strategy": {
+            "type": "strategy",
+            "default": "default"
+          },
+          "structure": {
+            "type": "structure"
+          },
+          "respawn_sound": {
+            "type": "sound_event"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyPlayerSpawnPowerType.java:37"
+      },
+      "apoli:modify_projectile_damage": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "target_condition": {
+            "type": "entity_condition"
+          },
+          "self_action": {
+            "type": "entity_action"
+          },
+          "target_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyProjectileDamagePowerType.java:17"
+      },
+      "apoli:modify_slipperiness": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifySlipperinessPowerType.java:16"
+      },
+      "apoli:modify_status_effect_amplifier": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "status_effect": {
+            "type": "status_effect"
+          },
+          "status_effects": {
+            "type": "list<status_effect>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyStatusEffectAmplifierPowerType.java:20"
+      },
+      "apoli:modify_status_effect_duration": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "status_effect": {
+            "type": "status_effect"
+          },
+          "status_effects": {
+            "type": "list<status_effect>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyStatusEffectDurationPowerType.java:20"
+      },
+      "apoli:modify_swim_speed": {
+        "fields": {
+          "modifier": {
+            "type": "attribute_modifier"
+          },
+          "modifiers": {
+            "type": "list<attribute_modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifySwimSpeedPowerType.java:15"
+      },
+      "apoli:modify_velocity": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "axes": {
+            "type": "list<axis>",
+            "default": [
+              "x",
+              "y",
+              "z"
+            ]
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyVelocityPowerType.java:20"
+      },
+      "apoli:modify_xp_gain": {
+        "fields": {
+          "modifier": {
+            "type": "modifier"
+          },
+          "modifiers": {
+            "type": "list<modifier>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ModifyExperiencePowerType.java:16"
+      },
+      "apoli:multiple": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PowerTypes.java:64"
+      },
+      "apoli:night_vision": {
+        "fields": {
+          "strength": {
+            "type": "float",
+            "default": 1
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/NightVisionPowerType.java:15"
+      },
+      "apoli:overlay": {
+        "fields": {
+          "texture": {
+            "type": "identifier",
+            "required": true
+          },
+          "priority": {
+            "type": "int",
+            "default": 1
+          },
+          "strength": {
+            "type": "float",
+            "default": 1
+          },
+          "red": {
+            "type": "float",
+            "default": 1
+          },
+          "green": {
+            "type": "float",
+            "default": 1
+          },
+          "blue": {
+            "type": "float",
+            "default": 1
+          },
+          "draw_mode": {
+            "type": "draw_mode",
+            "required": true
+          },
+          "draw_phase": {
+            "type": "draw_phase",
+            "required": true
+          },
+          "hide_with_hud": {
+            "type": "boolean",
+            "default": true
+          },
+          "visible_in_third_person": {
+            "type": "boolean",
+            "default": false
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/OverlayPowerType.java:25"
+      },
+      "apoli:particle": {
+        "fields": {
+          "particle": {
+            "type": "particle_effect_or_type",
+            "required": true
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "count": {
+            "type": "int",
+            "default": 1
+          },
+          "speed": {
+            "type": "float",
+            "default": 0
+          },
+          "force": {
+            "type": "boolean",
+            "default": false
+          },
+          "spread": {
+            "type": "vector",
+            "default": {
+              "x": 0.5,
+              "y": 0.5,
+              "z": 0.5
+            }
+          },
+          "offset_x": {
+            "type": "double",
+            "default": 0
+          },
+          "offset_y": {
+            "type": "double",
+            "default": 0.5
+          },
+          "offset_z": {
+            "type": "double",
+            "default": 0
+          },
+          "frequency": {
+            "type": "positive_int",
+            "required": true
+          },
+          "visible_in_first_person": {
+            "type": "boolean",
+            "default": false
+          },
+          "visible_while_invisible": {
+            "type": "boolean",
+            "default": false
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ParticlePowerType.java:21"
+      },
+      "apoli:phasing": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "blacklist": {
+            "type": "boolean",
+            "default": false
+          },
+          "render_type": {
+            "type": "render_type",
+            "default": "blindness"
+          },
+          "view_distance": {
+            "type": "float",
+            "default": 10
+          },
+          "phase_down_condition": {
+            "type": "entity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PhasingPowerType.java:24"
+      },
+      "apoli:prevent_being_used": {
+        "fields": {
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "hands": {
+            "type": "list<hand>",
+            "default": [
+              "main_hand",
+              "off_hand"
+            ]
+          },
+          "result_stack": {
+            "type": "item_stack"
+          },
+          "held_item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "action_result": {
+            "type": "string",
+            "default": "success"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventBeingUsedPowerType.java:11"
+      },
+      "apoli:prevent_block_place": {
+        "fields": {
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "hands": {
+            "type": "list<hand>",
+            "default": [
+              "main_hand",
+              "off_hand"
+            ]
+          },
+          "result_stack": {
+            "type": "item_stack"
+          },
+          "held_item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "action_result": {
+            "type": "string",
+            "default": "success"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "place_to_action": {
+            "type": "block_action"
+          },
+          "block_action": {
+            "type": "block_action"
+          },
+          "place_on_action": {
+            "type": "block_action"
+          },
+          "place_to_condition": {
+            "type": "block_condition"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "place_on_condition": {
+            "type": "block_condition"
+          },
+          "directions": {
+            "type": "list<direction>",
+            "default": [
+              "down",
+              "up",
+              "north",
+              "south",
+              "west",
+              "east"
+            ]
+          }
+        },
+        "source": "power/type/PreventBlockPlacePowerType.java:11"
+      },
+      "apoli:prevent_block_selection": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventBlockSelectionPowerType.java:17"
+      },
+      "apoli:prevent_block_use": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventBlockUsePowerType.java:15"
+      },
+      "apoli:prevent_death": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventDeathPowerType.java:15"
+      },
+      "apoli:prevent_elytra_flight": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventElytraFlightPowerType.java:15"
+      },
+      "apoli:prevent_entity_collision": {
+        "fields": {
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventEntityCollisionPowerType.java:15"
+      },
+      "apoli:prevent_entity_render": {
+        "fields": {
+          "entity_condition": {
+            "type": "entity_condition"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventEntityRenderPowerType.java:18"
+      },
+      "apoli:prevent_entity_use": {
+        "fields": {
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "hands": {
+            "type": "list<hand>",
+            "default": [
+              "main_hand",
+              "off_hand"
+            ]
+          },
+          "result_stack": {
+            "type": "item_stack"
+          },
+          "held_item_action": {
+            "type": "item_action"
+          },
+          "result_item_action": {
+            "type": "item_action"
+          },
+          "action_result": {
+            "type": "string",
+            "default": "success"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventEntityUsePowerType.java:11"
+      },
+      "apoli:prevent_feature_render": {
+        "fields": {
+          "feature": {
+            "type": "string"
+          },
+          "features": {
+            "type": "list<string>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventFeatureRenderPowerType.java:13"
+      },
+      "apoli:prevent_game_event": {
+        "fields": {
+          "event": {
+            "type": "game_event"
+          },
+          "events": {
+            "type": "list<game_event>"
+          },
+          "tag": {
+            "type": "game_event_tag"
+          },
+          "entity_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventGameEventPowerType.java:25"
+      },
+      "apoli:prevent_item_pickup": {
+        "fields": {
+          "bientity_action_thrower": {
+            "type": "bientity_action"
+          },
+          "bientity_action": {
+            "type": "bientity_action"
+          },
+          "bientity_action_item": {
+            "type": "bientity_action"
+          },
+          "item_action": {
+            "type": "item_action"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventItemPickupPowerType.java:11"
+      },
+      "apoli:prevent_item_use": {
+        "fields": {
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventItemUsePowerType.java:17"
+      },
+      "apoli:prevent_sleep": {
+        "fields": {
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "message": {
+            "type": "any",
+            "defaultText": "Component.translatable(\"text.apoli.cannot_sleep\")"
+          },
+          "set_spawn_point": {
+            "type": "boolean",
+            "default": false
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventSleepPowerType.java:19"
+      },
+      "apoli:prevent_sprinting": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/PreventSprintingPowerType.java:15"
+      },
+      "apoli:recipe": {
+        "fields": {
+          "id": {
+            "type": "identifier",
+            "required": true
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/RecipePowerType.java:38"
+      },
+      "apoli:replace_loot_table": {
+        "fields": {
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "block_condition": {
+            "type": "block_condition"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ReplaceLootTablePowerType.java:23"
+      },
+      "apoli:resource": {
+        "fields": {
+          "min": {
+            "type": "int",
+            "required": true
+          },
+          "max": {
+            "type": "int",
+            "required": true
+          },
+          "start_value": {
+            "type": "int",
+            "defaultText": "same as \"min\""
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "min_action": {
+            "type": "entity_action"
+          },
+          "max_action": {
+            "type": "entity_action"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ResourcePowerType.java:23"
+      },
+      "apoli:restrict_armor": {
+        "fields": {},
+        "source": "power/type/RestrictArmorPowerType.java:21"
+      },
+      "apoli:self_action_on_hit": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action",
+            "required": true
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "target_condition": {
+            "type": "entity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/HitActionPowerType.java:46"
+      },
+      "apoli:self_action_on_kill": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action",
+            "required": true
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "target_condition": {
+            "type": "entity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/HitActionPowerType.java:46"
+      },
+      "apoli:self_glow": {
+        "fields": {
+          "entity_condition": {
+            "type": "entity_condition"
+          },
+          "bientity_condition": {
+            "type": "bientity_condition"
+          },
+          "use_teams": {
+            "type": "boolean",
+            "default": true
+          },
+          "red": {
+            "type": "float",
+            "default": 1
+          },
+          "green": {
+            "type": "float",
+            "default": 1
+          },
+          "blue": {
+            "type": "float",
+            "default": 1
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/SelfGlowPowerType.java:19"
+      },
+      "apoli:shader": {
+        "fields": {
+          "shader": {
+            "type": "identifier",
+            "required": true
+          },
+          "toggleable": {
+            "type": "boolean",
+            "default": true
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ShaderPowerType.java:14"
+      },
+      "apoli:shaking": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ShakingPowerType.java:12"
+      },
+      "apoli:stacking_status_effect": {
+        "fields": {
+          "min_stacks": {
+            "type": "int",
+            "required": true
+          },
+          "max_stacks": {
+            "type": "int",
+            "required": true
+          },
+          "duration_per_stack": {
+            "type": "int",
+            "required": true
+          },
+          "tick_rate": {
+            "type": "positive_int",
+            "default": 10
+          },
+          "effect": {
+            "type": "status_effect_instance"
+          },
+          "effects": {
+            "type": "list<status_effect_instance>"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/StackingEffectPowerType.java:20"
+      },
+      "apoli:starting_equipment": {
+        "fields": {
+          "stack": {
+            "type": {
+              "kind": "object",
+              "fields": {
+                "slot": {
+                  "type": "int",
+                  "default": -2147483648
+                }
+              }
+            }
+          },
+          "stacks": {
+            "type": {
+              "kind": "list",
+              "of": {
+                "kind": "object",
+                "fields": {
+                  "slot": {
+                    "type": "int",
+                    "default": -2147483648
+                  }
+                }
+              }
+            }
+          },
+          "recurrent": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "source": "power/type/StartingEquipmentPowerType.java:25"
+      },
+      "apoli:status_bar_texture": {
+        "fields": {
+          "texture": {
+            "type": "identifier"
+          },
+          "texture_map": {
+            "type": "any",
+            "default": {}
+          },
+          "priority": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/StatusBarTexturePowerType.java:32"
+      },
+      "apoli:swimming": {
+        "fields": {
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/SwimmingPowerType.java:12"
+      },
+      "apoli:target_action_on_hit": {
+        "fields": {
+          "entity_action": {
+            "type": "entity_action",
+            "required": true
+          },
+          "damage_condition": {
+            "type": "damage_condition"
+          },
+          "cooldown": {
+            "type": "int",
+            "default": 1
+          },
+          "hud_render": {
+            "type": "hud_render",
+            "default": {
+              "should_render": false
+            }
+          },
+          "target_condition": {
+            "type": "entity_condition"
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/HitActionPowerType.java:46"
+      },
+      "apoli:toggle": {
+        "fields": {
+          "active_by_default": {
+            "type": "boolean",
+            "default": true
+          },
+          "retain_state": {
+            "type": "boolean",
+            "default": true
+          },
+          "key": {
+            "type": "key",
+            "default": {
+              "key": "none",
+              "continuous": false
+            }
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/TogglePowerType.java:19"
+      },
+      "apoli:toggle_night_vision": {
+        "fields": {
+          "active_by_default": {
+            "type": "boolean",
+            "default": false
+          },
+          "strength": {
+            "type": "float",
+            "default": 1
+          },
+          "key": {
+            "type": "key",
+            "default": {
+              "key": "none",
+              "continuous": false
+            }
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/ToggleNightVisionPowerType.java:19"
+      },
+      "apoli:tooltip": {
+        "fields": {
+          "text": {
+            "type": "text"
+          },
+          "texts": {
+            "type": "list<text>"
+          },
+          "item_condition": {
+            "type": "item_condition"
+          },
+          "should_resolve": {
+            "type": "boolean",
+            "default": false
+          },
+          "tick_rate": {
+            "type": "int",
+            "default": 20
+          },
+          "order": {
+            "type": "int",
+            "default": 0
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/TooltipPowerType.java:25"
+      },
+      "apoli:walk_on_fluid": {
+        "fields": {
+          "fluid": {
+            "type": "fluid_tag",
+            "required": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "power/type/WalkOnFluidPowerType.java:15"
+      },
+      "origins:action_on_callback": {
+        "fields": {
+          "entity_action_respawned": {
+            "type": "entity_action"
+          },
+          "entity_action_removed": {
+            "type": "entity_action"
+          },
+          "entity_action_gained": {
+            "type": "entity_action"
+          },
+          "entity_action_lost": {
+            "type": "entity_action"
+          },
+          "entity_action_added": {
+            "type": "entity_action"
+          },
+          "entity_action_chosen": {
+            "type": "entity_action"
+          },
+          "execute_chosen_when_orb": {
+            "type": "boolean",
+            "default": true
+          },
+          "condition": {
+            "type": "entity_condition"
+          }
+        },
+        "source": "origin/power/OriginsCallbackPowerType.java:19"
+      }
+    }
+  },
+  "pathAliases": {
+    "power_type": {
+      "simple": "dummy",
+      "self_action_when_hit": "action_when_damage_taken",
+      "active_self": "action_on_key_press"
+    }
+  },
+  "namespaceAliases": {
+    "origins": "apoli"
+  },
+  "dataTypes": {
+    "animation": {
+      "kind": "enum",
+      "values": [
+        "eat",
+        "drink"
+      ]
+    },
+    "axis": {
+      "kind": "enum",
+      "values": [
+        "x",
+        "y",
+        "z"
+      ]
+    },
+    "block_actions_operation": {
+      "kind": "enum",
+      "values": [
+        "add",
+        "set"
+      ]
+    },
+    "block_actions_shape": {
+      "kind": "enum",
+      "values": [
+        "cube",
+        "chebyshev",
+        "star",
+        "manhattan",
+        "sphere",
+        "euclidean"
+      ]
+    },
+    "click": {
+      "kind": "enum",
+      "values": [
+        "left",
+        "right"
+      ]
+    },
+    "comparison": {
+      "kind": "enum",
+      "values": [
+        "none",
+        "equal",
+        "less_than",
+        "greater_than",
+        "less_than_or_equal",
+        "greater_than_or_equal",
+        "not_equal"
+      ]
+    },
+    "container_type": {
+      "kind": "enum",
+      "values": [
+        "chest",
+        "double_chest",
+        "dropper",
+        "dispenser",
+        "hopper"
+      ]
+    },
+    "direction": {
+      "kind": "enum",
+      "values": [
+        "down",
+        "up",
+        "north",
+        "south",
+        "west",
+        "east"
+      ]
+    },
+    "draw_mode": {
+      "kind": "enum",
+      "values": [
+        "nausea",
+        "texture"
+      ]
+    },
+    "draw_phase": {
+      "kind": "enum",
+      "values": [
+        "below_hud",
+        "above_hud"
+      ]
+    },
+    "equipment_slot": {
+      "kind": "enum",
+      "values": [
+        "mainhand",
+        "offhand",
+        "feet",
+        "legs",
+        "chest",
+        "head",
+        "body",
+        "saddle"
+      ]
+    },
+    "fluid_handling": {
+      "kind": "enum",
+      "values": [
+        "none",
+        "source_only",
+        "any",
+        "water"
+      ]
+    },
+    "game_event_delivery_mode": {
+      "kind": "enum",
+      "values": [
+        "unspecified",
+        "by_distance"
+      ]
+    },
+    "game_mode": {
+      "kind": "enum",
+      "values": [
+        "survival",
+        "creative",
+        "adventure",
+        "spectator"
+      ]
+    },
+    "group": {
+      "kind": "enum",
+      "values": [
+        "default",
+        "undead",
+        "arthropod",
+        "illager",
+        "aquatic"
+      ]
+    },
+    "hand": {
+      "kind": "enum",
+      "values": [
+        "main_hand",
+        "off_hand"
+      ]
+    },
+    "heightmap": {
+      "kind": "enum",
+      "values": [
+        "world_surface_wg",
+        "world_surface",
+        "ocean_floor_wg",
+        "ocean_floor",
+        "motion_blocking",
+        "motion_blocking_no_leaves"
+      ]
+    },
+    "inventory_type": {
+      "kind": "enum",
+      "values": [
+        "inventory",
+        "power"
+      ]
+    },
+    "light_type": {
+      "kind": "enum",
+      "values": [
+        "sky",
+        "block"
+      ]
+    },
+    "power_actions_operation": {
+      "kind": "enum",
+      "values": [
+        "add",
+        "set"
+      ]
+    },
+    "precipitation": {
+      "kind": "enum",
+      "values": [
+        "none",
+        "rain",
+        "snow"
+      ]
+    },
+    "process_mode": {
+      "kind": "enum",
+      "values": [
+        "stacks",
+        "items"
+      ]
+    },
+    "reference": {
+      "kind": "enum",
+      "values": [
+        "position",
+        "rotation"
+      ]
+    },
+    "render_type": {
+      "kind": "enum",
+      "values": [
+        "blindness",
+        "remove_blocks",
+        "none"
+      ]
+    },
+    "result": {
+      "kind": "enum",
+      "values": [
+        "unchanged",
+        "specified",
+        "from_top",
+        "from_bottom"
+      ]
+    },
+    "rotation": {
+      "kind": "enum",
+      "values": [
+        "head",
+        "body"
+      ]
+    },
+    "selection": {
+      "kind": "enum",
+      "values": [
+        "only",
+        "from",
+        "until",
+        "through",
+        "everything"
+      ]
+    },
+    "shape": {
+      "kind": "enum",
+      "values": [
+        "cube",
+        "chebyshev",
+        "star",
+        "manhattan",
+        "sphere",
+        "euclidean"
+      ]
+    },
+    "shape_type": {
+      "kind": "enum",
+      "values": [
+        "collider",
+        "outline",
+        "visual",
+        "falldamage_resetting"
+      ]
+    },
+    "side": {
+      "kind": "enum",
+      "values": [
+        "client",
+        "server"
+      ]
+    },
+    "sound_category": {
+      "kind": "enum",
+      "values": [
+        "master",
+        "music",
+        "records",
+        "weather",
+        "blocks",
+        "hostile",
+        "neutral",
+        "players",
+        "ambient",
+        "voice",
+        "ui"
+      ]
+    },
+    "space": {
+      "kind": "enum",
+      "values": [
+        "world",
+        "local",
+        "local_horizontal",
+        "local_horizontal_normalized",
+        "velocity",
+        "velocity_normalized",
+        "velocity_horizontal",
+        "velocity_horizontal_normalized"
+      ]
+    },
+    "spatial_actions_shape": {
+      "kind": "enum",
+      "values": [
+        "cube",
+        "chebyshev",
+        "star",
+        "manhattan",
+        "sphere",
+        "euclidean"
+      ]
+    },
+    "strategy": {
+      "kind": "enum",
+      "values": [
+        "center",
+        "default"
+      ]
+    },
+    "submersion": {
+      "kind": "enum",
+      "values": [
+        "none",
+        "water",
+        "lava",
+        "powder_snow"
+      ]
+    },
+    "trigger": {
+      "kind": "enum",
+      "values": [
+        "instant",
+        "start",
+        "stop",
+        "finish",
+        "during"
+      ]
+    }
+  },
+  "builtin": {
+    "powers": [
+      "origins:aerial_combatant",
+      "origins:air_from_potions",
+      "origins:aqua_affinity",
+      "origins:aqua_affinity_underwater",
+      "origins:aqua_affinity_ungrounded",
+      "origins:aquatic",
+      "origins:arcane_skin",
+      "origins:arthropod",
+      "origins:burn_in_daylight",
+      "origins:burning_wrath",
+      "origins:carnivore",
+      "origins:cat_vision",
+      "origins:claustrophobia",
+      "origins:climbing",
+      "origins:climbing_climbing",
+      "origins:climbing_toggle",
+      "origins:conduit_power_on_land",
+      "origins:damage_from_potions",
+      "origins:damage_from_snowballs",
+      "origins:elytra",
+      "origins:end_spawn",
+      "origins:ender_particles",
+      "origins:extra_reach",
+      "origins:fall_immunity",
+      "origins:fire_immunity",
+      "origins:flame_particles",
+      "origins:fragile",
+      "origins:fresh_air",
+      "origins:hotblooded",
+      "origins:hunger_over_time",
+      "origins:invisibility",
+      "origins:launch_into_air",
+      "origins:lay_eggs",
+      "origins:light_armor",
+      "origins:like_air",
+      "origins:like_water",
+      "origins:master_of_webs",
+      "origins:master_of_webs_climbing",
+      "origins:master_of_webs_no_slowdown",
+      "origins:master_of_webs_punch_through",
+      "origins:master_of_webs_sense",
+      "origins:master_of_webs_web_crafting",
+      "origins:master_of_webs_webbing",
+      "origins:more_exhaustion",
+      "origins:more_kinetic_damage",
+      "origins:natural_armor",
+      "origins:nether_spawn",
+      "origins:nine_lives",
+      "origins:no_cobweb_slowdown",
+      "origins:no_shield",
+      "origins:phantomize",
+      "origins:phantomize_overlay",
+      "origins:phantomize_overlay_green",
+      "origins:phantomize_overlay_orange",
+      "origins:phantomize_overlay_red",
+      "origins:phasing",
+      "origins:pumpkin_hate",
+      "origins:pumpkin_hate_prevent_eating",
+      "origins:pumpkin_hate_prevent_seeing",
+      "origins:scare_creepers",
+      "origins:shulker_inventory",
+      "origins:slow_falling",
+      "origins:sprint_jump",
+      "origins:strong_arms",
+      "origins:strong_arms_break_speed",
+      "origins:swim_speed",
+      "origins:tailwind",
+      "origins:throw_ender_pearl",
+      "origins:translucent",
+      "origins:vegetarian",
+      "origins:velvet_paws",
+      "origins:water_breathing",
+      "origins:water_vision",
+      "origins:water_vulnerability",
+      "origins:weak_arms",
+      "origins:webbing"
+    ],
+    "origins": [
+      "origins:arachnid",
+      "origins:avian",
+      "origins:blazeborn",
+      "origins:elytrian",
+      "origins:enderian",
+      "origins:feline",
+      "origins:human",
+      "origins:merling",
+      "origins:phantom",
+      "origins:shulk"
+    ],
+    "layers": [
+      "origins:origin"
+    ]
+  }
+}

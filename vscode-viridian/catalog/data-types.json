@@ -1,0 +1,281 @@
+{
+  "any": { "kind": "any" },
+  "boolean": { "kind": "boolean" },
+  "int": { "kind": "int", "description": "A whole number." },
+  "float": { "kind": "float" },
+  "double": { "kind": "double" },
+  "string": { "kind": "string" },
+  "positive_int": { "kind": "int", "min": 1, "description": "A whole number of at least 1." },
+  "positive_float": { "kind": "float", "min": 0.0000001, "description": "A number above 0." },
+  "positive_double": { "kind": "double", "min": 0.0000001, "description": "A number above 0." },
+  "text": {
+    "kind": "text",
+    "description": "A text component: a plain string, a JSON text object, or an array of them."
+  },
+  "nbt": {
+    "kind": "nbt",
+    "description": "An NBT compound, as an SNBT string (`\"{CustomName:'\\\"Bob\\\"'}\"`) or a JSON object."
+  },
+  "identifier": {
+    "kind": "identifier",
+    "description": "A namespaced id like `minecraft:stone`. Without a namespace it's `minecraft:`. `*` is replaced by the namespace or path of the file it's in."
+  },
+
+  "power_id": { "kind": "identifier", "registry": "power", "description": "The id of a power." },
+  "origin_id": { "kind": "identifier", "registry": "origin", "description": "The id of an origin." },
+  "layer_id": { "kind": "identifier", "registry": "origin_layer", "description": "The id of an origin layer." },
+  "badge_id": { "kind": "identifier", "registry": "badge", "description": "The id of a badge in `data/<namespace>/badges`." },
+
+  "item": { "kind": "identifier", "registry": "item", "description": "An item id." },
+  "block": { "kind": "identifier", "registry": "block", "description": "A block id." },
+  "fluid": { "kind": "identifier", "registry": "fluid", "description": "A fluid id." },
+  "entity_type": { "kind": "identifier", "registry": "entity_type", "description": "An entity type id." },
+  "status_effect": { "kind": "identifier", "registry": "mob_effect", "description": "A status effect id." },
+  "enchantment": { "kind": "identifier", "registry": "enchantment", "description": "An enchantment id." },
+  "damage_type": { "kind": "identifier", "registry": "damage_type", "description": "A damage type id." },
+  "game_event": { "kind": "identifier", "registry": "game_event", "description": "A game event id." },
+  "structure": { "kind": "identifier", "registry": "structure", "description": "A structure id." },
+  "sound_event": { "kind": "identifier", "registry": "sound_event", "description": "A sound event id." },
+  "particle_type": { "kind": "identifier", "registry": "particle_type", "description": "A particle type id." },
+  "stat_type": { "kind": "identifier", "registry": "stat_type", "description": "A statistic type id." },
+  "item_tag": { "kind": "identifier", "registry": "item", "tag": true, "description": "An item tag id, without `#`." },
+  "block_tag": { "kind": "identifier", "registry": "block", "tag": true, "description": "A block tag id, without `#`." },
+  "fluid_tag": { "kind": "identifier", "registry": "fluid", "tag": true, "description": "A fluid tag id, without `#`." },
+  "entity_type_tag": { "kind": "identifier", "registry": "entity_type", "tag": true, "description": "An entity type tag id, without `#`." },
+  "biome_tag": { "kind": "identifier", "registry": "biome", "tag": true, "description": "A biome tag id, without `#`." },
+  "damage_type_tag": { "kind": "identifier", "registry": "damage_type", "tag": true, "description": "A damage type tag id, without `#`." },
+  "game_event_tag": { "kind": "identifier", "registry": "game_event", "tag": true, "description": "A game event tag id, without `#`." },
+
+  "block_state": {
+    "kind": "string",
+    "description": "A block state in command syntax, like `minecraft:oak_stairs[facing=east]`."
+  },
+  "comparison": {
+    "kind": "enum",
+    "values": ["none", "equal", "less_than", "greater_than", "less_than_or_equal", "greater_than_or_equal", "not_equal"],
+    "aliases": { "": "none", "==": "equal", "<": "less_than", ">": "greater_than", "<=": "less_than_or_equal", ">=": "greater_than_or_equal", "!=": "not_equal" },
+    "description": "How to compare: `==`, `!=`, `<`, `<=`, `>`, `>=` (or their names)."
+  },
+  "modifier_operation": {
+    "kind": "enum",
+    "namespace": "apoli",
+    "values": [
+      "add_base_early",
+      "multiply_base_additive",
+      "multiply_base_multiplicative",
+      "add_base_late",
+      "min_base",
+      "max_base",
+      "set_base",
+      "multiply_total_additive",
+      "multiply_total_multiplicative",
+      "add_total_late",
+      "min_total",
+      "max_total",
+      "set_total"
+    ],
+    "aliases": { "addition": "add_base_early", "multiply_base": "multiply_base_additive", "multiply_total": "multiply_total_multiplicative" },
+    "description": "A modifier operation. Base operations run before total ones."
+  },
+  "attribute_operation": {
+    "kind": "enum",
+    "values": ["addition", "multiply_base", "multiply_total"],
+    "description": "An attribute modifier operation."
+  },
+
+  "vector": {
+    "kind": "object",
+    "description": "A 3D vector.",
+    "fields": {
+      "x": { "type": "double", "default": 0 },
+      "y": { "type": "double", "default": 0 },
+      "z": { "type": "double", "default": 0 }
+    }
+  },
+  "modifier": {
+    "kind": "object",
+    "description": "Changes a number. Modifiers are applied in order of their operation.",
+    "fields": {
+      "operation": { "type": "modifier_operation", "required": true },
+      "value": { "type": "double", "required": true },
+      "resource": { "type": "power_id", "description": "A resource or cooldown power whose current value is used instead of `value`." },
+      "modifier": { "type": "list<modifier>", "description": "Modifiers applied to the value before it's used." },
+      "name": { "type": "string", "ignored": true, "description": "Not read. Older packs (and the built-in powers) still have it." }
+    }
+  },
+  "attribute_modifier": {
+    "kind": "object",
+    "description": "An attribute modifier without an attribute.",
+    "fields": {
+      "name": { "type": "string", "default": "Unnamed attribute modifier" },
+      "operation": { "type": "attribute_operation", "required": true },
+      "value": { "type": "double", "required": true }
+    }
+  },
+  "attributed_attribute_modifier": {
+    "kind": "object",
+    "description": "An attribute modifier for a specific attribute. 1.20 ids like `minecraft:generic.max_health` still work.",
+    "fields": {
+      "attribute": { "type": "identifier", "required": true },
+      "operation": { "type": "attribute_operation", "required": true },
+      "value": { "type": "double", "required": true },
+      "name": { "type": "string", "default": "Unnamed EntityAttributeModifier" }
+    }
+  },
+  "item_stack": {
+    "kind": "object",
+    "description": "An item stack.",
+    "fields": {
+      "item": { "type": "item", "required": true },
+      "amount": { "type": "int", "default": 1 },
+      "tag": { "type": "nbt", "description": "1.20 item NBT, converted to item components." }
+    }
+  },
+  "item_or_item_stack": {
+    "kind": "union",
+    "of": ["item", "item_stack"],
+    "description": "An item id, or an item stack object."
+  },
+  "ingredient": {
+    "kind": "union",
+    "description": "An item or item tag entry, or a list of them.",
+    "of": [
+      "ingredient_entry",
+      { "kind": "list", "of": "ingredient_entry" }
+    ]
+  },
+  "ingredient_entry": {
+    "kind": "object",
+    "description": "Either `item` or `tag`, not both.",
+    "fields": {
+      "item": { "type": "item" },
+      "tag": { "type": "item_tag" }
+    }
+  },
+  "status_effect_instance": {
+    "kind": "object",
+    "description": "A status effect with its duration and amplifier.",
+    "fields": {
+      "effect": { "type": "status_effect", "required": true },
+      "duration": { "type": "int", "default": 100, "description": "In ticks." },
+      "amplifier": { "type": "int", "default": 0 },
+      "is_ambient": { "type": "boolean", "default": false },
+      "show_particles": { "type": "boolean", "default": true },
+      "show_icon": { "type": "boolean", "default": true }
+    }
+  },
+  "hud_render": {
+    "kind": "union",
+    "description": "How a resource or cooldown bar is drawn. A list draws the first entry with the rest as children.",
+    "of": ["single_hud_render", { "kind": "list", "of": "single_hud_render" }]
+  },
+  "single_hud_render": {
+    "kind": "object",
+    "fields": {
+      "should_render": { "type": "boolean", "default": true },
+      "bar_index": { "type": "int", "default": 0 },
+      "icon_index": { "type": "int", "default": 0 },
+      "sprite_location": { "type": "identifier", "default": "apoli:textures/gui/resource_bar.png" },
+      "condition": { "type": "entity_condition" },
+      "inverted": { "type": "boolean", "default": false },
+      "order": { "type": "int", "default": 0 }
+    }
+  },
+  "key": {
+    "kind": "union",
+    "description": "A key: `primary`, `secondary`, a vanilla key binding id like `key.use`, or an object.",
+    "of": [
+      "string",
+      {
+        "kind": "object",
+        "fields": {
+          "key": { "type": "string", "required": true },
+          "continuous": { "type": "boolean", "default": false, "description": "Keep triggering while the key is held." }
+        }
+      }
+    ]
+  },
+  "damage_source": {
+    "kind": "object",
+    "description": "A 1.20 style damage source. It's turned into the registered damage type that matches the flags and name best.",
+    "fields": {
+      "name": { "type": "string", "required": true },
+      "bypasses_armor": { "type": "boolean", "default": false },
+      "fire": { "type": "boolean", "default": false },
+      "unblockable": { "type": "boolean", "default": false },
+      "magic": { "type": "boolean", "default": false },
+      "out_of_world": { "type": "boolean", "default": false },
+      "projectile": { "type": "boolean", "default": false },
+      "explosive": { "type": "boolean", "default": false }
+    }
+  },
+  "particle_effect_or_type": {
+    "kind": "union",
+    "description": "A particle type id without parameters, or a particle effect object.",
+    "of": ["particle_type", "particle_effect"]
+  },
+  "particle_effect": {
+    "kind": "object",
+    "fields": {
+      "type": { "type": "particle_type", "required": true },
+      "params": { "type": "string", "default": "", "description": "Parameters in the 1.20 command format, like `1.0 0.0 0.0 1.0` for dust." }
+    }
+  },
+  "stat": {
+    "kind": "object",
+    "description": "A statistic.",
+    "fields": {
+      "type": { "type": "stat_type", "required": true },
+      "id": { "type": "identifier", "required": true }
+    }
+  },
+  "food_component": {
+    "kind": "object",
+    "description": "A 1.20 style food component.",
+    "fields": {
+      "hunger": { "type": "int", "required": true },
+      "saturation": { "type": "float", "required": true },
+      "meat": { "type": "boolean", "default": false },
+      "always_edible": { "type": "boolean", "default": false },
+      "snack": { "type": "boolean", "default": false },
+      "effect": { "type": "food_effect" },
+      "effects": { "type": "list<food_effect>", "default": [] }
+    }
+  },
+  "food_effect": {
+    "kind": "object",
+    "fields": {
+      "effect": { "type": "status_effect_instance", "required": true },
+      "chance": { "type": "float", "default": 1 }
+    }
+  },
+  "positioned_item_stack": {
+    "kind": "object",
+    "description": "An item stack with an optional inventory slot.",
+    "fields": {
+      "item": { "type": "item", "required": true },
+      "amount": { "type": "int", "default": 1 },
+      "tag": { "type": "nbt" },
+      "slot": { "type": "int" }
+    }
+  },
+  "translatable_text": {
+    "kind": "text",
+    "description": "A text component. A plain string is a translation key, shown as-is when it has no translation."
+  },
+  "texture_map": {
+    "kind": "map",
+    "of": "identifier",
+    "description": "Maps vanilla texture ids to the ones drawn instead."
+  },
+  "impact": {
+    "kind": "enum",
+    "values": ["none", "low", "medium", "high"],
+    "description": "How much an origin changes the game, shown on the selection screen."
+  },
+  "resource_conditions": {
+    "kind": "list",
+    "of": "any",
+    "description": "Fabric resource conditions. The file is skipped when they don't pass."
+  }
+}

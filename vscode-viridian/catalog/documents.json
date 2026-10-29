@@ -1,0 +1,168 @@
+{
+  "documents": {
+    "origin": {
+      "description": "An origin, offered on the selection screen of the layers that list it.",
+      "source": "origin/Origin.java",
+      "fields": {
+        "powers": { "type": "list<power_id>", "default": [], "description": "The powers this origin grants." },
+        "icon": { "type": "item_or_item_stack", "default": "minecraft:air", "description": "The item shown for this origin." },
+        "unchoosable": { "type": "boolean", "default": false, "description": "Hide it from the selection screen. It can still be given with commands, upgrades or `default_origin`." },
+        "order": { "type": "int", "default": 2147483647, "description": "Sorting order within the impact group, lower comes first." },
+        "impact": { "type": "impact", "default": "none" },
+        "loading_priority": { "type": "int", "default": 0, "description": "A copy of this origin in another datapack only replaces this one when its priority is higher." },
+        "upgrades": { "type": "list<origin_upgrade>", "default": [], "description": "Origins a player is switched to when they get an advancement." },
+        "name": { "type": "text", "description": "Defaults to the translation key `origin.<namespace>.<path>.name`." },
+        "description": { "type": "text", "description": "Defaults to the translation key `origin.<namespace>.<path>.description`." },
+        "fabric:load_conditions": { "type": "resource_conditions" }
+      }
+    },
+    "origin_layer": {
+      "description": "A layer of origins. Players pick one origin per enabled layer.",
+      "source": "origin/OriginLayer.java",
+      "fields": {
+        "order": { "type": "int", "default": 0, "description": "Order of the layer screens, lower comes first." },
+        "loading_priority": { "type": "int", "default": 0 },
+        "origins": { "type": "list<layer_origin_entry>", "required": true, "description": "The origins offered in this layer. Copies of a layer in other datapacks add to this list unless `replace` is true." },
+        "replace": { "type": "boolean", "default": false, "description": "Replace the origins of earlier copies of this layer instead of adding to them." },
+        "enabled": { "type": "boolean", "default": true },
+        "name": { "type": "text", "description": "Defaults to the translation key `layer.<namespace>.<path>.name`." },
+        "gui_title": { "type": "layer_gui_title" },
+        "missing_name": { "type": "text", "description": "Name shown when the player has no origin in this layer." },
+        "missing_description": { "type": "text", "description": "Description shown when the player has no origin in this layer." },
+        "allow_random": { "type": "boolean", "default": false, "description": "Offer a random choice on the selection screen." },
+        "allow_random_unchoosable": { "type": "boolean", "default": false, "description": "Let the random choice pick unchoosable origins." },
+        "exclude_random": { "type": "list<origin_id>", "default": [], "description": "Origins the random choice never picks." },
+        "replace_exclude_random": { "type": "boolean", "default": false },
+        "default_origin": { "type": "origin_id", "description": "Given to players instead of showing this layer's screen." },
+        "auto_choose": { "type": "boolean", "default": false, "description": "Pick the origin automatically when only one is available." },
+        "hidden": { "type": "boolean", "default": false, "description": "Hide the layer from the selection screen and the origin info screen." },
+        "fabric:load_conditions": { "type": "resource_conditions" }
+      }
+    },
+    "power": {
+      "description": "Fields every power has, next to the fields of its type.",
+      "source": "power/PowerLoader.java",
+      "fields": {
+        "type": { "type": "identifier", "required": true, "description": "The power type, like `origins:attribute`." },
+        "name": { "type": "translatable_text", "description": "Defaults to the translation key `power.<namespace>.<path>.name`." },
+        "description": { "type": "translatable_text", "description": "Defaults to the translation key `power.<namespace>.<path>.description`." },
+        "hidden": { "type": "boolean", "default": false, "description": "Hide the power from the origin screen." },
+        "loading_priority": { "type": "int", "default": 0, "description": "A copy of this power in another datapack only replaces this one when its priority is higher." },
+        "badges": { "type": { "kind": "list", "of": "badge_or_id", "strict": true }, "description": "Badges shown next to the power on the origin screen." },
+        "fabric:load_conditions": { "type": "resource_conditions" }
+      }
+    },
+    "badge": {
+      "description": "A badge that powers can refer to by id in their `badges` list.",
+      "source": "origin/badge/BadgeLoader.java",
+      "fields": {
+        "type": { "type": "identifier", "default": "origins:keybind", "description": "The badge type." },
+        "loading_priority": { "type": "int", "default": 0 },
+        "fabric:load_conditions": { "type": "resource_conditions" }
+      }
+    },
+    "global_power_set": {
+      "description": "Powers given to every entity of the listed types.",
+      "source": "power/global/GlobalPowerSetLoader.java",
+      "fields": {
+        "powers": { "type": { "kind": "list", "of": "power_id", "strict": true }, "required": true },
+        "entity_types": { "type": "entity_type_filter", "description": "Entity types (or `#tags`) the powers apply to. Every entity when left out." },
+        "replace": { "type": "boolean", "default": false, "description": "Throw away earlier copies of this set." },
+        "order": { "type": "int", "default": 0 },
+        "loading_priority": { "type": "int", "default": 0 },
+        "fabric:load_conditions": { "type": "resource_conditions" }
+      }
+    }
+  },
+  "dataTypes": {
+    "origin_upgrade": {
+      "kind": "object",
+      "fields": {
+        "condition": { "type": "identifier", "required": true, "description": "The advancement that triggers the upgrade." },
+        "origin": { "type": "origin_id", "required": true, "description": "The origin the player is switched to." },
+        "announcement": { "type": "string", "description": "A message shown to the player when they're upgraded." }
+      }
+    },
+    "layer_origin_entry": {
+      "kind": "union",
+      "description": "An origin id, or origins that are only offered when the condition passes.",
+      "of": [
+        "origin_id",
+        {
+          "kind": "object",
+          "fields": {
+            "condition": { "type": "entity_condition" },
+            "origins": { "type": "list<origin_id>", "required": true }
+          }
+        }
+      ]
+    },
+    "layer_gui_title": {
+      "kind": "object",
+      "fields": {
+        "view_origin": { "type": "text", "description": "Title of the origin info screen." },
+        "choose_origin": { "type": "text", "description": "Title of the selection screen." }
+      }
+    },
+    "badge_or_id": {
+      "kind": "union",
+      "of": ["badge_id", "badge"]
+    },
+    "badge": {
+      "kind": "typed",
+      "registry": "badge_type"
+    },
+    "entity_type_filter": {
+      "kind": "union",
+      "of": ["entity_type_or_tag", { "kind": "list", "of": "entity_type_or_tag" }]
+    },
+    "entity_type_or_tag": {
+      "kind": "identifier",
+      "registry": "entity_type",
+      "hashTag": true,
+      "description": "An entity type id, or an entity type tag id starting with `#`."
+    },
+    "recipe": {
+      "kind": "object",
+      "open": true,
+      "description": "A vanilla recipe with an extra `id` field.",
+      "fields": {
+        "id": { "type": "identifier", "required": true },
+        "type": { "type": "identifier", "required": true, "description": "The recipe type, like `minecraft:crafting_shaped`." }
+      }
+    }
+  },
+  "registries": {
+    "badge_type": {
+      "origins:sprite": {
+        "description": "Shows a sprite.",
+        "fields": {
+          "sprite": { "type": "identifier", "required": true }
+        }
+      },
+      "origins:tooltip": {
+        "description": "Shows a sprite with a tooltip.",
+        "fields": {
+          "sprite": { "type": "identifier", "required": true },
+          "text": { "type": "text", "required": true }
+        }
+      },
+      "origins:keybind": {
+        "description": "Shows a sprite with a tooltip naming the key of the power. `%s` in the text is replaced by the key.",
+        "fields": {
+          "sprite": { "type": "identifier", "required": true },
+          "text": { "type": "string", "required": true, "description": "A translation key." }
+        }
+      },
+      "origins:crafting_recipe": {
+        "description": "Shows a sprite with a tooltip showing a recipe.",
+        "fields": {
+          "sprite": { "type": "identifier", "required": true },
+          "recipe": { "type": "recipe", "required": true },
+          "prefix": { "type": "text" },
+          "suffix": { "type": "text" }
+        }
+      }
+    }
+  }
+}

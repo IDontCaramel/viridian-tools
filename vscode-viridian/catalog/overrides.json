@@ -1,0 +1,112 @@
+{
+  "registries": {
+    "power_type": {
+      "apoli:restrict_armor": {
+        "fields": {
+          "head": { "type": "item_condition" },
+          "chest": { "type": "item_condition" },
+          "legs": { "type": "item_condition" },
+          "feet": { "type": "item_condition" }
+        }
+      },
+      "apoli:conditioned_restrict_armor": {
+        "fields": {
+          "head": { "type": "item_condition" },
+          "chest": { "type": "item_condition" },
+          "legs": { "type": "item_condition" },
+          "feet": { "type": "item_condition" }
+        }
+      },
+      "apoli:recipe": {
+        "fields": {
+          "id": null,
+          "recipe": { "type": "recipe", "required": true }
+        }
+      },
+      "apoli:starting_equipment": {
+        "fields": {
+          "stack": { "type": "positioned_item_stack" },
+          "stacks": { "type": "list<positioned_item_stack>" }
+        }
+      },
+      "apoli:prevent_sleep": {
+        "fields": {
+          "message": { "type": "translatable_text", "default": "text.apoli.cannot_sleep", "defaultText": null }
+        }
+      },
+      "apoli:status_bar_texture": {
+        "fields": {
+          "texture_map": { "type": "texture_map" }
+        }
+      },
+      "apoli:damage_over_time": {
+        "fields": {
+          "damage_type": { "default": "apoli:damage_over_time", "defaultText": null }
+        }
+      },
+      "apoli:edible_item": {
+        "fields": {
+          "sound": { "default": "minecraft:entity.generic.eat", "defaultText": null }
+        }
+      },
+      "apoli:action_when_damage_taken": {
+        "fields": { "target_condition": null }
+      },
+      "apoli:attacker_action_when_hit": {
+        "fields": { "target_condition": null }
+      }
+    },
+    "entity_action": {
+      "apoli:random_teleport": {
+        "fields": {
+          "attempts": { "defaultText": "area_width + area_height" }
+        }
+      },
+      "apoli:change_resource": { "fields": { "resource": { "type": "power_id" } } },
+      "apoli:set_resource": { "fields": { "resource": { "type": "power_id" } } },
+      "apoli:modify_resource": { "fields": { "resource": { "type": "power_id" } } },
+      "apoli:trigger_cooldown": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:toggle": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:grant_power": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:revoke_power": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:remove_power": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:drop_inventory": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:modify_inventory": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:replace_inventory": { "fields": { "power": { "type": "power_id" } } }
+    },
+    "bientity_action": {
+      "apoli:remove_from_set": {
+        "fields": { "time_limit": null }
+      }
+    },
+    "entity_condition": {
+      "apoli:distance_from_coordinates": {
+        "fields": { "reference": { "default": "world_origin", "defaultText": null } }
+      },
+      "apoli:distance_from_spawn": {
+        "fields": { "reference": { "default": "world_spawn", "defaultText": null } }
+      },
+      "apoli:power": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:power_active": { "fields": { "power": { "type": "power_id" } } },
+      "apoli:resource": { "fields": { "resource": { "type": "power_id" } } },
+      "apoli:inventory": { "fields": { "power": { "type": "power_id" } } },
+      "origins:origin": {
+        "fields": {
+          "origin": { "type": "origin_id" },
+          "layer": { "type": "layer_id" }
+        }
+      }
+    },
+    "block_condition": {
+      "apoli:distance_from_coordinates": {
+        "fields": { "reference": { "default": "world_origin", "defaultText": null } }
+      },
+      "apoli:distance_from_spawn": {
+        "fields": { "reference": { "default": "world_spawn", "defaultText": null } }
+      }
+    },
+    "item_condition": {
+      "apoli:has_power": { "fields": { "power": { "type": "power_id" } } }
+    }
+  }
+}

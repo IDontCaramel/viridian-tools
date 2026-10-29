@@ -1,0 +1,119 @@
+{
+  "name": "vscode-viridian",
+  "displayName": "Viridian Origins Datapacks",
+  "description": "Validation, autocomplete, hover docs and navigation for Origins/Apoli datapacks on Viridian Origins",
+  "version": "0.1.0",
+  "publisher": "caramel",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets"
+  ],
+  "keywords": [
+    "minecraft",
+    "origins",
+    "apoli",
+    "datapack",
+    "viridian"
+  ],
+  "main": "./dist/extension.cjs",
+  "activationEvents": [
+    "workspaceContains:**/pack.mcmeta",
+    "onLanguage:json",
+    "onLanguage:jsonc",
+    "onLanguage:json5"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "viridian.newDatapack",
+        "title": "New Datapack",
+        "category": "Viridian"
+      },
+      {
+        "command": "viridian.newFile",
+        "title": "New Origin, Layer or Power",
+        "category": "Viridian"
+      },
+      {
+        "command": "viridian.reindex",
+        "title": "Re-index Datapacks",
+        "category": "Viridian"
+      },
+      {
+        "command": "viridian.openZip",
+        "title": "Open Zipped Datapack",
+        "category": "Viridian"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "viridian.newFile",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation@9"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Viridian",
+      "properties": {
+        "viridian.validation.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Report problems in origin, layer and power files."
+        },
+        "viridian.validation.unknownFields": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "information",
+            "off"
+          ],
+          "default": "warning",
+          "description": "How to report fields the mod doesn't read."
+        },
+        "viridian.validation.missingReferences": {
+          "type": "string",
+          "enum": [
+            "warning",
+            "information",
+            "off"
+          ],
+          "default": "warning",
+          "description": "How to report power, origin and layer ids that aren't defined in the workspace or built into the mod."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "dev": "node esbuild.mjs --watch",
+    "build": "node esbuild.mjs",
+    "typecheck": "tsc --noEmit",
+    "generate": "node scripts/generate-catalog.ts",
+    "test": "npm run typecheck && npm run test:unit && npm run test:integration",
+    "test:unit": "node --test \"test/unit/**/*.test.ts\"",
+    "test:integration": "node esbuild.mjs --tests && node test/integration/run.mjs",
+    "package": "node esbuild.mjs --production && vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "fflate": "^0.8.3",
+    "json5": "^2.2.3",
+    "jsonc-parser": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.0.0",
+    "@types/vscode": "~1.100.0",
+    "@vscode/test-electron": "^3.1.0",
+    "esbuild": "^0.28.2",
+    "mocha": "^12.0.3",
+    "typescript": "^7.0.2"
+  }
+}
