@@ -145,7 +145,7 @@ describe('validation against the mod catalog', () => {
   })
 })
 
-describe('test datapacks', () => {
+describe.skipIf(!existsSync(testPacks) || !readdirSync(testPacks).some((f) => f.endsWith('.zip')))('test datapacks', () => {
   const zips = existsSync(testPacks) ? readdirSync(testPacks).filter((f) => f.endsWith('.zip')) : []
   it.skipIf(!zips.length).each(zips)('round-trips %s unchanged', async (name) => {
     const bytes = readFileSync(join(testPacks, name))

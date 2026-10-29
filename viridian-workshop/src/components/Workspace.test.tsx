@@ -52,7 +52,7 @@ describe('workshop', () => {
     fireEvent.change(editor, { target: { value: "{name:'After', powers:['test:resource'], impact:0x1}" } })
     expect(screen.getByRole('textbox', { name: 'Origin name' })).toHaveValue('After')
     expect(screen.queryByRole('alert')).not.toBeInTheDocument()
-    await waitFor(() => expect(saveDraft).toHaveBeenCalled())
+    await waitFor(() => expect(vi.mocked(saveDraft).mock.calls.at(-1)?.[0].files[originPath].json).toMatchObject({ name: 'After', impact: 1 }))
     const saved = vi.mocked(saveDraft).mock.calls.at(-1)![0]
     expect(validateProject(saved).filter((i) => i.severity === 'error')).toEqual([])
     const zip = await JSZip.loadAsync(await exportZip(saved))
