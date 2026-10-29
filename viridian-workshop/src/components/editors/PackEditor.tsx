@@ -9,7 +9,7 @@ export function PackEditor() {
       <div className="editor-heading">
         <div className="editor-kind">Pack</div>
         <h1>Pack settings</h1>
-        <p>New packs target Minecraft 26.3, data pack version 121.</p>
+        <p>Pack format numbers tell Minecraft which versions your pack supports. For Minecraft 26.3, leave both at 121.</p>
       </div>
       <section className="editor-section">
         <ObjectFields

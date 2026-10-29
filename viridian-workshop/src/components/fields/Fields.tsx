@@ -27,6 +27,8 @@ import { McIdPicker, mcListFor } from '../McPicker'
 
 // friendlier names for fields that show up everywhere
 const LABELS: Record<string, string> = {
+  min_format: 'Oldest supported pack format',
+  max_format: 'Newest supported pack format',
   condition: 'Only active when',
   entity_action: 'Action',
   bientity_action: 'Two-entity action',
