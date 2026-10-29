@@ -1,0 +1,6 @@
+{
+  "name": "Bird",
+  "powers": ["demo:flight_toggle", "demo:missing"],
+  "icon": "minecraft:feather",
+  "custom_metadata": { "keep": true }
+}

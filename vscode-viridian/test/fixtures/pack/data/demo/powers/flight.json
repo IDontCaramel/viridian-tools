@@ -1,0 +1,5 @@
+{
+  "type": "apoli:multiple",
+  "toggle": { "type": "apoli:toggle" },
+  "marker": { "type": "apoli:dummy" }
+}
